@@ -1,0 +1,64 @@
+@use '../../../styles/mixins-vars/margins.scss' as margins;
+@use '../../../styles/mixins-vars/paddings.scss' as paddings;
+@use '../../../styles/mixins-vars/animations.scss' as animations;
+
+.select-input {
+  margin-top: margins.$m-3;
+  margin-bottom: margins.$m-3;
+  padding-top: paddings.$p-2;
+  padding-bottom: paddings.$p-2;
+
+  .select-input-selection {
+    margin-bottom: margins.$m-3;
+    padding: paddings.$p-4;
+    background-color: var(--default);
+  }
+
+  .select-input-selection svg {
+    transition: transform animations.$short-duration animations.$default-mode;
+    transform: rotate(0deg);
+  }
+  &.expanded .select-input-selection svg {
+    transform: rotate(180deg);
+  }
+
+  .select-input-options {
+    display: flex;
+    flex-direction: row;
+    border-radius: paddings.$p-3;
+    overflow: visible;
+    overflow-y: hidden;
+    margin: 0 -2px;
+
+    .drawer-panel {
+      padding: 0px 2px;
+      top: 0;
+    }
+
+    .select-input-group--column {
+      & {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0;
+        background-color: var(--default);
+        border-radius: paddings.$p-3;
+        // replace margins with paddings for better drawer panel background color
+        margin: 0;
+        padding: paddings.$p-3 0;
+      }
+      label {
+        padding: paddings.$p-2 paddings.$p-4;
+      }
+    }
+
+    &.floating {
+      overflow-y: visible;
+      .drawer-panel {
+        overflow: hidden;
+        z-index: 1;
+      }
+    }
+  }
+}

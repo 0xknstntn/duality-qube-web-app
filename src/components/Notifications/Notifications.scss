@@ -1,0 +1,85 @@
+.notifications {
+  & {
+    position: fixed;
+    // offset the toasts area by about the height of the Header component
+    // todo: tie this number more tightly to the Header height
+    top: 7rem;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    // ensure notifications go above any page tricks
+    z-index: 11;
+  }
+
+  .notification {
+    position: absolute;
+    right: 0;
+    transition: all 0.5s ease-out;
+    width: max-content;
+    max-width: 100vw;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    list-style: none;
+    &.notification--success {
+      .notification--inner {
+        border-color: hsla(156, 61%, 70%, 1);
+      }
+      .icon,
+      .message {
+        color: hsla(158, 60%, 48%, 1);
+      }
+    }
+    &.notification--error {
+      .notification--inner {
+        border-color: hsla(0, 74%, 45%, 1);
+      }
+      .icon {
+        color: hsla(0, 84%, 63%, 1);
+      }
+    }
+    &.notification--success,
+    &.notification--error {
+      .description {
+        color: hsla(210, 20%, 98%, 1);
+      }
+    }
+  }
+
+  // add our own inner toast component styling
+  .notification--inner {
+    & {
+      background-color: hsla(217, 19%, 27%, 1);
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+
+    .icon {
+      display: flex;
+      font-size: 1rem;
+    }
+
+    .message {
+      font-weight: 500;
+      margin-top: -0.25em;
+      color: var(--text-default);
+    }
+
+    .description {
+      color: hsla(218, 11%, 65%, 1);
+    }
+
+    button[aria-label='Close'] {
+      color: hsla(218, 11%, 65%, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -0.125em -0.25em;
+      padding: 0.125em 0.25em;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

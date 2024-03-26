@@ -1,0 +1,103 @@
+@use '../../styles/mixins-vars/paddings.scss' as paddings;
+@use '../../styles/font/size.scss' as font-size;
+
+.page-card.table-card {
+  overflow: hidden;
+  flex-basis: auto;
+}
+
+.table-card {
+  display: flex;
+  background-color: var(--page-card);
+  border-radius: 1rem;
+  overflow: hidden;
+  &.scrollable {
+    min-height: 22.5em;
+  }
+
+  .table-card__header {
+    // be as tall as the switch component
+    min-height: calc(2.5rem + 2px);
+    // but still be vertically aligned
+    margin-top: calc(-0.25rem - 2px);
+  }
+  .table-card__hero-title {
+    font-size: font-size.$h4;
+  }
+  .table-card__subtitle {
+    color: #bfbfbf;
+    font-size: 0.85rem;
+  }
+  .table-card__asset-toggle {
+    font-size: font-size.$button;
+  }
+  .table-card__table {
+    overflow-y: scroll;
+    table {
+      border-spacing: 0;
+    }
+    th {
+      border-bottom: 1px solid hsl(0, 0%, 75%);
+      // ensure heading cell sit above row content
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      background-color: var(--page-card);
+    }
+    th,
+    td {
+      padding: paddings.$p-2 paddings.$p-3;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    tr:first-child td {
+      padding-top: paddings.$p-3;
+    }
+    // general table text alignment (header column as text)
+    th,
+    td {
+      text-align: left;
+    }
+    th + th,
+    td + td {
+      text-align: right;
+    }
+    td .subtext {
+      font-size: 0.85em;
+      color: hsl(0, 0%, 75%);
+    }
+
+    td {
+      button,
+      .button {
+        // align button texts to where you would expect them to be
+        margin-left: -0.5rem; // equivalent to paddings.$p-3
+        margin-right: -0.5rem; // equivalent to paddings.$p-3
+        // add button interactivity hints by default
+        &:hover {
+          background-color: var(--token-search-bg);
+        }
+        &.button-primary:hover {
+          background-color: var(--primary);
+        }
+      }
+    }
+  }
+
+  // format token logos in table cards specifically
+  .token-logo {
+    height: 2em;
+    width: 2em;
+    object-fit: contain;
+  }
+}
+
+form.table-card {
+  input[type='checkbox'] {
+    appearance: auto;
+  }
+}

@@ -1,0 +1,126 @@
+@use '../../styles/mixins-vars/paddings.scss' as paddings;
+@use '../../styles/mixins-vars/margins.scss' as margins;
+@use '../../styles/components/cards.scss' as cards;
+@use '../../styles/font/size.scss' as font-size;
+@use '../../styles/font/weight.scss' as font-weight;
+
+$border-width: 2px;
+
+.range-step-input {
+  & {
+    padding: paddings.$p-4 paddings.$p-5;
+    border-radius: paddings.$p-3;
+    background-color: var(--default);
+    flex-direction: column;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    min-width: 14em;
+  }
+
+  .range-step-title {
+    color: var(--primary);
+    font-size: font-size.$h4;
+    text-align: center;
+    width: 100%;
+  }
+
+  .range-step-description {
+    color: var(--text-default);
+    font-size: font-size.$text-m;
+    text-align: center;
+    width: 100%;
+  }
+
+  .range-step-controls {
+    button {
+      & {
+        @include paddings.padding('*', 3);
+        background-color: var(--primary);
+        font-size: font-size.$h4;
+        border: 0px none transparent;
+        box-sizing: content-box;
+        line-height: 1em;
+        aspect-ratio: 1;
+        flex: 0 0 auto;
+        height: 1em;
+        width: 1em;
+      }
+    }
+
+    input,
+    span {
+      display: inline-block;
+      text-align: center;
+      @include paddings.padding('y', 0);
+      @include paddings.padding('x', 3);
+      background-color: transparent;
+      border: 0px none transparent;
+      font-size: font-size.$h3;
+      font-weight: font-weight.$medium;
+      line-height: 1em;
+      text-align: center;
+      color: var(--text-default);
+      flex: 0 1 auto;
+      outline: none;
+      width: 100%;
+      // allow inline sizing by number of characters (eg. 5ch) to work as intended
+      // sizes the width to the text input area, and padding is added to that width
+      box-sizing: content-box;
+      overflow-wrap: normal;
+    }
+    // override styling for span as text placement inside padding border
+    span {
+      @include paddings.padding('y', 0);
+      @include paddings.padding('x', 0);
+      @include margins.margin('y', 0);
+      @include margins.margin('x', 3);
+      overflow: hidden;
+    }
+
+    input[type='number'] {
+      /* For Chrome and Safari  */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* For Firefox  */
+      & {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+
+  &.range-step-input--read-only {
+    .range-step-controls {
+      span {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.page-card--col .range-step-input {
+  padding: paddings.$p-2 paddings.$p-4;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .range-step-title {
+    font-size: font-size.$text-m;
+    color: var(--primary-alt);
+    margin-right: auto;
+    width: auto;
+  }
+  input,
+  span {
+    font-size: font-size.$text-m;
+  }
+  button {
+    font-size: font-size.$input;
+    color: var(--primary);
+    background-color: transparent;
+  }
+}

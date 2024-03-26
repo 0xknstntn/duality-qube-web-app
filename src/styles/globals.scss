@@ -1,0 +1,284 @@
+@use './font/size.scss' as font-size;
+@use './font/weight.scss' as font-weight;
+
+// force "light" color scheme:
+//   while we only have one color scheme I'm going to add this flag
+//   so that I can use auto dark mode in Chrome and save my eyes from
+//   blinding lights while I work overnight and also preserve our site colors
+//   https://developer.chrome.com/blog/auto-dark-theme/
+:root {
+  color-scheme: only light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: font-weight.$medium;
+}
+
+.h1 {
+  font-size: font-size.$h1;
+  font-weight: font-weight.$heavy;
+}
+
+.h2 {
+  font-size: font-size.$h2;
+}
+
+.h3 {
+  font-size: font-size.$h3;
+}
+
+.h4 {
+  font-size: font-size.$h4;
+}
+
+.h5 {
+  font-size: font-size.$h5;
+}
+
+.h6 {
+  font-size: font-size.$h6;
+}
+
+body {
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pill {
+  border-radius: 100vmax !important;
+  // pill text should never be multiline
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.no-blend {
+  mix-blend-mode: normal !important;
+}
+
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  width: 100vw;
+  max-width: calc(1440px + 10vw);
+}
+
+.row,
+.col {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.col {
+  flex-direction: column;
+}
+@media (min-width: 576px) {
+  .row-sm {
+    flex-direction: row;
+  }
+  .col-sm {
+    flex-direction: column;
+  }
+}
+@media (min-width: 768px) {
+  .row-md {
+    flex-direction: row;
+  }
+  .col-md {
+    flex-direction: column;
+  }
+}
+@media (min-width: 992px) {
+  .row-lg {
+    flex-direction: row;
+  }
+  .col-lg {
+    flex-direction: column;
+  }
+}
+@media (min-width: 1200px) {
+  .row-xl {
+    flex-direction: row;
+  }
+  .col-xl {
+    flex-direction: column;
+  }
+}
+
+.flex {
+  flex: 1 1 0;
+}
+.flex-auto {
+  flex-basis: auto;
+}
+.flex-centered {
+  align-items: center;
+  justify-content: center;
+}
+.flow-wrap {
+  flex-flow: wrap;
+}
+.flow-nowrap {
+  flex-flow: nowrap;
+}
+@media (min-width: 576px) {
+  .flow-nowrap-sm {
+    flex-flow: nowrap;
+  }
+  .flow-wrap-sm {
+    flex-flow: wrap;
+  }
+}
+@media (min-width: 768px) {
+  .flow-nowrap-md {
+    flex-flow: nowrap;
+  }
+  .flow-wrap-md {
+    flex-flow: wrap;
+  }
+}
+@media (min-width: 992px) {
+  .flow-nowrap-lg {
+    flex-flow: nowrap;
+  }
+  .flow-wrap-lg {
+    flex-flow: wrap;
+  }
+}
+@media (min-width: 1200px) {
+  .flow-nowrap-xl {
+    flex-flow: nowrap;
+  }
+  .flow-wrap-xl {
+    flex-flow: wrap;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+// dynamic displays based on viewport size
+.col-sm,
+.col-md,
+.col-lg,
+.col-xl {
+  display: none;
+}
+@media (min-width: 576px) {
+  .col-sm-hide {
+    display: none;
+  }
+  .col-sm {
+    display: flex;
+  }
+}
+@media (min-width: 768px) {
+  .col-md-hide {
+    display: none;
+  }
+  .col-md {
+    display: flex;
+  }
+}
+@media (min-width: 992px) {
+  .col-lg-hide {
+    display: none;
+  }
+  .col-lg {
+    display: flex;
+  }
+}
+@media (min-width: 1200px) {
+  .col-xl-hide {
+    display: none;
+  }
+  .col-xl {
+    display: flex;
+  }
+}
+
+.inline {
+  display: inline;
+}
+.inline-block {
+  display: inline-block;
+}
+
+.hide {
+  display: none !important;
+}
+.invisible {
+  visibility: hidden !important;
+  * {
+    visibility: hidden !important;
+  }
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.absolute.filled {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+input[disabled],
+button[disabled],
+fieldset:disabled input,
+fieldset:disabled button,
+fieldset:disabled label {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+fieldset:disabled *:not(:has(> *)) {
+  opacity: 0.5;
+}
+input {
+  background-color: transparent;
+  border: none;
+}
+
+hr {
+  border-bottom-width: 0;
+  opacity: 0.5;
+}
+
+// add a tiny faint shadow to all token logos
+// this helps if a token image background matches the surrounding area
+.token-logo {
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+.fade-in-fast {
+  animation: fadeIn 0.2s ease-in;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

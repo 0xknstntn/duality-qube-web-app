@@ -1,0 +1,163 @@
+@use './core.scss' as core;
+
+$text-default: core.$light-black;
+$text-alt: core.$white;
+$text-disabled: core.$dark-white;
+
+$default: adjust-color(core.$bg-lighter, $lightness: -8%);
+$default-shadow: adjust-color($default, $alpha: -0.3%);
+$default-alt: core.$light-black;
+$primary: core.$bg-light;
+$primary-alt: core.$light-white;
+$secondary: hsla(165, 83%, 57%, 1);
+$secondary-alt: core.$light-white;
+$success: rgb(38, 128, 27);
+$success-alt: core.$light-white;
+$info: rgb(224, 184, 121);
+$info-alt: core.$light-white;
+$warning: rgb(218, 225, 137);
+$warning-alt: core.$light-white;
+$error: rgb(214, 92, 110);
+$error-alt: core.$light-white;
+$light: transparent;
+$light-alt: core.$light-white;
+$link: transparent;
+$link-alt: core.$dark-gray;
+
+$aqua: hsl(165, 83%, 57%);
+$bg: fixed
+    radial-gradient(
+      circle at 50vw 95vh,
+      change-color($aqua, $alpha: 0.5) 0vw,
+      change-color($aqua, $alpha: 0.45) 10vw,
+      change-color($aqua, $alpha: 0.35) 20vw,
+      change-color($aqua, $alpha: 0) 45vw
+    ),
+  fixed linear-gradient(240deg, core.$bg-light 12%, core.$bg-lighter 98%);
+
+// color + border color in default state, background + border color in hover state
+$ghost-button: core.$dark-white;
+
+$button-group-bg: core.$light-white;
+$icon-button-bg: rgba(core.$dark-gray, 40%);
+$icon-button-text: core.$white;
+$profile-button-bg: rgba(core.$light-gray, 40%);
+$profile-button-text: $text-default;
+$submit-button-bg: $primary;
+$submit-button-text: core.$light-white;
+
+$input-text: core.$light-white;
+$input-bg: transparent;
+
+$page-card: rgb(255, 255, 255);
+$page-card-border: core.$bg-light;
+
+$dialog-bg: core.$light-blue;
+$dialog-border: rgb(152, 203, 231);
+$dialog-backdrop: rgba(core.$dark-black, 50%);
+$selected-token: core.$bg-light;
+
+$token-search-bg: core.$white;
+$token-search-text: core.$light-black;
+$token-search-placeholder: hsl(218, 11%, 65%);
+$token-search-border: core.$light-gray;
+
+$input: rgb(0, 0, 0);
+$ghost: rgba(0, 0, 0, 0.5);
+$icon-button-bg: rgba(170, 169, 169, 0.4);
+$icon-button-text: rgb(188, 188, 188);
+$badge-main-bg: rgb(18, 93, 135);
+$badge-main-text: rgb(255, 255, 255);
+$badge-secondary-bg: rgb(168, 168, 168);
+$badge-secondary-text: rgb(255, 255, 255);
+$badge-success-bg: rgb(38, 128, 27);
+$badge-success-text: rgb(255, 255, 255);
+$badge-info-bg: rgb(224, 184, 121);
+$badge-info-text: rgb(255, 255, 255);
+$badge-warning-text: rgb(218, 225, 137);
+$badge-warning-bg: rgb(255, 255, 255);
+$badge-error-bg: rgb(177, 81, 74);
+$badge-error-text: rgb(255, 255, 255);
+
+$scrollbar: transparent;
+$scrollbar-handle: core.$dark-white;
+$scrollbar-handle-hover: core.$dark-white;
+
+$tooltip-bg: core.$light-black;
+$tooltip-color: core.$light-gray;
+$tooltip-border: core.$bg-dark;
+
+$map: (
+  'text-default': $text-default,
+  'text-alt': $text-alt,
+  'text-disabled': $text-disabled,
+
+  'default': $default,
+  'default-shadow': $default-shadow,
+  'default-alt': $default-alt,
+  'primary': $primary,
+  'primary-alt': $primary-alt,
+  'secondary': $secondary,
+  'secondary-alt': $secondary-alt,
+  'success': $success,
+  'success-alt': $success-alt,
+  'info': $info,
+  'info-alt': $info-alt,
+  'warning': $warning,
+  'warning-alt': $warning-alt,
+  'error': $error,
+  'error-alt': $error-alt,
+  'light': $light,
+  'light-alt': $light-alt,
+  'link': $link,
+  'link-alt': $link-alt,
+
+  'bg': $bg,
+
+  'ghost-button': $ghost-button,
+
+  'button-group-bg': $button-group-bg,
+  'icon-button-bg': $icon-button-bg,
+  'icon-button-text': $icon-button-text,
+  'profile-button-bg': $profile-button-bg,
+  'profile-button-text': $profile-button-text,
+  'submit-button-bg': $submit-button-bg,
+  'submit-button-text': $submit-button-text,
+
+  'input-text': $input-text,
+  'input-bg': $input-bg,
+
+  'page-card': $page-card,
+  'page-card-border': $page-card-border,
+
+  'dialog-bg': $dialog-bg,
+  'dialog-border': $dialog-border,
+  'dialog-backdrop': $dialog-backdrop,
+  'selected-token': $selected-token,
+
+  'token-search-bg': $token-search-bg,
+  'token-search-text': $token-search-text,
+  'token-search-placeholder': $token-search-placeholder,
+  'token-search-border': $token-search-border,
+
+  'badge-main-bg': $badge-main-bg,
+  'badge-main-text': $badge-main-text,
+  'badge-secondary-bg': $badge-secondary-bg,
+  'badge-secondary-text': $badge-secondary-text,
+  'badge-success-bg': $badge-success-bg,
+  'badge-success-text': $badge-success-text,
+  'badge-info-bg': $badge-info-bg,
+  'badge-info-text': $badge-info-text,
+  'badge-warning-bg': $badge-warning-bg,
+  'badge-warning-text': $badge-warning-text,
+  'badge-error-bg': $badge-error-bg,
+  'badge-error-text': $badge-error-text,
+
+  'scrollbar': $scrollbar,
+  'scrollbar-handle': $scrollbar-handle,
+  'scrollbar-handle-hover': $scrollbar-handle-hover,
+
+  'tooltip-bg': $tooltip-bg,
+  'tooltip-color': $tooltip-color,
+  'tooltip-border': $tooltip-border,
+);

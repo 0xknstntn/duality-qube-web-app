@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=540, user-scalable=no, minimum-scale=0.5"
+    />
+    <meta name="version" content="%REACT_APP__APP_VERSION%" />
+    <meta name="build" content="%REACT_APP__BUILD_NUMBER%" />
+    <link rel="icon" href="%BASE_URL%favicon.ico" sizes="any" />
+    <link rel="icon" href="%BASE_URL%images/icon.svg" type="image/svg+xml" />
+    <link
+      rel="mask-icon"
+      href="%BASE_URL%images/icon-white.svg"
+      color="#ffffff"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%BASE_URL%images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%BASE_URL%images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%BASE_URL%images/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#161d2d" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%BASE_URL%manifest.json" />
+    <!--
+      Notice the use of %BASE_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%BASE_URL%favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Duality</title>
+    <meta name="description" content="Building fair and efficient markets" />
+    <meta property="og:title" content="Duality" />
+    <meta
+      property="og:description"
+      content="Building fair and efficient markets"
+    />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="%BASE_URL%" />
+    <meta property="og:image" content="%BASE_URL%images/cover.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="Duality logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@dualityxyz" />
+    <!-- add base style before JS is loaded -->
+    <style>
+      /* add fixes for Internet Explorer */
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        /* Put your IE-only styles here. Works for IE 10 & IE 11*/
+        /* for more see: https://github.com/philipwalton/flexbugs#flexbug-3 */
+        html,
+        body,
+        #root {
+          height: 100%; /* fix IE flexbox height issues */
+        }
+      }
+      html,
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        /*
+         * use ~average background color as background for HTML
+         * seen in macOS/iOS if user tries to scroll past the edge of the page
+         */
+        background-color: #161d2d;
+        color: #eeeeee;
+      }
+    </style>
+    <!-- add scripts -->
+    <!-- Google Tag Manager -->
+    <script>
+      if ('%REACT_APP__GOOGLE_TAG_MANAGER_ID%') {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(
+          window,
+          document,
+          'script',
+          'dataLayer',
+          '%REACT_APP__GOOGLE_TAG_MANAGER_ID%'
+        );
+      }
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Add body scripts -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=%REACT_APP__GOOGLE_TAG_MANAGER_ID%"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root">
+      <!-- add style only for loading page -->
+      <style>
+        #root {
+          min-height: 100vh;
+        }
+        #root,
+        .col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .spinner {
+          height: 48px;
+          width: 48px;
+          margin-bottom: 12px;
+          color: #7459dc;
+        }
+        .opacity-25 {
+          opacity: 0.25;
+        }
+        .opacity-75 {
+          opacity: 0.75;
+        }
+        .animate-spin {
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .fade-in {
+          animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      </style>
+      <div class="col fade-in">
+        <svg
+          class="spinner animate-spin"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        Loading ...
+      </div>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>

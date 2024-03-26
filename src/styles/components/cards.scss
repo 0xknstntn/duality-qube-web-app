@@ -1,0 +1,85 @@
+@use '../mixins-vars/paddings.scss' as paddings;
+@use '../mixins-vars/margins.scss' as margins;
+@use '../font/size.scss' as font-size;
+
+.page {
+  margin: 2rem;
+  min-width: 460px;
+}
+.container .page {
+  margin: 0;
+}
+
+.card {
+  flex-direction: column;
+  display: flex;
+  padding: paddings.$p-3 paddings.$p-4;
+  border-radius: paddings.$p-3;
+}
+
+$page-card-padding-width: paddings.$p-lg;
+
+.page-card {
+  padding: $page-card-padding-width;
+  border-radius: 1rem;
+  border: 1px solid hsla(217, 19%, 27%, 1);
+  background-color: var(--page-card);
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+  color: var(--text-default);
+  flex-direction: column;
+  overflow: auto;
+  display: flex;
+  position: relative;
+
+  .page-card {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  // undo regular paddings
+  // todo: remove paddings and made internal card parts have consistent padding
+  .page-card__footer {
+    margin-left: -$page-card-padding-width;
+    margin-right: -$page-card-padding-width;
+    margin-bottom: -2rem;
+    // redo paddings inside the footer
+    .page-card__padding-width {
+      padding-left: $page-card-padding-width;
+      padding-right: $page-card-padding-width;
+    }
+  }
+
+  .attribution {
+    width: fit-content;
+    margin-top: calc($page-card-padding-width / 2);
+    margin-bottom: -$page-card-padding-width;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    padding: paddings.$p-1 paddings.$p-4;
+    background-color: rgba(white, 0.1);
+    border-top-left-radius: paddings.$p-3;
+    border-top-right-radius: paddings.$p-3;
+  }
+}
+
+.card-row {
+  flex-direction: row;
+  display: flex;
+}
+.card-col {
+  flex-direction: column;
+  display: flex;
+}
+
+.card-header {
+  @include margins.margin('y', 2);
+  @extend .card-row;
+  width: 100%;
+}
+
+.card-title {
+  font-size: font-size.$h2;
+  text-align: left;
+}

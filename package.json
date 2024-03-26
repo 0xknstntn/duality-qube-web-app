@@ -1,0 +1,110 @@
+{
+  "name": "duality-webapp",
+  "homepage": "https://app.duality.xyz",
+  "version": "2.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "prettier": "prettier --write .",
+    "lint": "eslint --ext mjs,js,jsx,ts,tsx --max-warnings 0 --report-unused-disable-directives .",
+    "preview": "vite preview",
+    "test": "vitest",
+    "prepare": "husky install",
+    "prepare:trading-view-bundles": "mkdir -p public/charting_library/bundles && cp node_modules/charting_library/charting_library/bundles/* public/charting_library/bundles"
+  },
+  "type": "module",
+  "engines": {
+    "node": "^18.19.0",
+    "npm": "^10.2.3"
+  },
+  "dependencies": {
+    "@chain-registry/client": "^1.18.0",
+    "@chain-registry/keplr": "^1.30.0",
+    "@chain-registry/utils": "^1.17.0",
+    "@cosmjs/crypto": "0.31.1",
+    "@cosmjs/proto-signing": "0.31.1",
+    "@cosmjs/stargate": "0.31.1",
+    "@duality-labs/neutronjs": "^2.0.0",
+    "@floating-ui/react": "^0.24.5",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@keplr-wallet/router": "^0.12.20",
+    "@keplr-wallet/stores": "^0.12.20",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@react-hook/resize-observer": "^1.2.6",
+    "@tanstack/react-query": "^5.18.1",
+    "@visx/event": "^3.0.1",
+    "@visx/group": "^3.0.0",
+    "@visx/scale": "^3.0.0",
+    "@visx/shape": "^3.0.0",
+    "@visx/tooltip": "^3.1.2",
+    "bignumber.js": "^9.0.2",
+    "buffer": "^6.0.3",
+    "chain-registry": "^1.20.0",
+    "invariant": "^2.2.4",
+    "long": "^5.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.0",
+    "react-router-dom": "^6.3.0",
+    "seedrandom": "^3.0.5",
+    "swr": "^2.1.5",
+    "use-deep-compare-effect": "^1.8.1"
+  },
+  "peerDependencies": {
+    "crypto": "npm:crypto-browserify@^3.12.0",
+    "path": "npm:path-browserify@^1.0.1",
+    "stream": "npm:stream-browserify@3.0.0"
+  },
+  "devDependencies": {
+    "@chain-registry/types": "^0.17.1",
+    "@keplr-wallet/types": "^0.12.20",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/invariant": "^2.2.35",
+    "@types/node": "^18.19.5",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/seedrandom": "^3.0.5",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "husky": "^7.0.4",
+    "jsdom": "^23.2.0",
+    "lint-staged": "^12.3.8",
+    "prettier": "^2.6.2",
+    "sass": "^1.50.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vitest": "^1.1.3",
+    "vitest-websocket-mock": "^0.3.0"
+  },
+  "lint-staged": {
+    "**/*.{mjs,js,jsx,ts,tsx,json,css,scss,html,md,yaml,yml}": [
+      "prettier --write"
+    ],
+    "**/*.{mjs,js,jsx,ts,tsx}": [
+      "eslint --max-warnings 0 --report-unused-disable-directives"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+@use '../mixins-vars/paddings.scss' as paddings;
+@use '../font/size.scss' as font-size;
+
+.link,
+a {
+  background-color: var(--link);
+  color: var(--link-alt);
+  cursor: pointer;
+}

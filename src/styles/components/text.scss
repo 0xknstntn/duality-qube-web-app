@@ -1,0 +1,58 @@
+@use '../mixins-vars/paddings.scss' as paddings;
+@use '../theme/collections.scss' as colors;
+@use '../theme/core.scss' as grays;
+@use 'sass:map';
+
+@each $name in colors.$main {
+  .text-#{$name} {
+    color: var(--#{$name});
+  }
+
+  .text-#{$name}-inverse {
+    color: var(--#{$name}-alt);
+  }
+}
+
+.text-muted {
+  color: hsla(218, 11%, 65%, 1);
+}
+
+.text-grid {
+  & {
+    grid-template-columns: auto 1fr;
+    display: grid;
+    width: 100%;
+    gap: 0.5rem 1rem;
+    font-size: 1.25rem;
+  }
+
+  & > .text-header {
+    text-align: start;
+    color: hsla(220, 9%, 46%, 1);
+  }
+
+  & > .text-value {
+    text-align: end;
+    color: hsla(216, 12%, 84%, 1);
+  }
+
+  // allow other colors inside text grids
+  @each $name in colors.$main {
+    & > .text-#{$name} {
+      color: var(--#{$name});
+    }
+    & > .text-#{$name}-inverse {
+      color: var(--#{$name}-alt);
+    }
+  }
+}
+
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}

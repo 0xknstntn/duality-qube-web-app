@@ -1,0 +1,225 @@
+import { useCallback, useState } from 'react';
+import { DeliverTxResponse, SigningStargateClient } from '@cosmjs/stargate';
+import { OfflineSigner, parseCoins } from '@cosmjs/proto-signing';
+import { BigNumber } from 'bignumber.js';
+
+import { formatAmount } from '../../../lib/utils/number';
+import { useWeb3 } from '../../../lib/web3/useWeb3';
+
+import { createTransactionToasts } from '../../../components/Notifications/common';
+
+import { getDisplayDenomAmount } from '../../../lib/web3/utils/tokens';
+import useTokens, {
+  matchTokenByDenom,
+  useTokensWithIbcInfo,
+} from '../../../lib/web3/hooks/useTokens';
+import {
+  mapEventAttributes,
+  CoinReceivedEvent,
+} from '../../../lib/web3/utils/events';
+import { duality } from '@duality-labs/dualityjs';
+import {
+  MsgPlaceLimitOrderResponse,
+  MsgPlaceLimitOrder,
+} from '@duality-labs/dualityjs/src/codegen/duality/dex/tx';
+import { defaultRegistryTypes } from "@cosmjs/stargate";
+import { Registry } from "@cosmjs/proto-signing";
+
+const {
+  REACT_APP__RPC_API = '',
+} = import.meta.env;
+
+async function sendSwap(
+  {
+    wallet,
+    address,
+  }: {
+    wallet: OfflineSigner;
+    address: string;
+  },
+  {
+    orderType,
+    tickIndexInToOut,
+    amountIn,
+    maxAmountOut,
+    expirationTime,
+    tokenIn,
+    tokenOut,
+    creator,
+    receiver,
+  }: MsgPlaceLimitOrder,
+  gasEstimate: number
+): Promise<DeliverTxResponse> {
+  if (
+    orderType === undefined ||
+    !tickIndexInToOut ||
+    !amountIn ||
+    !tokenIn ||
+    !tokenOut ||
+    !creator ||
+    !receiver
+  ) {
+    throw new Error('Invalid Input');
+  }
+
+  if (!new BigNumber(amountIn).isGreaterThan(0)) {
+    throw new Error('Invalid Input (0 value)');
+  }
+
+
+  const reg = new Registry(defaultRegistryTypes)
+  reg.register("/core.dex.v1beta1.MsgPlaceLimitOrder", MsgPlaceLimitOrder) 
+
+  var qube_client = await SigningStargateClient.connectWithSigner(
+    REACT_APP__RPC_API,
+    wallet,
+    {
+      registry: reg, 
+    }
+  );
+
+  let msg_qube_dex_place_limit_order = duality.dex.MessageComposer.withTypeUrl.placeLimitOrder({
+    orderType,
+    tickIndexInToOut,
+    amountIn,
+    maxAmountOut,
+    expirationTime,
+    tokenIn,
+    tokenOut,
+    creator,
+    receiver,
+  });
+
+  msg_qube_dex_place_limit_order.typeUrl = "/core.dex.v1beta1.MsgPlaceLimitOrder"
+  //console.log(msg_qube_dex_deposit)
+  const res = await qube_client.signAndBroadcast(
+    address,
+    [
+      msg_qube_dex_place_limit_order
+    ], 
+    {
+      gas: gasEstimate.toFixed(0),
+      amount: [],
+    }
+  );
+  return res
+}
+
+/**
+ * Sends a transaction request
+ * @param pairRequest the respective addresses and value
+ * @returns tuple of request state and sendRequest callback
+ */
+export function useSwap(): [
+  {
+    data?: MsgPlaceLimitOrderResponse;
+    isValidating: boolean;
+    error?: string;
+  },
+  (request: MsgPlaceLimitOrder, gasEstimate: number) => void
+] {
+  const [data, setData] = useState<MsgPlaceLimitOrderResponse>();
+  const [validating, setValidating] = useState(false);
+  const [error, setError] = useState<string>();
+  const web3 = useWeb3();
+
+  const tokens = useTokensWithIbcInfo(useTokens());
+
+  const sendRequest = useCallback(
+    (request: MsgPlaceLimitOrder, gasEstimate: number) => {
+      if (!request) return onError('Missing Tokens and value');
+      if (!web3) return onError('Missing Provider');
+      const {
+        orderType,
+        tickIndexInToOut,
+        amountIn,
+        tokenIn,
+        tokenOut,
+        creator,
+        receiver,
+      } = request;
+      if (
+        orderType === undefined ||
+        !tickIndexInToOut ||
+        !amountIn ||
+        !tokenIn ||
+        !tokenOut ||
+        !creator ||
+        !receiver
+      )
+        return onError('Invalid input');
+      setValidating(true);
+      setError(undefined);
+      setData(undefined);
+
+      const { wallet, address } = web3;
+      if (!wallet || !address) return onError('Client has no wallet');
+      if (!tokens) return onError('Send not ready: token list not ready');
+      // check for not well defined tick index
+      const tickNumber = tickIndexInToOut.toNumber();
+      if (Number.isNaN(tickNumber) || !Number.isFinite(tickNumber)) {
+        return onError('Limit Price is not defined');
+      }
+
+      const tokenOutToken = tokens.find(matchTokenByDenom(tokenOut));
+      if (!tokenOutToken) return onError('Token out was not found');
+
+      createTransactionToasts(
+        () => {
+          return sendSwap({ wallet, address }, request, gasEstimate);
+        },
+        {
+          onLoadingMessage: 'Executing your trade',
+          onSuccess(res) {
+            const amountOut = res.events.reduce<BigNumber>((result, event) => {
+              if (
+                event.type === 'coin_received' &&
+                event.attributes.find(
+                  ({ key, value }) => key === 'receiver' && value === address
+                )
+              ) {
+                // collect into more usable format for parsing
+                const { attributes } =
+                  mapEventAttributes<CoinReceivedEvent>(event);
+                // parse coin string for matching tokens
+                const coin = parseCoins(attributes.amount)[0];
+                if (coin?.denom === tokenOut) {
+                  return result.plus(coin?.amount || 0);
+                }
+              }
+              return result;
+            }, new BigNumber(0));
+
+            const description = amountOut
+              ? `Received ${formatAmount(
+                  getDisplayDenomAmount(
+                    tokenOutToken,
+                    amountOut?.toFixed() || '0'
+                  ) || '0'
+                )} ${tokenOutToken.symbol} (click for more details)`
+              : undefined;
+            return { description };
+          },
+        }
+      )
+        .then(function () {
+          setValidating(false);
+        })
+        .catch(function (err: Error) {
+          onError(err?.message ?? 'Unknown error');
+          // pass error to console for developer
+          // eslint-disable-next-line no-console
+          console.error(err);
+        });
+
+      function onError(message?: string) {
+        setValidating(false);
+        setData(undefined);
+        setError(message);
+      }
+    },
+    [tokens, web3]
+  );
+
+  return [{ data, isValidating: validating, error }, sendRequest];
+}

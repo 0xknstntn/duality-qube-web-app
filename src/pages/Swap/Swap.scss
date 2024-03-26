@@ -1,0 +1,112 @@
+@use '../../styles/mixins-vars/margins.scss' as margins;
+@use '../../styles/mixins-vars/paddings.scss' as paddings;
+@use '../../styles/mixins-vars/animations.scss' as animations;
+@use '../../styles/theme/core.scss' as core;
+@use '../../styles/font/weight.scss' as font-weight;
+
+.swap-page {
+  .trade-card {
+    position: relative;
+    overflow: hidden;
+    flex: 1 0 auto;
+  }
+
+  .card-title {
+    font-weight: 400;
+    font-size: 1.25rem;
+  }
+
+  .h3.card-title {
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .card-row {
+    & {
+      @include margins.margin('y', 2);
+    }
+
+    .token-input-group {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .swap-button {
+      margin: 0 auto;
+      height: 2.5rem;
+      width: 2.5rem;
+      font-size: 1.25rem;
+    }
+  }
+
+  .order-type .button-switch-group {
+    flex: 1;
+    display: flex;
+    justify-content: stretch;
+    .button {
+      flex: 1;
+    }
+  }
+
+  // keep icon-button same size as text in detail section
+  .text-detail {
+    .icon-button {
+      font-size: inherit;
+    }
+  }
+
+  .submit-button {
+    width: 100%;
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+    font-size: 1.25rem;
+    font-weight: font-weight.$medium;
+  }
+
+  .settings-card {
+    & {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      transition: left animations.$medium-duration animations.$default-mode;
+      display: flex;
+    }
+    .page-card {
+      flex: 1;
+    }
+    &.settings-card--visible {
+      left: 0%;
+    }
+
+    .row + .row {
+      gap: margins.$m-2;
+
+      input {
+        color: hsla(218, 11%, 65%, 1);
+        background-color: var(--token-search-bg);
+        border: 1px solid hsla(215, 14%, 34%, 1);
+        padding: paddings.$p-2 paddings.$p-4;
+        border-radius: paddings.$p-3;
+        width: 6ch;
+        box-sizing: content-box;
+        text-align: center;
+      }
+
+      button {
+        padding: paddings.$p-2 paddings.$p-4;
+      }
+    }
+  }
+}
+
+// TODO add proper styling for both modes
+.loading-token {
+  opacity: 0.4;
+}
+
+.estimated-rate {
+  opacity: 0.4;
+}

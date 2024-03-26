@@ -1,0 +1,178 @@
+.svg-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-liquidity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // restrict pointer events, only certain parts require interaction
+  pointer-events: none;
+}
+
+.tick-buckets {
+  .tick-bucket {
+    transition: opacity 0.15s ease-in-out, y 0.1s ease, height 0.1s ease;
+    opacity: 1;
+  }
+
+  .token-a {
+    fill: hsl(182, 50%, 37%);
+    stroke: hsl(182, 50%, 37%);
+  }
+  .token-b {
+    fill: hsl(202, 50%, 37%);
+    stroke: hsl(202, 50%, 37%);
+  }
+}
+
+.new-ticks {
+  pointer-events: none;
+  stroke-width: 2px;
+  .tip {
+    stroke-width: 1px;
+  }
+  .token-a {
+    stroke: hsl(182, 50%, 40%);
+    &.tick--selected {
+      stroke: hsl(182, 77%, 61%);
+    }
+  }
+  .token-b {
+    stroke: hsl(202, 50%, 40%);
+    &.tick--selected {
+      stroke: hsl(202, 77%, 61%);
+    }
+  }
+  .token-a .tip {
+    fill: hsl(182, 65%, 45%);
+  }
+  .token-b .tip {
+    fill: hsl(202, 65%, 45%);
+  }
+  .tick--price-warning {
+    .tip,
+    .line {
+      stroke: var(--error);
+    }
+  }
+  .tick--hit-area {
+    fill: transparent;
+    stroke: none;
+    cursor: move;
+    pointer-events: visible;
+  }
+  .tick text {
+    display: none;
+    fill: hsla(202, 50%, 84%, 1);
+  }
+  .tick--selected text {
+    display: block;
+  }
+  .line--diff {
+    stroke-dasharray: 3px;
+  }
+  .tick--diff-negative {
+    .line--diff,
+    .tip--diff {
+      stroke: var(--error);
+    }
+    .tip--diff {
+      fill: var(--error);
+    }
+  }
+  .tick--diff-positive {
+    .line--diff,
+    .tip--diff {
+      stroke: rgb(0 200 136);
+    }
+    .tip--diff {
+      fill: rgb(0 200 136);
+    }
+  }
+  .tick--is-zero {
+    .tip--diff {
+      stroke: var(--error);
+      fill: var(--error);
+      opacity: 0.5;
+    }
+  }
+}
+
+.new-ticks-area {
+  .line {
+    stroke-width: 1px;
+    stroke: transparent;
+  }
+  .flag-joiner--price-warning {
+    stroke: var(--error);
+  }
+  .pole-stick {
+    fill: url(#flag-pole-fade);
+  }
+  .pole-stick-edge {
+    stroke-width: 1px;
+    stroke: hsla(165, 83%, 57%, 0.5);
+  }
+  .pole-flag {
+    fill: hsla(165, 83%, 57%, 1);
+  }
+  .pole-flag-stripe {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 3px;
+    stroke-linecap: round;
+  }
+  .pole-flag--hit-area {
+    fill: transparent;
+    stroke: transparent;
+    stroke-width: 10px;
+    cursor: pointer;
+    pointer-events: all;
+  }
+  .pole--price-warning {
+    .pole-flag {
+      fill: var(--error);
+    }
+    .pole-stick {
+      fill: url(#flag-pole-fade-error);
+    }
+    .pole-stick-edge {
+      stroke: var(--error);
+    }
+  }
+}
+
+.axis {
+  stroke-width: 1;
+  stroke: var(--text-default);
+  > rect {
+    fill: hsl(202, 70%, 45%);
+    stroke-width: 0;
+  }
+  &.x-axis line {
+    pointer-events: none;
+  }
+}
+
+.chart-liquidity {
+  text {
+    stroke-width: 0;
+    fill: hsl(216, 12%, 84%);
+    font-size: 12px;
+  }
+  .empty-state text {
+    font-size: 20px;
+  }
+  line.line--success {
+    stroke: hsl(165, 83%, 57%);
+  }
+  text.text--success {
+    fill: hsl(165, 83%, 57%);
+  }
+}

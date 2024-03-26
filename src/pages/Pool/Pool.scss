@@ -1,0 +1,290 @@
+@use '../../styles/mixins-vars/margins.scss' as margins;
+@use '../../styles/mixins-vars/paddings.scss' as paddings;
+@use '../../styles/font/size.scss' as font-size;
+@use 'sass:map';
+
+.button-switch-group,
+.chart-type-input {
+  border: 1px solid white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+
+  .button {
+    border-radius: 0.75rem;
+  }
+}
+
+.curve-card {
+  & {
+    // "nice-fit" to curve selections
+    max-width: 40rem;
+  }
+  > .card-row {
+    justify-content: center;
+  }
+  .chart-type-input {
+    .button {
+      padding: 0.625rem 1.5rem;
+    }
+    > input:checked + label:not(.button-primary) {
+      background-color: var(--default);
+    }
+  }
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.pool-page {
+  // make main cards of equal height
+  & {
+    align-items: stretch;
+  }
+  .page-card {
+    @include margins.gap('*', '2');
+    > .radio-button-group-switch .button {
+      padding: 0.5rem 2rem;
+    }
+  }
+
+  .page-card--col {
+    min-width: 30rem;
+  }
+  .col--sidebar {
+    transition: width ease 0.5s;
+    overflow: hidden;
+    &.collapsed {
+      width: 0rem;
+      height: 0;
+    }
+    &.expanded {
+      width: 30rem;
+    }
+  }
+
+  .pool-page__header {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pool-page__breadcrumbs {
+    a {
+      color: var(--token-search-placeholder);
+    }
+  }
+
+  .card-header {
+    @include margins.margin('b', 2);
+    @include margins.margin('t', 0);
+  }
+
+  .card-title {
+    font-size: font-size.$h4;
+  }
+
+  .card-header > .card-title {
+    @include margins.margin('y', 0);
+  }
+
+  .assets-card {
+    & {
+      min-width: 460px; // align with Trade page width
+      max-width: 800px;
+    }
+    a {
+      text-decoration: underline;
+    }
+    .token-input-group {
+      box-sizing: border-box;
+      width: 100%;
+      align-items: center;
+    }
+    .pill {
+      border: 3px solid transparent;
+    }
+    .pill-outline {
+      background-color: transparent;
+      color: var(--text-default);
+      &:hover,
+      :active {
+        background-color: rgba($color: rgb(78, 177, 232), $alpha: 0.2);
+      }
+    }
+    .card-col {
+      align-items: center;
+    }
+    .plus-space .fa-plus {
+      color: white;
+      font-size: 1.25rem;
+    }
+  }
+
+  .chart-card {
+    .chart-highlight {
+      font-weight: 500;
+      color: hsla(165, 83%, 57%, 1);
+    }
+
+    .chart-area {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 50rem;
+      min-height: 20rem;
+      max-height: 20rem;
+      .svg-container svg {
+        height: 20rem;
+      }
+    }
+  }
+
+  .chart-zoom-controls {
+    button {
+      & {
+        // align button control with absolute height of chart text boxes
+        padding: 4.65px;
+        border-radius: 5px;
+      }
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: hsl(202deg 58% 33%);
+      }
+    }
+  }
+
+  .select-fee-tier {
+    .badge {
+      // enforce consistent width that can cover 100%
+      display: inline-block;
+      width: 9em;
+      padding-left: 0;
+      padding-right: 0;
+      // todo: replace following with new global badge styling
+      background-color: #ffffff;
+      color: hsla(0, 0%, 0%, 0.6);
+      border-radius: 6px;
+    }
+  }
+
+  .fee-card {
+    .card-row {
+      flex-grow: 1;
+    }
+
+    .radio-input-group {
+      & {
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+      }
+      label {
+        & {
+          background: transparent;
+          margin: 0;
+          padding: 0;
+          width: 6.75rem;
+        }
+
+        .fee-type {
+          & {
+            font-size: font-size.$text-s;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            border: 1.5px solid transparent;
+            @include paddings.padding('x', 3);
+          }
+
+          .fee-title {
+            font-size: font-size.$h5;
+          }
+
+          .fee-description {
+            @include margins.margin('y', 3);
+            opacity: 0.7;
+          }
+
+          .fee-liquidity {
+            background-color: rgba($color: white, $alpha: 0.75);
+            color: var(--default);
+            margin: 0.125rem -0.25rem;
+            padding: 0.25rem 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .price-card > .card-row {
+    justify-content: stretch;
+    gap: margins.$m-4;
+    // allow inputs to wrap around if they have a large number of significant digits
+    // (should only occur in the cases where we have no context of price)
+    flex-flow: wrap;
+    .range-step-input {
+      flex: 1 0 0;
+    }
+  }
+
+  .tick-price-card {
+    align-items: center;
+  }
+
+  .orderbook-card {
+    background-color: var(--default);
+    border-radius: paddings.$p-4;
+
+    > .row {
+      gap: 3rem;
+      flex-direction: column;
+    }
+
+    > .row > .col {
+      min-width: 25rem;
+      flex: 1;
+    }
+
+    > .row > .col > .row {
+      gap: 1rem;
+    }
+
+    h3.card-title {
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    .autobalance-card {
+      .autobalance-allocation {
+        background-color: transparent;
+        border: 0px none transparent;
+        font-size: 1.5rem;
+        text-align: center;
+        color: var(--text-default);
+        outline: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .liquidity-shape {
+    min-width: 25em;
+  }
+}
+
+@media (min-width: 992px) {
+  .col--left {
+    flex-grow: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pool-page {
+    .orderbook-card {
+      > .row {
+        flex-direction: row;
+      }
+    }
+  }
+}

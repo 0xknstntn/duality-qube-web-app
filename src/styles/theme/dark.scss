@@ -1,0 +1,167 @@
+@use './core.scss' as core;
+
+$text-default: core.$light-white;
+$text-alt: core.$light-gray;
+$text-disabled: core.$gray;
+
+$default: hsla(219, 40%, 11%, 1);
+$default-shadow: core.$bg-darker;
+$default-alt: core.$light-white;
+$primary: core.$bg-light;
+$primary-alt: core.$light-white;
+$secondary: hsla(165, 83%, 57%, 1);
+$secondary-alt: core.$light-white;
+$success: rgb(38, 128, 27);
+$success-alt: core.$light-white;
+$info: rgb(224, 184, 121);
+$info-alt: hsla(39, 57%, 34%, 1);
+$warning: rgb(220, 156, 25);
+$warning-alt: core.$light-white;
+$error: hsla(0, 84%, 63%, 1);
+$error-alt: core.$light-white;
+$light: transparent;
+$light-alt: core.$light-white;
+$link: transparent;
+$link-alt: core.$light-white;
+
+// this color is pre-mixed aqua: hsla(165, 83%, 57%, 0.5) and the background
+// but mixed using `mix-blend-mode: overlay` which is hard to replicate
+// *inside* a background color but can be done with multiple elements
+$blended-aqua-and-blue: hsl(190, 90%, 13%);
+$bg: fixed
+    radial-gradient(
+      circle at 50vw 95vh,
+      change-color($blended-aqua-and-blue, $alpha: 1) 0vw,
+      change-color($blended-aqua-and-blue, $alpha: 0.9) 10vw,
+      change-color($blended-aqua-and-blue, $alpha: 0.7) 20vw,
+      change-color($blended-aqua-and-blue, $alpha: 0) 45vw
+    ),
+  fixed linear-gradient(240deg, hsl(219, 40%, 11%) 12%, hsl(213, 28%, 17%) 98%);
+
+// color + border color in default state, background + border color in hover state
+$ghost-button: core.$dark-white;
+
+$button-group-bg: transparent;
+$icon-button-bg: rgba(core.$dark-gray, 40%);
+$icon-button-text: core.$white;
+$profile-button-bg: rgba(core.$dark-black, 80%);
+$profile-button-text: $text-default;
+$submit-button-bg: $primary;
+$submit-button-text: core.$light-white;
+
+$input-text: core.$light-white;
+$input-bg: transparent;
+
+$page-card: hsla(212, 28%, 17%, 1);
+$page-card-border: hsla(217, 19%, 27%, 1);
+
+$dialog-bg: core.$black;
+$dialog-border: rgb(78, 177, 232);
+$dialog-backdrop: rgba(core.$dark-black, 25%);
+$selected-token: core.$dark-black;
+
+$token-search-bg: hsl(217, 19%, 27%);
+$token-search-text: hsl(216, 12%, 84%);
+$token-search-placeholder: hsl(218, 11%, 65%);
+$token-search-border: hsl(215, 14%, 34%);
+
+$input: rgb(255, 255, 255);
+$ghost: rgba(255, 255, 255, 0.5);
+
+$icon-button-bg: rgba(125, 125, 125, 0.4);
+$icon-button-text: rgb(230, 230, 230);
+$badge-main-bg: rgb(18, 93, 135);
+$badge-main-text: rgb(255, 255, 255);
+$badge-secondary-bg: rgb(168, 168, 168);
+$badge-secondary-text: rgb(255, 255, 255);
+$badge-success-bg: rgb(38, 128, 27);
+$badge-success-text: rgb(255, 255, 255);
+$badge-info-bg: rgb(224, 184, 121);
+$badge-info-text: rgb(255, 255, 255);
+$badge-warning-text: rgb(218, 225, 137);
+$badge-warning-bg: rgb(255, 255, 255);
+$badge-error-bg: rgb(177, 81, 74);
+$badge-error-text: rgb(255, 255, 255);
+
+$scrollbar: transparent;
+$scrollbar-handle: core.$dark-white;
+$scrollbar-handle-hover: core.$dark-white;
+
+$tooltip-bg: core.$light-black;
+$tooltip-color: core.$light-gray;
+$tooltip-border: core.$bg-dark;
+
+$map: (
+  'text-default': $text-default,
+  'text-alt': $text-alt,
+  'text-disabled': $text-disabled,
+
+  'default': $default,
+  'default-shadow': $default-shadow,
+  'default-alt': $default-alt,
+  'primary': $primary,
+  'primary-alt': $primary-alt,
+  'secondary': $secondary,
+  'secondary-alt': $secondary-alt,
+  'success': $success,
+  'success-alt': $success-alt,
+  'info': $info,
+  'info-alt': $info-alt,
+  'warning': $warning,
+  'warning-alt': $warning-alt,
+  'error': $error,
+  'error-alt': $error-alt,
+  'light': $light,
+  'light-alt': $light-alt,
+  'link': $link,
+  'link-alt': $link-alt,
+
+  'bg': $bg,
+
+  'ghost-button': $ghost-button,
+
+  'button-group-bg': $button-group-bg,
+  'icon-button-bg': $icon-button-bg,
+  'icon-button-text': $icon-button-text,
+  'profile-button-bg': $profile-button-bg,
+  'profile-button-text': $profile-button-text,
+  'submit-button-bg': $submit-button-bg,
+  'submit-button-text': $submit-button-text,
+
+  'input-text': $input-text,
+  'input-bg': $input-bg,
+
+  'page-card': $page-card,
+  'page-card-border': $page-card-border,
+
+  'dialog-bg': $dialog-bg,
+  'dialog-border': $dialog-border,
+  'dialog-backdrop': $dialog-backdrop,
+  'selected-token': $selected-token,
+
+  'token-search-bg': $token-search-bg,
+  'token-search-text': $token-search-text,
+  'token-search-placeholder': $token-search-placeholder,
+  'token-search-border': $token-search-border,
+
+  'badge-main-bg': $badge-main-bg,
+  'badge-main-text': $badge-main-text,
+  'badge-secondary-bg': $badge-secondary-bg,
+  'badge-secondary-text': $badge-secondary-text,
+  'badge-success-bg': $badge-success-bg,
+  'badge-success-text': $badge-success-text,
+  'badge-info-bg': $badge-info-bg,
+  'badge-info-text': $badge-info-text,
+  'badge-warning-bg': $badge-warning-bg,
+  'badge-warning-text': $badge-warning-text,
+  'badge-error-bg': $badge-error-bg,
+  'badge-error-text': $badge-error-text,
+
+  'scrollbar': $scrollbar,
+  'scrollbar-handle': $scrollbar-handle,
+  'scrollbar-handle-hover': $scrollbar-handle-hover,
+
+  'tooltip-bg': $tooltip-bg,
+  'tooltip-color': $tooltip-color,
+  'tooltip-border': $tooltip-border,
+);
