@@ -14,6 +14,9 @@
     "prepare:trading-view-bundles": "mkdir -p public/charting_library/bundles && cp node_modules/charting_library/charting_library/bundles/* public/charting_library/bundles"
   },
   "type": "module",
+  "engines": {
+    "npm": "^10.2.3"
+  },
   "dependencies": {
     "@chain-registry/client": "^1.18.0",
     "@chain-registry/keplr": "^1.30.0",
@@ -36,7 +39,7 @@
     "@visx/scale": "^3.0.0",
     "@visx/shape": "^3.0.0",
     "@visx/tooltip": "^3.1.2",
-    "bignumber.js": "^9.0.2",
+    "bignumber.js": "^9.1.2",
     "buffer": "^6.0.3",
     "chain-registry": "^1.20.0",
     "invariant": "^2.2.4",
