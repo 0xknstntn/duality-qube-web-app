@@ -1,6 +1,6 @@
 import { HttpEndpoint } from '@cosmjs/tendermint-rpc';
 
-import { duality } from '@duality-labs/dualityjs';
+import { duality } from '../../proto/dualityjs';
 import { useMemo } from 'react';
 
 const { REACT_APP__REST_API = '' } = import.meta.env;

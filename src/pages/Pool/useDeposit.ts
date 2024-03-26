@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js';
 import Long from 'long';
 import { Registry } from "@cosmjs/proto-signing";
 import { defaultRegistryTypes } from "@cosmjs/stargate";
-import { duality } from '@duality-labs/dualityjs';
+import { duality } from '../../proto/dualityjs/';
 import { useWeb3 } from '../../lib/web3/useWeb3';
 //import rpcClient from '../../lib/web3/rpcMsgClient';
 import { TickGroup } from '../../components/Liquidity/LiquiditySelector';
@@ -28,7 +28,7 @@ import { useOrderedTokenPair } from '../../lib/web3/hooks/useTokenPairs';
 import { useTokenPairTickLiquidity } from '../../lib/web3/hooks/useTickLiquidity';
 import { formatAmount } from '../../lib/utils/number';
 
-import { MsgDexDeposit } from "../../../node_modules/@duality-labs/dualityjs/src/codegen/duality/dex/tx";
+import { MsgDexDeposit } from "../../proto/dualityjs//src/codegen/duality/dex/tx";
 import { SigningStargateClient } from "@cosmjs/stargate";  
 
 

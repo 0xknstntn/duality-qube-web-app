@@ -17,11 +17,11 @@ import {
   mapEventAttributes,
   CoinReceivedEvent,
 } from '../../../lib/web3/utils/events';
-import { duality } from '@duality-labs/dualityjs';
+import { duality } from '../../../proto/dualityjs/';
 import {
   MsgPlaceLimitOrderResponse,
   MsgPlaceLimitOrder,
-} from '@duality-labs/dualityjs/src/codegen/duality/dex/tx';
+} from '../../../proto/dualityjs//src/codegen/duality/dex/tx';
 import { defaultRegistryTypes } from "@cosmjs/stargate";
 import { Registry } from "@cosmjs/proto-signing";
 

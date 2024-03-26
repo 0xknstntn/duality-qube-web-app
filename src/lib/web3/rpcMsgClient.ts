@@ -5,7 +5,7 @@ import {
   getSigningCosmosClient,
   getSigningDualityClient,
   getSigningIbcClient,
-} from '@duality-labs/dualityjs';
+} from '../../proto/dualityjs/';
 
 const { REACT_APP__RPC_API = '' } = import.meta.env;
 

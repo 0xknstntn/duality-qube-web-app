@@ -1,0 +1,16 @@
+import { Header, Data, Commit } from "./types";
+import { EvidenceList } from "./evidence";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
+export interface Block {
+    header: Header;
+    data: Data;
+    evidence: EvidenceList;
+    last_commit: Commit;
+}
+export declare const Block: {
+    encode(message: Block, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Block;
+    fromJSON(object: any): Block;
+    fromPartial(object: DeepPartial<Block>): Block;
+};
