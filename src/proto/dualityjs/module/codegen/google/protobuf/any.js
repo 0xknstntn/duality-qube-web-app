@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64 } from "../../helpers";
+import * as _m0 from 'protobufjs/minimal';
+import { isSet, bytesFromBase64 } from '../../helpers';
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -84,13 +84,13 @@ import { isSet, bytesFromBase64 } from "../../helpers";
 
 function createBaseAny() {
   return {
-    type_url: "",
+    type_url: '',
     value: new Uint8Array()
   };
 }
 export const Any = {
   encode(message, writer = _m0.Writer.create()) {
-    if (message.type_url !== "") {
+    if (message.type_url !== '') {
       writer.uint32(10).string(message.type_url);
     }
     if (message.value.length !== 0) {
@@ -120,14 +120,14 @@ export const Any = {
   },
   fromJSON(object) {
     return {
-      type_url: isSet(object.type_url) ? String(object.type_url) : "",
+      type_url: isSet(object.type_url) ? String(object.type_url) : '',
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
     };
   },
   fromPartial(object) {
     var _object$type_url, _object$value;
     const message = createBaseAny();
-    message.type_url = (_object$type_url = object.type_url) !== null && _object$type_url !== void 0 ? _object$type_url : "";
+    message.type_url = (_object$type_url = object.type_url) !== null && _object$type_url !== void 0 ? _object$type_url : '';
     message.value = (_object$value = object.value) !== null && _object$value !== void 0 ? _object$value : new Uint8Array();
     return message;
   }

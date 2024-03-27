@@ -1,8 +1,8 @@
-import { QueryCondition } from "./gauge";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, isSet, fromJsonTimestamp, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { QueryCondition } from './gauge';
+import { Coin } from '../../cosmos/base/v1beta1/coin';
+import { Timestamp } from '../../google/protobuf/timestamp';
+import { Long, isSet, fromJsonTimestamp, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 export interface MsgCreateGauge {
   /**
@@ -63,7 +63,7 @@ export interface MsgUnstakeResponse {}
 function createBaseMsgCreateGauge(): MsgCreateGauge {
   return {
     is_perpetual: false,
-    owner: "",
+    owner: '',
     distribute_to: QueryCondition.fromPartial({}),
     coins: [],
     start_time: Timestamp.fromPartial({}),
@@ -76,7 +76,7 @@ export const MsgCreateGauge = {
     if (message.is_perpetual === true) {
       writer.uint32(8).bool(message.is_perpetual);
     }
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(18).string(message.owner);
     }
     if (message.distribute_to !== undefined) {
@@ -98,7 +98,7 @@ export const MsgCreateGauge = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateGauge();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -134,7 +134,7 @@ export const MsgCreateGauge = {
   fromJSON(object: any): MsgCreateGauge {
     return {
       is_perpetual: isSet(object.is_perpetual) ? Boolean(object.is_perpetual) : false,
-      owner: isSet(object.owner) ? String(object.owner) : "",
+      owner: isSet(object.owner) ? String(object.owner) : '',
       distribute_to: isSet(object.distribute_to) ? QueryCondition.fromJSON(object.distribute_to) : undefined,
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
       start_time: isSet(object.start_time) ? fromJsonTimestamp(object.start_time) : undefined,
@@ -145,7 +145,7 @@ export const MsgCreateGauge = {
   fromPartial(object: DeepPartial<MsgCreateGauge>): MsgCreateGauge {
     const message = createBaseMsgCreateGauge();
     message.is_perpetual = object.is_perpetual ?? false;
-    message.owner = object.owner ?? "";
+    message.owner = object.owner ?? '';
     message.distribute_to = object.distribute_to !== undefined && object.distribute_to !== null ? QueryCondition.fromPartial(object.distribute_to) : undefined;
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     message.start_time = object.start_time !== undefined && object.start_time !== null ? Timestamp.fromPartial(object.start_time) : undefined;
@@ -163,7 +163,7 @@ export const MsgCreateGaugeResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateGaugeResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -185,14 +185,14 @@ export const MsgCreateGaugeResponse = {
 };
 function createBaseMsgAddToGauge(): MsgAddToGauge {
   return {
-    owner: "",
+    owner: '',
     gauge_id: Long.UZERO,
     rewards: []
   };
 }
 export const MsgAddToGauge = {
   encode(message: MsgAddToGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
     if (!message.gauge_id.isZero()) {
@@ -205,7 +205,7 @@ export const MsgAddToGauge = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgAddToGauge();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -228,14 +228,14 @@ export const MsgAddToGauge = {
   },
   fromJSON(object: any): MsgAddToGauge {
     return {
-      owner: isSet(object.owner) ? String(object.owner) : "",
+      owner: isSet(object.owner) ? String(object.owner) : '',
       gauge_id: isSet(object.gauge_id) ? Long.fromValue(object.gauge_id) : Long.UZERO,
       rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
   fromPartial(object: DeepPartial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
-    message.owner = object.owner ?? "";
+    message.owner = object.owner ?? '';
     message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
     message.rewards = object.rewards?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -250,7 +250,7 @@ export const MsgAddToGaugeResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgAddToGaugeResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -272,13 +272,13 @@ export const MsgAddToGaugeResponse = {
 };
 function createBaseMsgStake(): MsgStake {
   return {
-    owner: "",
+    owner: '',
     coins: []
   };
 }
 export const MsgStake = {
   encode(message: MsgStake, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
     for (const v of message.coins) {
@@ -288,7 +288,7 @@ export const MsgStake = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgStake {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgStake();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -308,13 +308,13 @@ export const MsgStake = {
   },
   fromJSON(object: any): MsgStake {
     return {
-      owner: isSet(object.owner) ? String(object.owner) : "",
+      owner: isSet(object.owner) ? String(object.owner) : '',
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
   fromPartial(object: DeepPartial<MsgStake>): MsgStake {
     const message = createBaseMsgStake();
-    message.owner = object.owner ?? "";
+    message.owner = object.owner ?? '';
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
@@ -333,7 +333,7 @@ export const MsgStakeResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgStakeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgStakeResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -361,13 +361,13 @@ export const MsgStakeResponse = {
 };
 function createBaseMsgUnstake(): MsgUnstake {
   return {
-    owner: "",
+    owner: '',
     unstakes: []
   };
 }
 export const MsgUnstake = {
   encode(message: MsgUnstake, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
     for (const v of message.unstakes) {
@@ -377,7 +377,7 @@ export const MsgUnstake = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnstake {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnstake();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -397,13 +397,13 @@ export const MsgUnstake = {
   },
   fromJSON(object: any): MsgUnstake {
     return {
-      owner: isSet(object.owner) ? String(object.owner) : "",
+      owner: isSet(object.owner) ? String(object.owner) : '',
       unstakes: Array.isArray(object?.unstakes) ? object.unstakes.map((e: any) => MsgUnstake_UnstakeDescriptor.fromJSON(e)) : []
     };
   },
   fromPartial(object: DeepPartial<MsgUnstake>): MsgUnstake {
     const message = createBaseMsgUnstake();
-    message.owner = object.owner ?? "";
+    message.owner = object.owner ?? '';
     message.unstakes = object.unstakes?.map(e => MsgUnstake_UnstakeDescriptor.fromPartial(e)) || [];
     return message;
   }
@@ -426,7 +426,7 @@ export const MsgUnstake_UnstakeDescriptor = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnstake_UnstakeDescriptor {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnstake_UnstakeDescriptor();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -466,7 +466,7 @@ export const MsgUnstakeResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnstakeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnstakeResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();

@@ -1,7 +1,7 @@
-import { TradePairID } from "./trade_pair_id";
-import { LimitOrderType, limitOrderTypeFromJSON } from "./tx";
-import { Long, isSet, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { TradePairID } from './trade_pair_id';
+import { LimitOrderType, limitOrderTypeFromJSON } from './tx';
+import { Long, isSet, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export interface LimitOrderTrancheUser {
   tradePairID: TradePairID;
   tickIndexTakerToMaker: Long;
@@ -16,11 +16,11 @@ function createBaseLimitOrderTrancheUser(): LimitOrderTrancheUser {
   return {
     tradePairID: TradePairID.fromPartial({}),
     tickIndexTakerToMaker: Long.ZERO,
-    trancheKey: "",
-    address: "",
-    sharesOwned: "",
-    sharesWithdrawn: "",
-    sharesCancelled: "",
+    trancheKey: '',
+    address: '',
+    sharesOwned: '',
+    sharesWithdrawn: '',
+    sharesCancelled: '',
     orderType: 0
   };
 }
@@ -32,19 +32,19 @@ export const LimitOrderTrancheUser = {
     if (!message.tickIndexTakerToMaker.isZero()) {
       writer.uint32(16).int64(message.tickIndexTakerToMaker);
     }
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(26).string(message.trancheKey);
     }
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(34).string(message.address);
     }
-    if (message.sharesOwned !== "") {
+    if (message.sharesOwned !== '') {
       writer.uint32(42).string(message.sharesOwned);
     }
-    if (message.sharesWithdrawn !== "") {
+    if (message.sharesWithdrawn !== '') {
       writer.uint32(50).string(message.sharesWithdrawn);
     }
-    if (message.sharesCancelled !== "") {
+    if (message.sharesCancelled !== '') {
       writer.uint32(58).string(message.sharesCancelled);
     }
     if (message.orderType !== 0) {
@@ -54,7 +54,7 @@ export const LimitOrderTrancheUser = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): LimitOrderTrancheUser {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLimitOrderTrancheUser();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -94,11 +94,11 @@ export const LimitOrderTrancheUser = {
     return {
       tradePairID: isSet(object.tradePairID) ? TradePairID.fromJSON(object.tradePairID) : undefined,
       tickIndexTakerToMaker: isSet(object.tickIndexTakerToMaker) ? Long.fromValue(object.tickIndexTakerToMaker) : Long.ZERO,
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : "",
-      address: isSet(object.address) ? String(object.address) : "",
-      sharesOwned: isSet(object.sharesOwned) ? String(object.sharesOwned) : "",
-      sharesWithdrawn: isSet(object.sharesWithdrawn) ? String(object.sharesWithdrawn) : "",
-      sharesCancelled: isSet(object.sharesCancelled) ? String(object.sharesCancelled) : "",
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : '',
+      address: isSet(object.address) ? String(object.address) : '',
+      sharesOwned: isSet(object.sharesOwned) ? String(object.sharesOwned) : '',
+      sharesWithdrawn: isSet(object.sharesWithdrawn) ? String(object.sharesWithdrawn) : '',
+      sharesCancelled: isSet(object.sharesCancelled) ? String(object.sharesCancelled) : '',
       orderType: isSet(object.orderType) ? limitOrderTypeFromJSON(object.orderType) : -1
     };
   },
@@ -106,11 +106,11 @@ export const LimitOrderTrancheUser = {
     const message = createBaseLimitOrderTrancheUser();
     message.tradePairID = object.tradePairID !== undefined && object.tradePairID !== null ? TradePairID.fromPartial(object.tradePairID) : undefined;
     message.tickIndexTakerToMaker = object.tickIndexTakerToMaker !== undefined && object.tickIndexTakerToMaker !== null ? Long.fromValue(object.tickIndexTakerToMaker) : Long.ZERO;
-    message.trancheKey = object.trancheKey ?? "";
-    message.address = object.address ?? "";
-    message.sharesOwned = object.sharesOwned ?? "";
-    message.sharesWithdrawn = object.sharesWithdrawn ?? "";
-    message.sharesCancelled = object.sharesCancelled ?? "";
+    message.trancheKey = object.trancheKey ?? '';
+    message.address = object.address ?? '';
+    message.sharesOwned = object.sharesOwned ?? '';
+    message.sharesWithdrawn = object.sharesWithdrawn ?? '';
+    message.sharesCancelled = object.sharesCancelled ?? '';
     message.orderType = object.orderType ?? 0;
     return message;
   }

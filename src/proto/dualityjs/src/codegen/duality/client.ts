@@ -1,10 +1,10 @@
-import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as dualityDexTxRegistry from "./dex/tx.registry";
-import * as dualityIncentivesTxRegistry from "./incentives/tx.registry";
-import * as dualityDexTxAmino from "./dex/tx.amino";
-import * as dualityIncentivesTxAmino from "./incentives/tx.amino";
+import { GeneratedType, Registry, OfflineSigner } from '@cosmjs/proto-signing';
+import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from '@cosmjs/stargate';
+import { HttpEndpoint } from '@cosmjs/tendermint-rpc';
+import * as dualityDexTxRegistry from './dex/tx.registry';
+import * as dualityIncentivesTxRegistry from './incentives/tx.registry';
+import * as dualityDexTxAmino from './dex/tx.amino';
+import * as dualityIncentivesTxAmino from './incentives/tx.amino';
 export const dualityAminoConverters = {
   ...dualityDexTxAmino.AminoConverter,
   ...dualityIncentivesTxAmino.AminoConverter

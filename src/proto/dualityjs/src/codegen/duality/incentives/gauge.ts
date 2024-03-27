@@ -1,8 +1,8 @@
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Timestamp } from "../../google/protobuf/timestamp";
-import { PairID } from "../dex/pair_id";
-import { Long, isSet, fromJsonTimestamp, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { Coin } from '../../cosmos/base/v1beta1/coin';
+import { Timestamp } from '../../google/protobuf/timestamp';
+import { PairID } from '../dex/pair_id';
+import { Long, isSet, fromJsonTimestamp, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 /** Gauge is an object that describes an LP incentivization plan and its state. */
 export interface Gauge {
   /** id is the unique ID of a Gauge */
@@ -152,7 +152,7 @@ export const Gauge = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): Gauge {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGauge();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -240,7 +240,7 @@ export const QueryCondition = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryCondition {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCondition();
     while (reader.pos < end) {
       const tag = reader.uint32();

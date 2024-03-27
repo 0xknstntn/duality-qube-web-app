@@ -65,7 +65,7 @@ export default function PoolOverview({
     [tokenA, tokenB]
   );
   const { data: userHasDeposits } = useUserHasDeposits(tokenPair);
-  console.log("QLABS: DEBUG: userHasDeposits: ", userHasDeposits)
+  console.log('QLABS: DEBUG: userHasDeposits: ', userHasDeposits)
 
   const tokenAPath = useTokenPathPart(tokenA);
   const tokenBPath = useTokenPathPart(tokenB);

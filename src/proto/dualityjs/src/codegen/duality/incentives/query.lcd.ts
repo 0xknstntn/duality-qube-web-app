@@ -1,5 +1,5 @@
-import { LCDClient } from "@cosmology/lcd";
-import { GetModuleStatusRequest, GetModuleStatusResponse, GetGaugeByIDRequest, GetGaugeByIDResponse, GetGaugesRequest, GetGaugesResponse, GetStakeByIDRequest, GetStakeByIDResponse, GetStakesRequest, GetStakesResponse, GetFutureRewardEstimateRequest, GetFutureRewardEstimateResponse, GetAccountHistoryRequest, GetAccountHistoryResponse, GetGaugeQualifyingValueRequest, GetGaugeQualifyingValueResponse } from "./query";
+import { LCDClient } from '@cosmology/lcd';
+import { GetModuleStatusRequest, GetModuleStatusResponse, GetGaugeByIDRequest, GetGaugeByIDResponse, GetGaugesRequest, GetGaugesResponse, GetStakeByIDRequest, GetStakeByIDResponse, GetStakesRequest, GetStakesResponse, GetFutureRewardEstimateRequest, GetFutureRewardEstimateResponse, GetAccountHistoryRequest, GetAccountHistoryResponse, GetGaugeQualifyingValueRequest, GetGaugeQualifyingValueResponse } from './query';
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -19,7 +19,7 @@ export class LCDQueryClient {
   }
   /* GetModuleStatus returns a rundown of coins in the module and their status */
   async getModuleStatus(_params: GetModuleStatusRequest = {}): Promise<GetModuleStatusResponse> {
-    const endpoint = `duality/incentives/v1beta1/module_status`;
+    const endpoint = 'duality/incentives/v1beta1/module_status';
     return GetModuleStatusResponse.fromJSON(await this.req.get<GetModuleStatusResponse>(endpoint));
   }
   /* GetGaugeByID returns a gauge by its ID */
@@ -32,13 +32,13 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.status !== "undefined") {
+    if (typeof params?.status !== 'undefined') {
       options.params.status = params.status;
     }
-    if (typeof params?.denom !== "undefined") {
+    if (typeof params?.denom !== 'undefined') {
       options.params.denom = params.denom;
     }
-    const endpoint = `duality/incentives/v1beta1/gauges`;
+    const endpoint = 'duality/incentives/v1beta1/gauges';
     return GetGaugesResponse.fromJSON(await this.req.get<GetGaugesResponse>(endpoint, options));
   }
   /* GetStakeByID returns a stake by its ID */
@@ -51,10 +51,10 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.owner !== "undefined") {
+    if (typeof params?.owner !== 'undefined') {
       options.params.owner = params.owner;
     }
-    const endpoint = `duality/incentives/stakes`;
+    const endpoint = 'duality/incentives/stakes';
     return GetStakesResponse.fromJSON(await this.req.get<GetStakesResponse>(endpoint, options));
   }
   /* GetFutureRewardsEstimate returns an estimate of the rewards from now until a specified
@@ -64,10 +64,10 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.stake_ids !== "undefined") {
+    if (typeof params?.stake_ids !== 'undefined') {
       options.params.stake_ids = params.stake_ids;
     }
-    if (typeof params?.num_epochs !== "undefined") {
+    if (typeof params?.num_epochs !== 'undefined') {
       options.params.num_epochs = params.num_epochs;
     }
     const endpoint = `duality/incentives/v1beta1/future_rewards_estimate/${params.owner}`;

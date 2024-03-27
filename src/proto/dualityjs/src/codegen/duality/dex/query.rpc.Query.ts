@@ -1,9 +1,9 @@
-import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
-import { ReactQueryParams } from "../../react-query";
-import { useQuery } from "@tanstack/react-query";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetLimitOrderTrancheUserRequest, QueryGetLimitOrderTrancheUserResponse, QueryAllLimitOrderTrancheUserRequest, QueryAllLimitOrderTrancheUserResponse, QueryAllUserLimitOrdersRequest, QueryAllUserLimitOrdersResponse, QueryGetLimitOrderTrancheRequest, QueryGetLimitOrderTrancheResponse, QueryAllLimitOrderTrancheRequest, QueryAllLimitOrderTrancheResponse, QueryAllUserDepositsRequest, QueryAllUserDepositsResponse, QueryAllTickLiquidityRequest, QueryAllTickLiquidityResponse, QueryGetInactiveLimitOrderTrancheRequest, QueryGetInactiveLimitOrderTrancheResponse, QueryAllInactiveLimitOrderTrancheRequest, QueryAllInactiveLimitOrderTrancheResponse, QueryAllPoolReservesRequest, QueryAllPoolReservesResponse, QueryGetPoolReservesRequest, QueryGetPoolReservesResponse, QueryEstimateMultiHopSwapRequest, QueryEstimateMultiHopSwapResponse, QueryEstimatePlaceLimitOrderRequest, QueryEstimatePlaceLimitOrderResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolByIDRequest, QueryGetPoolMetadataRequest, QueryGetPoolMetadataResponse, QueryAllPoolMetadataRequest, QueryAllPoolMetadataResponse } from "./query";
+import { Rpc } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from '@cosmjs/stargate';
+import { ReactQueryParams } from '../../react-query';
+import { useQuery } from '@tanstack/react-query';
+import { QueryParamsRequest, QueryParamsResponse, QueryGetLimitOrderTrancheUserRequest, QueryGetLimitOrderTrancheUserResponse, QueryAllLimitOrderTrancheUserRequest, QueryAllLimitOrderTrancheUserResponse, QueryAllUserLimitOrdersRequest, QueryAllUserLimitOrdersResponse, QueryGetLimitOrderTrancheRequest, QueryGetLimitOrderTrancheResponse, QueryAllLimitOrderTrancheRequest, QueryAllLimitOrderTrancheResponse, QueryAllUserDepositsRequest, QueryAllUserDepositsResponse, QueryAllTickLiquidityRequest, QueryAllTickLiquidityResponse, QueryGetInactiveLimitOrderTrancheRequest, QueryGetInactiveLimitOrderTrancheResponse, QueryAllInactiveLimitOrderTrancheRequest, QueryAllInactiveLimitOrderTrancheResponse, QueryAllPoolReservesRequest, QueryAllPoolReservesResponse, QueryGetPoolReservesRequest, QueryGetPoolReservesResponse, QueryEstimateMultiHopSwapRequest, QueryEstimateMultiHopSwapResponse, QueryEstimatePlaceLimitOrderRequest, QueryEstimatePlaceLimitOrderResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolByIDRequest, QueryGetPoolMetadataRequest, QueryGetPoolMetadataResponse, QueryAllPoolMetadataRequest, QueryAllPoolMetadataResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -68,98 +68,98 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "Params", data);
+    const promise = this.rpc.request('duality.dex.Query', 'Params', data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   limitOrderTrancheUser(request: QueryGetLimitOrderTrancheUserRequest): Promise<QueryGetLimitOrderTrancheUserResponse> {
     const data = QueryGetLimitOrderTrancheUserRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "LimitOrderTrancheUser", data);
+    const promise = this.rpc.request('duality.dex.Query', 'LimitOrderTrancheUser', data);
     return promise.then(data => QueryGetLimitOrderTrancheUserResponse.decode(new _m0.Reader(data)));
   }
   limitOrderTrancheUserAll(request: QueryAllLimitOrderTrancheUserRequest = {
     pagination: undefined
   }): Promise<QueryAllLimitOrderTrancheUserResponse> {
     const data = QueryAllLimitOrderTrancheUserRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "LimitOrderTrancheUserAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'LimitOrderTrancheUserAll', data);
     return promise.then(data => QueryAllLimitOrderTrancheUserResponse.decode(new _m0.Reader(data)));
   }
   limitOrderTrancheUserAllByAddress(request: QueryAllUserLimitOrdersRequest): Promise<QueryAllUserLimitOrdersResponse> {
     const data = QueryAllUserLimitOrdersRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "LimitOrderTrancheUserAllByAddress", data);
+    const promise = this.rpc.request('duality.dex.Query', 'LimitOrderTrancheUserAllByAddress', data);
     return promise.then(data => QueryAllUserLimitOrdersResponse.decode(new _m0.Reader(data)));
   }
   limitOrderTranche(request: QueryGetLimitOrderTrancheRequest): Promise<QueryGetLimitOrderTrancheResponse> {
     const data = QueryGetLimitOrderTrancheRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "LimitOrderTranche", data);
+    const promise = this.rpc.request('duality.dex.Query', 'LimitOrderTranche', data);
     return promise.then(data => QueryGetLimitOrderTrancheResponse.decode(new _m0.Reader(data)));
   }
   limitOrderTrancheAll(request: QueryAllLimitOrderTrancheRequest): Promise<QueryAllLimitOrderTrancheResponse> {
     const data = QueryAllLimitOrderTrancheRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "LimitOrderTrancheAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'LimitOrderTrancheAll', data);
     return promise.then(data => QueryAllLimitOrderTrancheResponse.decode(new _m0.Reader(data)));
   }
   userDepositsAll(request: QueryAllUserDepositsRequest): Promise<QueryAllUserDepositsResponse> {
     const data = QueryAllUserDepositsRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "UserDepositsAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'UserDepositsAll', data);
     return promise.then(data => QueryAllUserDepositsResponse.decode(new _m0.Reader(data)));
   }
   tickLiquidityAll(request: QueryAllTickLiquidityRequest): Promise<QueryAllTickLiquidityResponse> {
     const data = QueryAllTickLiquidityRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "TickLiquidityAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'TickLiquidityAll', data);
     return promise.then(data => QueryAllTickLiquidityResponse.decode(new _m0.Reader(data)));
   }
   inactiveLimitOrderTranche(request: QueryGetInactiveLimitOrderTrancheRequest): Promise<QueryGetInactiveLimitOrderTrancheResponse> {
     const data = QueryGetInactiveLimitOrderTrancheRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "InactiveLimitOrderTranche", data);
+    const promise = this.rpc.request('duality.dex.Query', 'InactiveLimitOrderTranche', data);
     return promise.then(data => QueryGetInactiveLimitOrderTrancheResponse.decode(new _m0.Reader(data)));
   }
   inactiveLimitOrderTrancheAll(request: QueryAllInactiveLimitOrderTrancheRequest = {
     pagination: undefined
   }): Promise<QueryAllInactiveLimitOrderTrancheResponse> {
     const data = QueryAllInactiveLimitOrderTrancheRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "InactiveLimitOrderTrancheAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'InactiveLimitOrderTrancheAll', data);
     return promise.then(data => QueryAllInactiveLimitOrderTrancheResponse.decode(new _m0.Reader(data)));
   }
   poolReservesAll(request: QueryAllPoolReservesRequest): Promise<QueryAllPoolReservesResponse> {
     const data = QueryAllPoolReservesRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "PoolReservesAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'PoolReservesAll', data);
     return promise.then(data => QueryAllPoolReservesResponse.decode(new _m0.Reader(data)));
   }
   poolReserves(request: QueryGetPoolReservesRequest): Promise<QueryGetPoolReservesResponse> {
     const data = QueryGetPoolReservesRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "PoolReserves", data);
+    const promise = this.rpc.request('duality.dex.Query', 'PoolReserves', data);
     return promise.then(data => QueryGetPoolReservesResponse.decode(new _m0.Reader(data)));
   }
   estimateMultiHopSwap(request: QueryEstimateMultiHopSwapRequest): Promise<QueryEstimateMultiHopSwapResponse> {
     const data = QueryEstimateMultiHopSwapRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "EstimateMultiHopSwap", data);
+    const promise = this.rpc.request('duality.dex.Query', 'EstimateMultiHopSwap', data);
     return promise.then(data => QueryEstimateMultiHopSwapResponse.decode(new _m0.Reader(data)));
   }
   estimatePlaceLimitOrder(request: QueryEstimatePlaceLimitOrderRequest): Promise<QueryEstimatePlaceLimitOrderResponse> {
     const data = QueryEstimatePlaceLimitOrderRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "EstimatePlaceLimitOrder", data);
+    const promise = this.rpc.request('duality.dex.Query', 'EstimatePlaceLimitOrder', data);
     return promise.then(data => QueryEstimatePlaceLimitOrderResponse.decode(new _m0.Reader(data)));
   }
   pool(request: QueryPoolRequest): Promise<QueryPoolResponse> {
     const data = QueryPoolRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "Pool", data);
+    const promise = this.rpc.request('duality.dex.Query', 'Pool', data);
     return promise.then(data => QueryPoolResponse.decode(new _m0.Reader(data)));
   }
   poolByID(request: QueryPoolByIDRequest): Promise<QueryPoolResponse> {
     const data = QueryPoolByIDRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "PoolByID", data);
+    const promise = this.rpc.request('duality.dex.Query', 'PoolByID', data);
     return promise.then(data => QueryPoolResponse.decode(new _m0.Reader(data)));
   }
   poolMetadata(request: QueryGetPoolMetadataRequest): Promise<QueryGetPoolMetadataResponse> {
     const data = QueryGetPoolMetadataRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "PoolMetadata", data);
+    const promise = this.rpc.request('duality.dex.Query', 'PoolMetadata', data);
     return promise.then(data => QueryGetPoolMetadataResponse.decode(new _m0.Reader(data)));
   }
   poolMetadataAll(request: QueryAllPoolMetadataRequest = {
     pagination: undefined
   }): Promise<QueryAllPoolMetadataResponse> {
     const data = QueryAllPoolMetadataRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.dex.Query", "PoolMetadataAll", data);
+    const promise = this.rpc.request('duality.dex.Query', 'PoolMetadataAll', data);
     return promise.then(data => QueryAllPoolMetadataResponse.decode(new _m0.Reader(data)));
   }
 }
@@ -293,8 +293,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseParamsQuery<TData>) => {
-    return useQuery<QueryParamsResponse, Error, TData>(["paramsQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryParamsResponse, Error, TData>(['paramsQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.params(request);
     }, options);
   };
@@ -302,8 +302,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseLimitOrderTrancheUserQuery<TData>) => {
-    return useQuery<QueryGetLimitOrderTrancheUserResponse, Error, TData>(["limitOrderTrancheUserQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryGetLimitOrderTrancheUserResponse, Error, TData>(['limitOrderTrancheUserQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.limitOrderTrancheUser(request);
     }, options);
   };
@@ -311,8 +311,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseLimitOrderTrancheUserAllQuery<TData>) => {
-    return useQuery<QueryAllLimitOrderTrancheUserResponse, Error, TData>(["limitOrderTrancheUserAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllLimitOrderTrancheUserResponse, Error, TData>(['limitOrderTrancheUserAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.limitOrderTrancheUserAll(request);
     }, options);
   };
@@ -320,8 +320,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseLimitOrderTrancheUserAllByAddressQuery<TData>) => {
-    return useQuery<QueryAllUserLimitOrdersResponse, Error, TData>(["limitOrderTrancheUserAllByAddressQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllUserLimitOrdersResponse, Error, TData>(['limitOrderTrancheUserAllByAddressQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.limitOrderTrancheUserAllByAddress(request);
     }, options);
   };
@@ -329,8 +329,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseLimitOrderTrancheQuery<TData>) => {
-    return useQuery<QueryGetLimitOrderTrancheResponse, Error, TData>(["limitOrderTrancheQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryGetLimitOrderTrancheResponse, Error, TData>(['limitOrderTrancheQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.limitOrderTranche(request);
     }, options);
   };
@@ -338,8 +338,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseLimitOrderTrancheAllQuery<TData>) => {
-    return useQuery<QueryAllLimitOrderTrancheResponse, Error, TData>(["limitOrderTrancheAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllLimitOrderTrancheResponse, Error, TData>(['limitOrderTrancheAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.limitOrderTrancheAll(request);
     }, options);
   };
@@ -347,8 +347,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseUserDepositsAllQuery<TData>) => {
-    return useQuery<QueryAllUserDepositsResponse, Error, TData>(["userDepositsAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllUserDepositsResponse, Error, TData>(['userDepositsAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.userDepositsAll(request);
     }, options);
   };
@@ -356,8 +356,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseTickLiquidityAllQuery<TData>) => {
-    return useQuery<QueryAllTickLiquidityResponse, Error, TData>(["tickLiquidityAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllTickLiquidityResponse, Error, TData>(['tickLiquidityAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.tickLiquidityAll(request);
     }, options);
   };
@@ -365,8 +365,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseInactiveLimitOrderTrancheQuery<TData>) => {
-    return useQuery<QueryGetInactiveLimitOrderTrancheResponse, Error, TData>(["inactiveLimitOrderTrancheQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryGetInactiveLimitOrderTrancheResponse, Error, TData>(['inactiveLimitOrderTrancheQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.inactiveLimitOrderTranche(request);
     }, options);
   };
@@ -374,8 +374,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseInactiveLimitOrderTrancheAllQuery<TData>) => {
-    return useQuery<QueryAllInactiveLimitOrderTrancheResponse, Error, TData>(["inactiveLimitOrderTrancheAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllInactiveLimitOrderTrancheResponse, Error, TData>(['inactiveLimitOrderTrancheAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.inactiveLimitOrderTrancheAll(request);
     }, options);
   };
@@ -383,8 +383,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UsePoolReservesAllQuery<TData>) => {
-    return useQuery<QueryAllPoolReservesResponse, Error, TData>(["poolReservesAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllPoolReservesResponse, Error, TData>(['poolReservesAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.poolReservesAll(request);
     }, options);
   };
@@ -392,8 +392,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UsePoolReservesQuery<TData>) => {
-    return useQuery<QueryGetPoolReservesResponse, Error, TData>(["poolReservesQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryGetPoolReservesResponse, Error, TData>(['poolReservesQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.poolReserves(request);
     }, options);
   };
@@ -401,8 +401,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseEstimateMultiHopSwapQuery<TData>) => {
-    return useQuery<QueryEstimateMultiHopSwapResponse, Error, TData>(["estimateMultiHopSwapQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryEstimateMultiHopSwapResponse, Error, TData>(['estimateMultiHopSwapQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.estimateMultiHopSwap(request);
     }, options);
   };
@@ -410,8 +410,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseEstimatePlaceLimitOrderQuery<TData>) => {
-    return useQuery<QueryEstimatePlaceLimitOrderResponse, Error, TData>(["estimatePlaceLimitOrderQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryEstimatePlaceLimitOrderResponse, Error, TData>(['estimatePlaceLimitOrderQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.estimatePlaceLimitOrder(request);
     }, options);
   };
@@ -419,8 +419,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UsePoolQuery<TData>) => {
-    return useQuery<QueryPoolResponse, Error, TData>(["poolQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryPoolResponse, Error, TData>(['poolQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.pool(request);
     }, options);
   };
@@ -428,8 +428,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UsePoolByIDQuery<TData>) => {
-    return useQuery<QueryPoolResponse, Error, TData>(["poolByIDQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryPoolResponse, Error, TData>(['poolByIDQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.poolByID(request);
     }, options);
   };
@@ -437,8 +437,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UsePoolMetadataQuery<TData>) => {
-    return useQuery<QueryGetPoolMetadataResponse, Error, TData>(["poolMetadataQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryGetPoolMetadataResponse, Error, TData>(['poolMetadataQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.poolMetadata(request);
     }, options);
   };
@@ -446,8 +446,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UsePoolMetadataAllQuery<TData>) => {
-    return useQuery<QueryAllPoolMetadataResponse, Error, TData>(["poolMetadataAllQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryAllPoolMetadataResponse, Error, TData>(['poolMetadataAllQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.poolMetadataAll(request);
     }, options);
   };

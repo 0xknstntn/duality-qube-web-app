@@ -1,9 +1,9 @@
-import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
-import { ReactQueryParams } from "../../react-query";
-import { useQuery } from "@tanstack/react-query";
-import { GetModuleStatusRequest, GetModuleStatusResponse, GetGaugeByIDRequest, GetGaugeByIDResponse, GetGaugesRequest, GetGaugesResponse, GetStakeByIDRequest, GetStakeByIDResponse, GetStakesRequest, GetStakesResponse, GetFutureRewardEstimateRequest, GetFutureRewardEstimateResponse, GetAccountHistoryRequest, GetAccountHistoryResponse, GetGaugeQualifyingValueRequest, GetGaugeQualifyingValueResponse } from "./query";
+import { Rpc } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from '@cosmjs/stargate';
+import { ReactQueryParams } from '../../react-query';
+import { useQuery } from '@tanstack/react-query';
+import { GetModuleStatusRequest, GetModuleStatusResponse, GetGaugeByIDRequest, GetGaugeByIDResponse, GetGaugesRequest, GetGaugesResponse, GetStakeByIDRequest, GetStakeByIDResponse, GetStakesRequest, GetStakesResponse, GetFutureRewardEstimateRequest, GetFutureRewardEstimateResponse, GetAccountHistoryRequest, GetAccountHistoryResponse, GetGaugeQualifyingValueRequest, GetGaugeQualifyingValueResponse } from './query';
 /** Query defines the gRPC querier service */
 export interface Query {
   /** GetModuleStatus returns a rundown of coins in the module and their status */
@@ -45,42 +45,42 @@ export class QueryClientImpl implements Query {
   }
   getModuleStatus(request: GetModuleStatusRequest = {}): Promise<GetModuleStatusResponse> {
     const data = GetModuleStatusRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetModuleStatus", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetModuleStatus', data);
     return promise.then(data => GetModuleStatusResponse.decode(new _m0.Reader(data)));
   }
   getGaugeByID(request: GetGaugeByIDRequest): Promise<GetGaugeByIDResponse> {
     const data = GetGaugeByIDRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetGaugeByID", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetGaugeByID', data);
     return promise.then(data => GetGaugeByIDResponse.decode(new _m0.Reader(data)));
   }
   getGauges(request: GetGaugesRequest): Promise<GetGaugesResponse> {
     const data = GetGaugesRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetGauges", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetGauges', data);
     return promise.then(data => GetGaugesResponse.decode(new _m0.Reader(data)));
   }
   getStakeByID(request: GetStakeByIDRequest): Promise<GetStakeByIDResponse> {
     const data = GetStakeByIDRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetStakeByID", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetStakeByID', data);
     return promise.then(data => GetStakeByIDResponse.decode(new _m0.Reader(data)));
   }
   getStakes(request: GetStakesRequest): Promise<GetStakesResponse> {
     const data = GetStakesRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetStakes", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetStakes', data);
     return promise.then(data => GetStakesResponse.decode(new _m0.Reader(data)));
   }
   getFutureRewardEstimate(request: GetFutureRewardEstimateRequest): Promise<GetFutureRewardEstimateResponse> {
     const data = GetFutureRewardEstimateRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetFutureRewardEstimate", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetFutureRewardEstimate', data);
     return promise.then(data => GetFutureRewardEstimateResponse.decode(new _m0.Reader(data)));
   }
   getAccountHistory(request: GetAccountHistoryRequest): Promise<GetAccountHistoryResponse> {
     const data = GetAccountHistoryRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetAccountHistory", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetAccountHistory', data);
     return promise.then(data => GetAccountHistoryResponse.decode(new _m0.Reader(data)));
   }
   getGaugeQualifyingValue(request: GetGaugeQualifyingValueRequest): Promise<GetGaugeQualifyingValueResponse> {
     const data = GetGaugeQualifyingValueRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.incentives.Query", "GetGaugeQualifyingValue", data);
+    const promise = this.rpc.request('duality.incentives.Query', 'GetGaugeQualifyingValue', data);
     return promise.then(data => GetGaugeQualifyingValueResponse.decode(new _m0.Reader(data)));
   }
 }
@@ -154,8 +154,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetModuleStatusQuery<TData>) => {
-    return useQuery<GetModuleStatusResponse, Error, TData>(["getModuleStatusQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetModuleStatusResponse, Error, TData>(['getModuleStatusQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getModuleStatus(request);
     }, options);
   };
@@ -163,8 +163,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetGaugeByIDQuery<TData>) => {
-    return useQuery<GetGaugeByIDResponse, Error, TData>(["getGaugeByIDQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetGaugeByIDResponse, Error, TData>(['getGaugeByIDQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getGaugeByID(request);
     }, options);
   };
@@ -172,8 +172,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetGaugesQuery<TData>) => {
-    return useQuery<GetGaugesResponse, Error, TData>(["getGaugesQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetGaugesResponse, Error, TData>(['getGaugesQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getGauges(request);
     }, options);
   };
@@ -181,8 +181,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetStakeByIDQuery<TData>) => {
-    return useQuery<GetStakeByIDResponse, Error, TData>(["getStakeByIDQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetStakeByIDResponse, Error, TData>(['getStakeByIDQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getStakeByID(request);
     }, options);
   };
@@ -190,8 +190,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetStakesQuery<TData>) => {
-    return useQuery<GetStakesResponse, Error, TData>(["getStakesQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetStakesResponse, Error, TData>(['getStakesQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getStakes(request);
     }, options);
   };
@@ -199,8 +199,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetFutureRewardEstimateQuery<TData>) => {
-    return useQuery<GetFutureRewardEstimateResponse, Error, TData>(["getFutureRewardEstimateQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetFutureRewardEstimateResponse, Error, TData>(['getFutureRewardEstimateQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getFutureRewardEstimate(request);
     }, options);
   };
@@ -208,8 +208,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetAccountHistoryQuery<TData>) => {
-    return useQuery<GetAccountHistoryResponse, Error, TData>(["getAccountHistoryQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetAccountHistoryResponse, Error, TData>(['getAccountHistoryQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getAccountHistory(request);
     }, options);
   };
@@ -217,8 +217,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseGetGaugeQualifyingValueQuery<TData>) => {
-    return useQuery<GetGaugeQualifyingValueResponse, Error, TData>(["getGaugeQualifyingValueQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<GetGaugeQualifyingValueResponse, Error, TData>(['getGaugeQualifyingValueQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.getGaugeQualifyingValue(request);
     }, options);
   };

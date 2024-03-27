@@ -4,7 +4,7 @@
 * and run the transpile command or yarn proto command to regenerate this bundle.
 */
 
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 import Long from 'long';
 
 // @ts-ignore
@@ -16,9 +16,9 @@ if (_m0.util.Long !== Long) {
 
 export { Long };
 
-declare var self: any | undefined;
-declare var window: any | undefined;
-declare var global: any | undefined;
+declare let self: any | undefined;
+declare let window: any | undefined;
+declare let global: any | undefined;
 var globalThis: any = (() => {
     if (typeof globalThis !== 'undefined') return globalThis;
     if (typeof self !== 'undefined') return self;
@@ -56,11 +56,11 @@ export interface AminoHeight {
 };
 
 export function omitDefault<T extends string | number | Long>(input: T): T | undefined {
-    if (typeof input === "string") {
-        return input === "" ? undefined : input;
+    if (typeof input === 'string') {
+        return input === '' ? undefined : input;
     }
 
-    if (typeof input === "number") {
+    if (typeof input === 'number') {
         return input === 0 ? undefined : input;
     }
 
@@ -118,11 +118,11 @@ export interface PageRequest {
 };
 
 export interface PageRequestParams {
-    "pagination.key"?: string;
-    "pagination.offset"?: string;
-    "pagination.limit"?: string;
-    "pagination.count_total"?: boolean;
-    "pagination.reverse"?: boolean;
+    'pagination.key'?: string;
+    'pagination.offset'?: string;
+    'pagination.limit'?: string;
+    'pagination.count_total'?: boolean;
+    'pagination.reverse'?: boolean;
 };
 
 export interface Params {
@@ -135,23 +135,23 @@ export const setPaginationParams = (options: Params, pagination?: PageRequest) =
         return options;
     }
 
-    if (typeof pagination?.countTotal !== "undefined") {
+    if (typeof pagination?.countTotal !== 'undefined') {
         options.params['pagination.count_total'] = pagination.countTotal;
     }
-    if (typeof pagination?.key !== "undefined") {
+    if (typeof pagination?.key !== 'undefined') {
         // String to Uint8Array
         // let uint8arr = new Uint8Array(Buffer.from(data,'base64')); 
 
         // Uint8Array to String
         options.params['pagination.key'] = Buffer.from(pagination.key).toString('base64');
     }
-    if (typeof pagination?.limit !== "undefined") {
-      options.params["pagination.limit"] = pagination.limit.toString()
+    if (typeof pagination?.limit !== 'undefined') {
+      options.params['pagination.limit'] = pagination.limit.toString()
     }
-    if (typeof pagination?.offset !== "undefined") {
-      options.params["pagination.offset"] = pagination.offset.toString()
+    if (typeof pagination?.offset !== 'undefined') {
+      options.params['pagination.offset'] = pagination.offset.toString()
     }    
-    if (typeof pagination?.reverse !== "undefined") {
+    if (typeof pagination?.reverse !== 'undefined') {
         options.params['pagination.reverse'] = pagination.reverse;
     }
 
@@ -230,7 +230,7 @@ const timestampFromJSON = (object: any): Timestamp => {
 export function fromJsonTimestamp(o: any): Timestamp {
   if (o instanceof Date) {
     return toTimestamp(o);
-  } else if (typeof o === "string") {
+  } else if (typeof o === 'string') {
     return toTimestamp(new Date(o));
   } else {
     return timestampFromJSON(o);

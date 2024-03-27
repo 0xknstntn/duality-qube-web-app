@@ -1,9 +1,9 @@
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Params } from "./params";
-import { Gauge } from "./gauge";
-import { Stake } from "./stake";
-import { Long, DeepPartial, isSet } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { Coin } from '../../cosmos/base/v1beta1/coin';
+import { Params } from './params';
+import { Gauge } from './gauge';
+import { Stake } from './stake';
+import { Long, DeepPartial, isSet } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export enum GaugeStatus {
   ACTIVE_UPCOMING = 0,
   ACTIVE = 1,
@@ -14,19 +14,19 @@ export enum GaugeStatus {
 export function gaugeStatusFromJSON(object: any): GaugeStatus {
   switch (object) {
     case 0:
-    case "ACTIVE_UPCOMING":
+    case 'ACTIVE_UPCOMING':
       return GaugeStatus.ACTIVE_UPCOMING;
     case 1:
-    case "ACTIVE":
+    case 'ACTIVE':
       return GaugeStatus.ACTIVE;
     case 2:
-    case "UPCOMING":
+    case 'UPCOMING':
       return GaugeStatus.UPCOMING;
     case 3:
-    case "FINISHED":
+    case 'FINISHED':
       return GaugeStatus.FINISHED;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return GaugeStatus.UNRECOGNIZED;
   }
@@ -34,16 +34,16 @@ export function gaugeStatusFromJSON(object: any): GaugeStatus {
 export function gaugeStatusToJSON(object: GaugeStatus): string {
   switch (object) {
     case GaugeStatus.ACTIVE_UPCOMING:
-      return "ACTIVE_UPCOMING";
+      return 'ACTIVE_UPCOMING';
     case GaugeStatus.ACTIVE:
-      return "ACTIVE";
+      return 'ACTIVE';
     case GaugeStatus.UPCOMING:
-      return "UPCOMING";
+      return 'UPCOMING';
     case GaugeStatus.FINISHED:
-      return "FINISHED";
+      return 'FINISHED';
     case GaugeStatus.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 export interface GetModuleStatusRequest {}
@@ -124,7 +124,7 @@ export const GetModuleStatusRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetModuleStatusRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetModuleStatusRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -166,7 +166,7 @@ export const GetModuleStatusResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetModuleStatusResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetModuleStatusResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -216,7 +216,7 @@ export const GetGaugeByIDRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetGaugeByIDRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetGaugeByIDRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -256,7 +256,7 @@ export const GetGaugeByIDResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetGaugeByIDResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetGaugeByIDResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -296,7 +296,7 @@ export const GetGaugeQualifyingValueRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetGaugeQualifyingValueRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetGaugeQualifyingValueRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -336,7 +336,7 @@ export const GetGaugeQualifyingValueResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetGaugeQualifyingValueResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetGaugeQualifyingValueResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -365,7 +365,7 @@ export const GetGaugeQualifyingValueResponse = {
 function createBaseGetGaugesRequest(): GetGaugesRequest {
   return {
     status: 0,
-    denom: ""
+    denom: ''
   };
 }
 export const GetGaugesRequest = {
@@ -373,14 +373,14 @@ export const GetGaugesRequest = {
     if (message.status !== 0) {
       writer.uint32(8).int32(message.status);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(18).string(message.denom);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetGaugesRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetGaugesRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -401,13 +401,13 @@ export const GetGaugesRequest = {
   fromJSON(object: any): GetGaugesRequest {
     return {
       status: isSet(object.status) ? gaugeStatusFromJSON(object.status) : -1,
-      denom: isSet(object.denom) ? String(object.denom) : ""
+      denom: isSet(object.denom) ? String(object.denom) : ''
     };
   },
   fromPartial(object: DeepPartial<GetGaugesRequest>): GetGaugesRequest {
     const message = createBaseGetGaugesRequest();
     message.status = object.status ?? 0;
-    message.denom = object.denom ?? "";
+    message.denom = object.denom ?? '';
     return message;
   }
 };
@@ -425,7 +425,7 @@ export const GetGaugesResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetGaugesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetGaugesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -465,7 +465,7 @@ export const GetStakeByIDRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetStakeByIDRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStakeByIDRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -505,7 +505,7 @@ export const GetStakeByIDResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetStakeByIDResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStakeByIDResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -533,19 +533,19 @@ export const GetStakeByIDResponse = {
 };
 function createBaseGetStakesRequest(): GetStakesRequest {
   return {
-    owner: ""
+    owner: ''
   };
 }
 export const GetStakesRequest = {
   encode(message: GetStakesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetStakesRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStakesRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -562,12 +562,12 @@ export const GetStakesRequest = {
   },
   fromJSON(object: any): GetStakesRequest {
     return {
-      owner: isSet(object.owner) ? String(object.owner) : ""
+      owner: isSet(object.owner) ? String(object.owner) : ''
     };
   },
   fromPartial(object: DeepPartial<GetStakesRequest>): GetStakesRequest {
     const message = createBaseGetStakesRequest();
-    message.owner = object.owner ?? "";
+    message.owner = object.owner ?? '';
     return message;
   }
 };
@@ -585,7 +585,7 @@ export const GetStakesResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetStakesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStakesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -613,14 +613,14 @@ export const GetStakesResponse = {
 };
 function createBaseGetFutureRewardEstimateRequest(): GetFutureRewardEstimateRequest {
   return {
-    owner: "",
+    owner: '',
     stake_ids: [],
     num_epochs: Long.ZERO
   };
 }
 export const GetFutureRewardEstimateRequest = {
   encode(message: GetFutureRewardEstimateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
     writer.uint32(18).fork();
@@ -635,7 +635,7 @@ export const GetFutureRewardEstimateRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetFutureRewardEstimateRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetFutureRewardEstimateRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -665,14 +665,14 @@ export const GetFutureRewardEstimateRequest = {
   },
   fromJSON(object: any): GetFutureRewardEstimateRequest {
     return {
-      owner: isSet(object.owner) ? String(object.owner) : "",
+      owner: isSet(object.owner) ? String(object.owner) : '',
       stake_ids: Array.isArray(object?.stake_ids) ? object.stake_ids.map((e: any) => Long.fromValue(e)) : [],
       num_epochs: isSet(object.num_epochs) ? Long.fromValue(object.num_epochs) : Long.ZERO
     };
   },
   fromPartial(object: DeepPartial<GetFutureRewardEstimateRequest>): GetFutureRewardEstimateRequest {
     const message = createBaseGetFutureRewardEstimateRequest();
-    message.owner = object.owner ?? "";
+    message.owner = object.owner ?? '';
     message.stake_ids = object.stake_ids?.map(e => Long.fromValue(e)) || [];
     message.num_epochs = object.num_epochs !== undefined && object.num_epochs !== null ? Long.fromValue(object.num_epochs) : Long.ZERO;
     return message;
@@ -692,7 +692,7 @@ export const GetFutureRewardEstimateResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetFutureRewardEstimateResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetFutureRewardEstimateResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -720,19 +720,19 @@ export const GetFutureRewardEstimateResponse = {
 };
 function createBaseGetAccountHistoryRequest(): GetAccountHistoryRequest {
   return {
-    account: ""
+    account: ''
   };
 }
 export const GetAccountHistoryRequest = {
   encode(message: GetAccountHistoryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.account !== "") {
+    if (message.account !== '') {
       writer.uint32(10).string(message.account);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetAccountHistoryRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetAccountHistoryRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -749,12 +749,12 @@ export const GetAccountHistoryRequest = {
   },
   fromJSON(object: any): GetAccountHistoryRequest {
     return {
-      account: isSet(object.account) ? String(object.account) : ""
+      account: isSet(object.account) ? String(object.account) : ''
     };
   },
   fromPartial(object: DeepPartial<GetAccountHistoryRequest>): GetAccountHistoryRequest {
     const message = createBaseGetAccountHistoryRequest();
-    message.account = object.account ?? "";
+    message.account = object.account ?? '';
     return message;
   }
 };
@@ -772,7 +772,7 @@ export const GetAccountHistoryResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GetAccountHistoryResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetAccountHistoryResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();

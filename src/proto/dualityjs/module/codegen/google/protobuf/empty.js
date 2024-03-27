@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated

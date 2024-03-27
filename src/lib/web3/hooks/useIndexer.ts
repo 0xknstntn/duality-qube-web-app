@@ -202,7 +202,7 @@ export class IndexerStream<DataRow = BaseDataRow> {
           else {
             // retry only if reasonable
             if (retries < this.maxRetries) {
-              // eslint-disable-next-line no-console
+               
               /*console.error(
                 `Could not fetch long-polling data (attempt: ${
                   retries + 1

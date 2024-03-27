@@ -195,7 +195,7 @@ export function calculateOut({
       // if amountLeft is greater that zero then proceed to next tick
     }
   }
-  console.log("QLABS: DEBUG: amountLeft: ", amountLeft.isGreaterThan(0))
+  console.log('QLABS: DEBUG: amountLeft: ', amountLeft.isGreaterThan(0))
   // if there is still tokens left to be traded the liquidity must have been exhausted
   if (amountLeft.isGreaterThan(0)) {
     const error: SwapError = new Error('Could not swap all tokens given');

@@ -6,11 +6,11 @@ import { useWeb3 } from '../useWeb3';
 import { TokenIdPair, TokenPair, resolveTokenIdPair } from '../utils/tokens';
 
 async function getUsersDepositsByTokenPair(tokenPairIDs?: [string | undefined, string | undefined], address?: string): Promise<DepositRecord[]> {
-        let result: DepositRecord[] = [];
+        const result: DepositRecord[] = [];
         try {
                 if(tokenPairIDs) {
-                        let res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/user/deposits/${address}`)
-                        let depositsJson = await res.json()
+                        const res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/user/deposits/${address}`)
+                        const depositsJson = await res.json()
                         const [tokenIdA, tokenIdB] = tokenPairIDs || [];
                         //console.log("QLABS: DEBUG: getUsersDepositsByTokenPair: tokenPairIDs: ", [tokenIdA, tokenIdB])
                         //console.log("QLABS: DEBUG: getUsersDepositsByTokenPair: depositsJson: ", [tokenIdA, tokenIdB])
@@ -28,8 +28,8 @@ async function getUsersDepositsByTokenPair(tokenPairIDs?: [string | undefined, s
                                 }
                         })
                 } else {
-                        let res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/user/deposits/${address}`)
-                        let depositsJson = await res.json()
+                        const res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/user/deposits/${address}`)
+                        const depositsJson = await res.json()
                         //console.log("QLABS: DEBUG: getUsersDepositsByTokenPair: depositsJson: ", depositsJson)
                         depositsJson.Deposits.map((deposit: any) => {
                                 result.push({
@@ -57,7 +57,7 @@ export function useUserDeposits(
         const [data, dataSet] = useState<any>(null)
         useEffect(() => {
                 async function main() {
-                        let res = await getUsersDepositsByTokenPair(tokenPairIDs, address!)
+                        const res = await getUsersDepositsByTokenPair(tokenPairIDs, address!)
                         dataSet(res)
                 }
                 main()

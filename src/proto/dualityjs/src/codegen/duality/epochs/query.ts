@@ -1,6 +1,6 @@
-import { EpochInfo } from "./genesis";
-import { Long, DeepPartial, isSet } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { EpochInfo } from './genesis';
+import { Long, DeepPartial, isSet } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export interface QueryEpochsInfoRequest {}
 export interface QueryEpochsInfoResponse {
   epochs: EpochInfo[];
@@ -20,7 +20,7 @@ export const QueryEpochsInfoRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEpochsInfoRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -54,7 +54,7 @@ export const QueryEpochsInfoResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEpochsInfoResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -82,19 +82,19 @@ export const QueryEpochsInfoResponse = {
 };
 function createBaseQueryCurrentEpochRequest(): QueryCurrentEpochRequest {
   return {
-    identifier: ""
+    identifier: ''
   };
 }
 export const QueryCurrentEpochRequest = {
   encode(message: QueryCurrentEpochRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.identifier !== "") {
+    if (message.identifier !== '') {
       writer.uint32(10).string(message.identifier);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCurrentEpochRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -111,12 +111,12 @@ export const QueryCurrentEpochRequest = {
   },
   fromJSON(object: any): QueryCurrentEpochRequest {
     return {
-      identifier: isSet(object.identifier) ? String(object.identifier) : ""
+      identifier: isSet(object.identifier) ? String(object.identifier) : ''
     };
   },
   fromPartial(object: DeepPartial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest {
     const message = createBaseQueryCurrentEpochRequest();
-    message.identifier = object.identifier ?? "";
+    message.identifier = object.identifier ?? '';
     return message;
   }
 };
@@ -134,7 +134,7 @@ export const QueryCurrentEpochResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCurrentEpochResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();

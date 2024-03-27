@@ -1,17 +1,17 @@
-import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination";
-import { MultiHopRoute, LimitOrderType, limitOrderTypeFromJSON } from "./tx";
-import { Timestamp } from "../../google/protobuf/timestamp";
-import { Params } from "./params";
-import { LimitOrderTrancheUser } from "./limit_order_tranche_user";
-import { LimitOrderTranche } from "./limit_order_tranche";
-import { DepositRecord } from "./deposit_record";
-import { TickLiquidity } from "./tick_liquidity";
-import { PoolReserves } from "./pool_reserves";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Pool } from "./pool";
-import { PoolMetadata } from "./pool_metadata";
-import { Long, DeepPartial, isSet, fromJsonTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { PageRequest, PageResponse } from '../../cosmos/base/query/v1beta1/pagination';
+import { MultiHopRoute, LimitOrderType, limitOrderTypeFromJSON } from './tx';
+import { Timestamp } from '../../google/protobuf/timestamp';
+import { Params } from './params';
+import { LimitOrderTrancheUser } from './limit_order_tranche_user';
+import { LimitOrderTranche } from './limit_order_tranche';
+import { DepositRecord } from './deposit_record';
+import { TickLiquidity } from './tick_liquidity';
+import { PoolReserves } from './pool_reserves';
+import { Coin } from '../../cosmos/base/v1beta1/coin';
+import { Pool } from './pool';
+import { PoolMetadata } from './pool_metadata';
+import { Long, DeepPartial, isSet, fromJsonTimestamp } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -185,7 +185,7 @@ export const QueryParamsRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -219,7 +219,7 @@ export const QueryParamsResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -247,23 +247,23 @@ export const QueryParamsResponse = {
 };
 function createBaseQueryGetLimitOrderTrancheUserRequest(): QueryGetLimitOrderTrancheUserRequest {
   return {
-    address: "",
-    trancheKey: ""
+    address: '',
+    trancheKey: ''
   };
 }
 export const QueryGetLimitOrderTrancheUserRequest = {
   encode(message: QueryGetLimitOrderTrancheUserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(18).string(message.trancheKey);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLimitOrderTrancheUserRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetLimitOrderTrancheUserRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -283,14 +283,14 @@ export const QueryGetLimitOrderTrancheUserRequest = {
   },
   fromJSON(object: any): QueryGetLimitOrderTrancheUserRequest {
     return {
-      address: isSet(object.address) ? String(object.address) : "",
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ""
+      address: isSet(object.address) ? String(object.address) : '',
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ''
     };
   },
   fromPartial(object: DeepPartial<QueryGetLimitOrderTrancheUserRequest>): QueryGetLimitOrderTrancheUserRequest {
     const message = createBaseQueryGetLimitOrderTrancheUserRequest();
-    message.address = object.address ?? "";
-    message.trancheKey = object.trancheKey ?? "";
+    message.address = object.address ?? '';
+    message.trancheKey = object.trancheKey ?? '';
     return message;
   }
 };
@@ -308,7 +308,7 @@ export const QueryGetLimitOrderTrancheUserResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLimitOrderTrancheUserResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetLimitOrderTrancheUserResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -348,7 +348,7 @@ export const QueryAllLimitOrderTrancheUserRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLimitOrderTrancheUserRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllLimitOrderTrancheUserRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -392,7 +392,7 @@ export const QueryAllLimitOrderTrancheUserResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLimitOrderTrancheUserResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllLimitOrderTrancheUserResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -425,31 +425,31 @@ export const QueryAllLimitOrderTrancheUserResponse = {
 };
 function createBaseQueryGetLimitOrderTrancheRequest(): QueryGetLimitOrderTrancheRequest {
   return {
-    pairID: "",
+    pairID: '',
     tickIndex: Long.ZERO,
-    tokenIn: "",
-    trancheKey: ""
+    tokenIn: '',
+    trancheKey: ''
   };
 }
 export const QueryGetLimitOrderTrancheRequest = {
   encode(message: QueryGetLimitOrderTrancheRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
     if (!message.tickIndex.isZero()) {
       writer.uint32(16).int64(message.tickIndex);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(26).string(message.tokenIn);
     }
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(34).string(message.trancheKey);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLimitOrderTrancheRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetLimitOrderTrancheRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -475,18 +475,18 @@ export const QueryGetLimitOrderTrancheRequest = {
   },
   fromJSON(object: any): QueryGetLimitOrderTrancheRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
       tickIndex: isSet(object.tickIndex) ? Long.fromValue(object.tickIndex) : Long.ZERO,
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ""
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ''
     };
   },
   fromPartial(object: DeepPartial<QueryGetLimitOrderTrancheRequest>): QueryGetLimitOrderTrancheRequest {
     const message = createBaseQueryGetLimitOrderTrancheRequest();
-    message.pairID = object.pairID ?? "";
+    message.pairID = object.pairID ?? '';
     message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? Long.fromValue(object.tickIndex) : Long.ZERO;
-    message.tokenIn = object.tokenIn ?? "";
-    message.trancheKey = object.trancheKey ?? "";
+    message.tokenIn = object.tokenIn ?? '';
+    message.trancheKey = object.trancheKey ?? '';
     return message;
   }
 };
@@ -504,7 +504,7 @@ export const QueryGetLimitOrderTrancheResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLimitOrderTrancheResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetLimitOrderTrancheResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -532,17 +532,17 @@ export const QueryGetLimitOrderTrancheResponse = {
 };
 function createBaseQueryAllLimitOrderTrancheRequest(): QueryAllLimitOrderTrancheRequest {
   return {
-    pairID: "",
-    tokenIn: "",
+    pairID: '',
+    tokenIn: '',
     pagination: PageRequest.fromPartial({})
   };
 }
 export const QueryAllLimitOrderTrancheRequest = {
   encode(message: QueryAllLimitOrderTrancheRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(18).string(message.tokenIn);
     }
     if (message.pagination !== undefined) {
@@ -552,7 +552,7 @@ export const QueryAllLimitOrderTrancheRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLimitOrderTrancheRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllLimitOrderTrancheRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -575,15 +575,15 @@ export const QueryAllLimitOrderTrancheRequest = {
   },
   fromJSON(object: any): QueryAllLimitOrderTrancheRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
   fromPartial(object: DeepPartial<QueryAllLimitOrderTrancheRequest>): QueryAllLimitOrderTrancheRequest {
     const message = createBaseQueryAllLimitOrderTrancheRequest();
-    message.pairID = object.pairID ?? "";
-    message.tokenIn = object.tokenIn ?? "";
+    message.pairID = object.pairID ?? '';
+    message.tokenIn = object.tokenIn ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -606,7 +606,7 @@ export const QueryAllLimitOrderTrancheResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLimitOrderTrancheResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllLimitOrderTrancheResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -639,13 +639,13 @@ export const QueryAllLimitOrderTrancheResponse = {
 };
 function createBaseQueryAllUserDepositsRequest(): QueryAllUserDepositsRequest {
   return {
-    address: "",
+    address: '',
     pagination: PageRequest.fromPartial({})
   };
 }
 export const QueryAllUserDepositsRequest = {
   encode(message: QueryAllUserDepositsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.pagination !== undefined) {
@@ -655,7 +655,7 @@ export const QueryAllUserDepositsRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllUserDepositsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllUserDepositsRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -675,13 +675,13 @@ export const QueryAllUserDepositsRequest = {
   },
   fromJSON(object: any): QueryAllUserDepositsRequest {
     return {
-      address: isSet(object.address) ? String(object.address) : "",
+      address: isSet(object.address) ? String(object.address) : '',
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
   fromPartial(object: DeepPartial<QueryAllUserDepositsRequest>): QueryAllUserDepositsRequest {
     const message = createBaseQueryAllUserDepositsRequest();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -704,7 +704,7 @@ export const QueryAllUserDepositsResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllUserDepositsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllUserDepositsResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -737,13 +737,13 @@ export const QueryAllUserDepositsResponse = {
 };
 function createBaseQueryAllUserLimitOrdersRequest(): QueryAllUserLimitOrdersRequest {
   return {
-    address: "",
+    address: '',
     pagination: PageRequest.fromPartial({})
   };
 }
 export const QueryAllUserLimitOrdersRequest = {
   encode(message: QueryAllUserLimitOrdersRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.pagination !== undefined) {
@@ -753,7 +753,7 @@ export const QueryAllUserLimitOrdersRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllUserLimitOrdersRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllUserLimitOrdersRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -773,13 +773,13 @@ export const QueryAllUserLimitOrdersRequest = {
   },
   fromJSON(object: any): QueryAllUserLimitOrdersRequest {
     return {
-      address: isSet(object.address) ? String(object.address) : "",
+      address: isSet(object.address) ? String(object.address) : '',
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
   fromPartial(object: DeepPartial<QueryAllUserLimitOrdersRequest>): QueryAllUserLimitOrdersRequest {
     const message = createBaseQueryAllUserLimitOrdersRequest();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -802,7 +802,7 @@ export const QueryAllUserLimitOrdersResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllUserLimitOrdersResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllUserLimitOrdersResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -835,17 +835,17 @@ export const QueryAllUserLimitOrdersResponse = {
 };
 function createBaseQueryAllTickLiquidityRequest(): QueryAllTickLiquidityRequest {
   return {
-    pairID: "",
-    tokenIn: "",
+    pairID: '',
+    tokenIn: '',
     pagination: PageRequest.fromPartial({})
   };
 }
 export const QueryAllTickLiquidityRequest = {
   encode(message: QueryAllTickLiquidityRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(18).string(message.tokenIn);
     }
     if (message.pagination !== undefined) {
@@ -855,7 +855,7 @@ export const QueryAllTickLiquidityRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTickLiquidityRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllTickLiquidityRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -878,15 +878,15 @@ export const QueryAllTickLiquidityRequest = {
   },
   fromJSON(object: any): QueryAllTickLiquidityRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
   fromPartial(object: DeepPartial<QueryAllTickLiquidityRequest>): QueryAllTickLiquidityRequest {
     const message = createBaseQueryAllTickLiquidityRequest();
-    message.pairID = object.pairID ?? "";
-    message.tokenIn = object.tokenIn ?? "";
+    message.pairID = object.pairID ?? '';
+    message.tokenIn = object.tokenIn ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -909,7 +909,7 @@ export const QueryAllTickLiquidityResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTickLiquidityResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllTickLiquidityResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -942,31 +942,31 @@ export const QueryAllTickLiquidityResponse = {
 };
 function createBaseQueryGetInactiveLimitOrderTrancheRequest(): QueryGetInactiveLimitOrderTrancheRequest {
   return {
-    pairID: "",
-    tokenIn: "",
+    pairID: '',
+    tokenIn: '',
     tickIndex: Long.ZERO,
-    trancheKey: ""
+    trancheKey: ''
   };
 }
 export const QueryGetInactiveLimitOrderTrancheRequest = {
   encode(message: QueryGetInactiveLimitOrderTrancheRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(18).string(message.tokenIn);
     }
     if (!message.tickIndex.isZero()) {
       writer.uint32(24).int64(message.tickIndex);
     }
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(34).string(message.trancheKey);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetInactiveLimitOrderTrancheRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetInactiveLimitOrderTrancheRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -992,18 +992,18 @@ export const QueryGetInactiveLimitOrderTrancheRequest = {
   },
   fromJSON(object: any): QueryGetInactiveLimitOrderTrancheRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
       tickIndex: isSet(object.tickIndex) ? Long.fromValue(object.tickIndex) : Long.ZERO,
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ""
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ''
     };
   },
   fromPartial(object: DeepPartial<QueryGetInactiveLimitOrderTrancheRequest>): QueryGetInactiveLimitOrderTrancheRequest {
     const message = createBaseQueryGetInactiveLimitOrderTrancheRequest();
-    message.pairID = object.pairID ?? "";
-    message.tokenIn = object.tokenIn ?? "";
+    message.pairID = object.pairID ?? '';
+    message.tokenIn = object.tokenIn ?? '';
     message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? Long.fromValue(object.tickIndex) : Long.ZERO;
-    message.trancheKey = object.trancheKey ?? "";
+    message.trancheKey = object.trancheKey ?? '';
     return message;
   }
 };
@@ -1021,7 +1021,7 @@ export const QueryGetInactiveLimitOrderTrancheResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetInactiveLimitOrderTrancheResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetInactiveLimitOrderTrancheResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1061,7 +1061,7 @@ export const QueryAllInactiveLimitOrderTrancheRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllInactiveLimitOrderTrancheRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllInactiveLimitOrderTrancheRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1105,7 +1105,7 @@ export const QueryAllInactiveLimitOrderTrancheResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllInactiveLimitOrderTrancheResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllInactiveLimitOrderTrancheResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1138,17 +1138,17 @@ export const QueryAllInactiveLimitOrderTrancheResponse = {
 };
 function createBaseQueryAllPoolReservesRequest(): QueryAllPoolReservesRequest {
   return {
-    pairID: "",
-    tokenIn: "",
+    pairID: '',
+    tokenIn: '',
     pagination: PageRequest.fromPartial({})
   };
 }
 export const QueryAllPoolReservesRequest = {
   encode(message: QueryAllPoolReservesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(18).string(message.tokenIn);
     }
     if (message.pagination !== undefined) {
@@ -1158,7 +1158,7 @@ export const QueryAllPoolReservesRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPoolReservesRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllPoolReservesRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1181,15 +1181,15 @@ export const QueryAllPoolReservesRequest = {
   },
   fromJSON(object: any): QueryAllPoolReservesRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
   fromPartial(object: DeepPartial<QueryAllPoolReservesRequest>): QueryAllPoolReservesRequest {
     const message = createBaseQueryAllPoolReservesRequest();
-    message.pairID = object.pairID ?? "";
-    message.tokenIn = object.tokenIn ?? "";
+    message.pairID = object.pairID ?? '';
+    message.tokenIn = object.tokenIn ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -1212,7 +1212,7 @@ export const QueryAllPoolReservesResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPoolReservesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllPoolReservesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1245,18 +1245,18 @@ export const QueryAllPoolReservesResponse = {
 };
 function createBaseQueryGetPoolReservesRequest(): QueryGetPoolReservesRequest {
   return {
-    pairID: "",
-    tokenIn: "",
+    pairID: '',
+    tokenIn: '',
     tickIndex: Long.ZERO,
     fee: Long.UZERO
   };
 }
 export const QueryGetPoolReservesRequest = {
   encode(message: QueryGetPoolReservesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(18).string(message.tokenIn);
     }
     if (!message.tickIndex.isZero()) {
@@ -1269,7 +1269,7 @@ export const QueryGetPoolReservesRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetPoolReservesRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetPoolReservesRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1295,16 +1295,16 @@ export const QueryGetPoolReservesRequest = {
   },
   fromJSON(object: any): QueryGetPoolReservesRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
       tickIndex: isSet(object.tickIndex) ? Long.fromValue(object.tickIndex) : Long.ZERO,
       fee: isSet(object.fee) ? Long.fromValue(object.fee) : Long.UZERO
     };
   },
   fromPartial(object: DeepPartial<QueryGetPoolReservesRequest>): QueryGetPoolReservesRequest {
     const message = createBaseQueryGetPoolReservesRequest();
-    message.pairID = object.pairID ?? "";
-    message.tokenIn = object.tokenIn ?? "";
+    message.pairID = object.pairID ?? '';
+    message.tokenIn = object.tokenIn ?? '';
     message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? Long.fromValue(object.tickIndex) : Long.ZERO;
     message.fee = object.fee !== undefined && object.fee !== null ? Long.fromValue(object.fee) : Long.UZERO;
     return message;
@@ -1324,7 +1324,7 @@ export const QueryGetPoolReservesResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetPoolReservesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetPoolReservesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1352,29 +1352,29 @@ export const QueryGetPoolReservesResponse = {
 };
 function createBaseQueryEstimateMultiHopSwapRequest(): QueryEstimateMultiHopSwapRequest {
   return {
-    creator: "",
-    receiver: "",
+    creator: '',
+    receiver: '',
     routes: [],
-    amountIn: "",
-    exitLimitPrice: "",
+    amountIn: '',
+    exitLimitPrice: '',
     pickBestRoute: false
   };
 }
 export const QueryEstimateMultiHopSwapRequest = {
   encode(message: QueryEstimateMultiHopSwapRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
     for (const v of message.routes) {
       MultiHopRoute.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-    if (message.amountIn !== "") {
+    if (message.amountIn !== '') {
       writer.uint32(34).string(message.amountIn);
     }
-    if (message.exitLimitPrice !== "") {
+    if (message.exitLimitPrice !== '') {
       writer.uint32(42).string(message.exitLimitPrice);
     }
     if (message.pickBestRoute === true) {
@@ -1384,7 +1384,7 @@ export const QueryEstimateMultiHopSwapRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryEstimateMultiHopSwapRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEstimateMultiHopSwapRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1416,21 +1416,21 @@ export const QueryEstimateMultiHopSwapRequest = {
   },
   fromJSON(object: any): QueryEstimateMultiHopSwapRequest {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      receiver: isSet(object.receiver) ? String(object.receiver) : '',
       routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => MultiHopRoute.fromJSON(e)) : [],
-      amountIn: isSet(object.amountIn) ? String(object.amountIn) : "",
-      exitLimitPrice: isSet(object.exitLimitPrice) ? String(object.exitLimitPrice) : "",
+      amountIn: isSet(object.amountIn) ? String(object.amountIn) : '',
+      exitLimitPrice: isSet(object.exitLimitPrice) ? String(object.exitLimitPrice) : '',
       pickBestRoute: isSet(object.pickBestRoute) ? Boolean(object.pickBestRoute) : false
     };
   },
   fromPartial(object: DeepPartial<QueryEstimateMultiHopSwapRequest>): QueryEstimateMultiHopSwapRequest {
     const message = createBaseQueryEstimateMultiHopSwapRequest();
-    message.creator = object.creator ?? "";
-    message.receiver = object.receiver ?? "";
+    message.creator = object.creator ?? '';
+    message.receiver = object.receiver ?? '';
     message.routes = object.routes?.map(e => MultiHopRoute.fromPartial(e)) || [];
-    message.amountIn = object.amountIn ?? "";
-    message.exitLimitPrice = object.exitLimitPrice ?? "";
+    message.amountIn = object.amountIn ?? '';
+    message.exitLimitPrice = object.exitLimitPrice ?? '';
     message.pickBestRoute = object.pickBestRoute ?? false;
     return message;
   }
@@ -1449,7 +1449,7 @@ export const QueryEstimateMultiHopSwapResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryEstimateMultiHopSwapResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEstimateMultiHopSwapResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1477,12 +1477,12 @@ export const QueryEstimateMultiHopSwapResponse = {
 };
 function createBaseQueryEstimatePlaceLimitOrderRequest(): QueryEstimatePlaceLimitOrderRequest {
   return {
-    creator: "",
-    receiver: "",
-    tokenIn: "",
-    tokenOut: "",
+    creator: '',
+    receiver: '',
+    tokenIn: '',
+    tokenOut: '',
     tickIndexInToOut: Long.ZERO,
-    amountIn: "",
+    amountIn: '',
     orderType: 0,
     expirationTime: undefined,
     maxAmountOut: undefined
@@ -1490,22 +1490,22 @@ function createBaseQueryEstimatePlaceLimitOrderRequest(): QueryEstimatePlaceLimi
 }
 export const QueryEstimatePlaceLimitOrderRequest = {
   encode(message: QueryEstimatePlaceLimitOrderRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(26).string(message.tokenIn);
     }
-    if (message.tokenOut !== "") {
+    if (message.tokenOut !== '') {
       writer.uint32(34).string(message.tokenOut);
     }
     if (!message.tickIndexInToOut.isZero()) {
       writer.uint32(40).int64(message.tickIndexInToOut);
     }
-    if (message.amountIn !== "") {
+    if (message.amountIn !== '') {
       writer.uint32(50).string(message.amountIn);
     }
     if (message.orderType !== 0) {
@@ -1521,7 +1521,7 @@ export const QueryEstimatePlaceLimitOrderRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryEstimatePlaceLimitOrderRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEstimatePlaceLimitOrderRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1562,12 +1562,12 @@ export const QueryEstimatePlaceLimitOrderRequest = {
   },
   fromJSON(object: any): QueryEstimatePlaceLimitOrderRequest {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
-      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : "",
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      receiver: isSet(object.receiver) ? String(object.receiver) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : '',
       tickIndexInToOut: isSet(object.tickIndexInToOut) ? Long.fromValue(object.tickIndexInToOut) : Long.ZERO,
-      amountIn: isSet(object.amountIn) ? String(object.amountIn) : "",
+      amountIn: isSet(object.amountIn) ? String(object.amountIn) : '',
       orderType: isSet(object.orderType) ? limitOrderTypeFromJSON(object.orderType) : -1,
       expirationTime: isSet(object.expirationTime) ? fromJsonTimestamp(object.expirationTime) : undefined,
       maxAmountOut: isSet(object.maxAmountOut) ? String(object.maxAmountOut) : undefined
@@ -1575,12 +1575,12 @@ export const QueryEstimatePlaceLimitOrderRequest = {
   },
   fromPartial(object: DeepPartial<QueryEstimatePlaceLimitOrderRequest>): QueryEstimatePlaceLimitOrderRequest {
     const message = createBaseQueryEstimatePlaceLimitOrderRequest();
-    message.creator = object.creator ?? "";
-    message.receiver = object.receiver ?? "";
-    message.tokenIn = object.tokenIn ?? "";
-    message.tokenOut = object.tokenOut ?? "";
+    message.creator = object.creator ?? '';
+    message.receiver = object.receiver ?? '';
+    message.tokenIn = object.tokenIn ?? '';
+    message.tokenOut = object.tokenOut ?? '';
     message.tickIndexInToOut = object.tickIndexInToOut !== undefined && object.tickIndexInToOut !== null ? Long.fromValue(object.tickIndexInToOut) : Long.ZERO;
-    message.amountIn = object.amountIn ?? "";
+    message.amountIn = object.amountIn ?? '';
     message.orderType = object.orderType ?? 0;
     message.expirationTime = object.expirationTime !== undefined && object.expirationTime !== null ? Timestamp.fromPartial(object.expirationTime) : undefined;
     message.maxAmountOut = object.maxAmountOut ?? undefined;
@@ -1609,7 +1609,7 @@ export const QueryEstimatePlaceLimitOrderResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryEstimatePlaceLimitOrderResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEstimatePlaceLimitOrderResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1647,14 +1647,14 @@ export const QueryEstimatePlaceLimitOrderResponse = {
 };
 function createBaseQueryPoolRequest(): QueryPoolRequest {
   return {
-    pairID: "",
+    pairID: '',
     tickIndex: Long.ZERO,
     fee: Long.UZERO
   };
 }
 export const QueryPoolRequest = {
   encode(message: QueryPoolRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pairID !== "") {
+    if (message.pairID !== '') {
       writer.uint32(10).string(message.pairID);
     }
     if (!message.tickIndex.isZero()) {
@@ -1667,7 +1667,7 @@ export const QueryPoolRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1690,14 +1690,14 @@ export const QueryPoolRequest = {
   },
   fromJSON(object: any): QueryPoolRequest {
     return {
-      pairID: isSet(object.pairID) ? String(object.pairID) : "",
+      pairID: isSet(object.pairID) ? String(object.pairID) : '',
       tickIndex: isSet(object.tickIndex) ? Long.fromValue(object.tickIndex) : Long.ZERO,
       fee: isSet(object.fee) ? Long.fromValue(object.fee) : Long.UZERO
     };
   },
   fromPartial(object: DeepPartial<QueryPoolRequest>): QueryPoolRequest {
     const message = createBaseQueryPoolRequest();
-    message.pairID = object.pairID ?? "";
+    message.pairID = object.pairID ?? '';
     message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? Long.fromValue(object.tickIndex) : Long.ZERO;
     message.fee = object.fee !== undefined && object.fee !== null ? Long.fromValue(object.fee) : Long.UZERO;
     return message;
@@ -1717,7 +1717,7 @@ export const QueryPoolByIDRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolByIDRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolByIDRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1757,7 +1757,7 @@ export const QueryPoolResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1797,7 +1797,7 @@ export const QueryGetPoolMetadataRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetPoolMetadataRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetPoolMetadataRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1837,7 +1837,7 @@ export const QueryGetPoolMetadataResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetPoolMetadataResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetPoolMetadataResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1877,7 +1877,7 @@ export const QueryAllPoolMetadataRequest = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPoolMetadataRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllPoolMetadataRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1921,7 +1921,7 @@ export const QueryAllPoolMetadataResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPoolMetadataResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllPoolMetadataResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();

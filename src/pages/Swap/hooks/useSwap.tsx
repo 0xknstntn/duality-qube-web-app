@@ -22,8 +22,8 @@ import {
   MsgPlaceLimitOrderResponse,
   MsgPlaceLimitOrder,
 } from '@duality-labs/dualityjs/src/codegen/duality/dex/tx';
-import { defaultRegistryTypes } from "@cosmjs/stargate";
-import { Registry } from "@cosmjs/proto-signing";
+import { defaultRegistryTypes } from '@cosmjs/stargate';
+import { Registry } from '@cosmjs/proto-signing';
 
 const {
   REACT_APP__RPC_API = '',
@@ -68,9 +68,9 @@ async function sendSwap(
 
 
   const reg = new Registry(defaultRegistryTypes)
-  reg.register("/core.dex.v1beta1.MsgPlaceLimitOrder", MsgPlaceLimitOrder) 
+  reg.register('/core.dex.v1beta1.MsgPlaceLimitOrder', MsgPlaceLimitOrder) 
 
-  var qube_client = await SigningStargateClient.connectWithSigner(
+  const qube_client = await SigningStargateClient.connectWithSigner(
     REACT_APP__RPC_API,
     wallet,
     {
@@ -78,7 +78,7 @@ async function sendSwap(
     }
   );
 
-  let msg_qube_dex_place_limit_order = duality.dex.MessageComposer.withTypeUrl.placeLimitOrder({
+  const msg_qube_dex_place_limit_order = duality.dex.MessageComposer.withTypeUrl.placeLimitOrder({
     orderType,
     tickIndexInToOut,
     amountIn,
@@ -90,7 +90,7 @@ async function sendSwap(
     receiver,
   });
 
-  msg_qube_dex_place_limit_order.typeUrl = "/core.dex.v1beta1.MsgPlaceLimitOrder"
+  msg_qube_dex_place_limit_order.typeUrl = '/core.dex.v1beta1.MsgPlaceLimitOrder'
   //console.log(msg_qube_dex_deposit)
   const res = await qube_client.signAndBroadcast(
     address,

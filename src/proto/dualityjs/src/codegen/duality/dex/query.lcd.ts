@@ -1,6 +1,6 @@
-import { setPaginationParams } from "../../helpers";
-import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetLimitOrderTrancheUserRequest, QueryGetLimitOrderTrancheUserResponse, QueryAllLimitOrderTrancheUserRequest, QueryAllLimitOrderTrancheUserResponse, QueryAllUserLimitOrdersRequest, QueryAllUserLimitOrdersResponse, QueryGetLimitOrderTrancheRequest, QueryGetLimitOrderTrancheResponse, QueryAllLimitOrderTrancheRequest, QueryAllLimitOrderTrancheResponse, QueryAllUserDepositsRequest, QueryAllUserDepositsResponse, QueryAllTickLiquidityRequest, QueryAllTickLiquidityResponse, QueryGetInactiveLimitOrderTrancheRequest, QueryGetInactiveLimitOrderTrancheResponse, QueryAllInactiveLimitOrderTrancheRequest, QueryAllInactiveLimitOrderTrancheResponse, QueryAllPoolReservesRequest, QueryAllPoolReservesResponse, QueryGetPoolReservesRequest, QueryGetPoolReservesResponse, QueryEstimateMultiHopSwapRequest, QueryEstimateMultiHopSwapResponse, QueryEstimatePlaceLimitOrderRequest, QueryEstimatePlaceLimitOrderResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolByIDRequest, QueryGetPoolMetadataRequest, QueryGetPoolMetadataResponse, QueryAllPoolMetadataRequest, QueryAllPoolMetadataResponse } from "./query";
+import { setPaginationParams } from '../../helpers';
+import { LCDClient } from '@cosmology/lcd';
+import { QueryParamsRequest, QueryParamsResponse, QueryGetLimitOrderTrancheUserRequest, QueryGetLimitOrderTrancheUserResponse, QueryAllLimitOrderTrancheUserRequest, QueryAllLimitOrderTrancheUserResponse, QueryAllUserLimitOrdersRequest, QueryAllUserLimitOrdersResponse, QueryGetLimitOrderTrancheRequest, QueryGetLimitOrderTrancheResponse, QueryAllLimitOrderTrancheRequest, QueryAllLimitOrderTrancheResponse, QueryAllUserDepositsRequest, QueryAllUserDepositsResponse, QueryAllTickLiquidityRequest, QueryAllTickLiquidityResponse, QueryGetInactiveLimitOrderTrancheRequest, QueryGetInactiveLimitOrderTrancheResponse, QueryAllInactiveLimitOrderTrancheRequest, QueryAllInactiveLimitOrderTrancheResponse, QueryAllPoolReservesRequest, QueryAllPoolReservesResponse, QueryGetPoolReservesRequest, QueryGetPoolReservesResponse, QueryEstimateMultiHopSwapRequest, QueryEstimateMultiHopSwapResponse, QueryEstimatePlaceLimitOrderRequest, QueryEstimatePlaceLimitOrderResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolByIDRequest, QueryGetPoolMetadataRequest, QueryGetPoolMetadataResponse, QueryAllPoolMetadataRequest, QueryAllPoolMetadataResponse } from './query';
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -30,7 +30,7 @@ export class LCDQueryClient {
   }
   /* Parameters queries the parameters of the module. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
-    const endpoint = `duality/dex/params`;
+    const endpoint = 'duality/dex/params';
     return QueryParamsResponse.fromJSON(await this.req.get<QueryParamsResponse>(endpoint));
   }
   /* Queries a LimitOrderTrancheUser by index. */
@@ -45,10 +45,10 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `duality/dex/limit_order_tranche_user`;
+    const endpoint = 'duality/dex/limit_order_tranche_user';
     return QueryAllLimitOrderTrancheUserResponse.fromJSON(await this.req.get<QueryAllLimitOrderTrancheUserResponse>(endpoint, options));
   }
   /* Queries a list of LimitOrderTrancheUser items for a given address. */
@@ -56,7 +56,7 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `duality/dex/user/limit_orders/${params.address}`;
@@ -72,7 +72,7 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `duality/dex/limit_order_tranche/${params.pairID}/${params.tokenIn}`;
@@ -83,7 +83,7 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `duality/dex/user/deposits/${params.address}`;
@@ -94,7 +94,7 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `duality/dex/tick_liquidity/${params.pairID}/${params.tokenIn}`;
@@ -112,10 +112,10 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `duality/dex/filled_limit_order_tranche`;
+    const endpoint = 'duality/dex/filled_limit_order_tranche';
     return QueryAllInactiveLimitOrderTrancheResponse.fromJSON(await this.req.get<QueryAllInactiveLimitOrderTrancheResponse>(endpoint, options));
   }
   /* Queries a list of PoolReserves items. */
@@ -123,7 +123,7 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `duality/dex/pool_reserves/${params.pairID}/${params.tokenIn}`;
@@ -139,25 +139,25 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.creator !== "undefined") {
+    if (typeof params?.creator !== 'undefined') {
       options.params.creator = params.creator;
     }
-    if (typeof params?.receiver !== "undefined") {
+    if (typeof params?.receiver !== 'undefined') {
       options.params.receiver = params.receiver;
     }
-    if (typeof params?.routes !== "undefined") {
+    if (typeof params?.routes !== 'undefined') {
       options.params.routes = params.routes;
     }
-    if (typeof params?.amountIn !== "undefined") {
+    if (typeof params?.amountIn !== 'undefined') {
       options.params.amountIn = params.amountIn;
     }
-    if (typeof params?.exitLimitPrice !== "undefined") {
+    if (typeof params?.exitLimitPrice !== 'undefined') {
       options.params.exitLimitPrice = params.exitLimitPrice;
     }
-    if (typeof params?.pickBestRoute !== "undefined") {
+    if (typeof params?.pickBestRoute !== 'undefined') {
       options.params.pickBestRoute = params.pickBestRoute;
     }
-    const endpoint = `duality/dex/estimate_multi_hop_swap`;
+    const endpoint = 'duality/dex/estimate_multi_hop_swap';
     return QueryEstimateMultiHopSwapResponse.fromJSON(await this.req.get<QueryEstimateMultiHopSwapResponse>(endpoint, options));
   }
   /* Queries the simulated result of a multihop swap */
@@ -165,34 +165,34 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.creator !== "undefined") {
+    if (typeof params?.creator !== 'undefined') {
       options.params.creator = params.creator;
     }
-    if (typeof params?.receiver !== "undefined") {
+    if (typeof params?.receiver !== 'undefined') {
       options.params.receiver = params.receiver;
     }
-    if (typeof params?.tokenIn !== "undefined") {
+    if (typeof params?.tokenIn !== 'undefined') {
       options.params.tokenIn = params.tokenIn;
     }
-    if (typeof params?.tokenOut !== "undefined") {
+    if (typeof params?.tokenOut !== 'undefined') {
       options.params.tokenOut = params.tokenOut;
     }
-    if (typeof params?.tickIndexInToOut !== "undefined") {
+    if (typeof params?.tickIndexInToOut !== 'undefined') {
       options.params.tickIndexInToOut = params.tickIndexInToOut;
     }
-    if (typeof params?.amountIn !== "undefined") {
+    if (typeof params?.amountIn !== 'undefined') {
       options.params.amountIn = params.amountIn;
     }
-    if (typeof params?.orderType !== "undefined") {
+    if (typeof params?.orderType !== 'undefined') {
       options.params.orderType = params.orderType;
     }
-    if (typeof params?.expirationTime !== "undefined") {
+    if (typeof params?.expirationTime !== 'undefined') {
       options.params.expirationTime = params.expirationTime;
     }
-    if (typeof params?.maxAmountOut !== "undefined") {
+    if (typeof params?.maxAmountOut !== 'undefined') {
       options.params.maxAmountOut = params.maxAmountOut;
     }
-    const endpoint = `duality/dex/estimate_place_limit_order`;
+    const endpoint = 'duality/dex/estimate_place_limit_order';
     return QueryEstimatePlaceLimitOrderResponse.fromJSON(await this.req.get<QueryEstimatePlaceLimitOrderResponse>(endpoint, options));
   }
   /* Queries a pool by pair, tick and fee */
@@ -217,10 +217,10 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.pagination !== "undefined") {
+    if (typeof params?.pagination !== 'undefined') {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `duality/dex/pool_metadata`;
+    const endpoint = 'duality/dex/pool_metadata';
     return QueryAllPoolMetadataResponse.fromJSON(await this.req.get<QueryAllPoolMetadataResponse>(endpoint, options));
   }
 }

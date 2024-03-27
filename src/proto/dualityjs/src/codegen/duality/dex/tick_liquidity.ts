@@ -1,7 +1,7 @@
-import { PoolReserves } from "./pool_reserves";
-import { LimitOrderTranche } from "./limit_order_tranche";
-import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "../../helpers";
+import { PoolReserves } from './pool_reserves';
+import { LimitOrderTranche } from './limit_order_tranche';
+import * as _m0 from 'protobufjs/minimal';
+import { isSet, DeepPartial } from '../../helpers';
 export interface TickLiquidity {
   poolReserves?: PoolReserves;
   limitOrderTranche?: LimitOrderTranche;
@@ -24,7 +24,7 @@ export const TickLiquidity = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): TickLiquidity {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTickLiquidity();
     while (reader.pos < end) {
       const tag = reader.uint32();

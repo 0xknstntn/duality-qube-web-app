@@ -64,15 +64,15 @@ interface CombinedUseQueries<T> {
 }
 
 async function getPoolMetadata(userDexDenomBalances: Coin[]): Promise<PoolMetadata[]> {
-  let result: PoolMetadata[] = [];
+  const result: PoolMetadata[] = [];
   //console.log("QLABS: DEBUG: result: ", userDexDenomBalances)
   try {
     userDexDenomBalances?.map(async(balance) => {
       const id = getDexSharePoolID(balance);
       //console.log("QLABS: DEBUG: result: ", id)
       if (id != undefined) {
-        let res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/pool_metadata/${id}`)
-        let pool_metadata_json = await res.json()
+        const res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/pool_metadata/${id}`)
+        const pool_metadata_json = await res.json()
         result.push({
           ID: pool_metadata_json.PoolMetadata.ID,
           tick: pool_metadata_json.PoolMetadata.tick,
@@ -98,13 +98,13 @@ function useUserPoolMetadata(
   const [data, dataSet] = useState<any>(null)
   useEffect(() => {
     async function main() {
-      let res = await getPoolMetadata(userDexDenomBalances!)
+      const res = await getPoolMetadata(userDexDenomBalances!)
       dataSet(res)
     }
     main()
   }, [userDexDenomBalances])
 
-  let result = <CombinedUseQueries<PoolMetadata[]>>{
+  const result = <CombinedUseQueries<PoolMetadata[]>>{
     data,
     isFetching: true,
     error: null,
@@ -138,10 +138,10 @@ function useUserPoolMetadata(
 }
 
 async function getBalanceByPoolDenom(userDexDenomBalances: Coin[]): Promise<PoolTotalShares[]> {
-  let result: PoolTotalShares[] = [];
+  const result: PoolTotalShares[] = [];
   try {
-    let res = await fetch(`https://api-rest.qubedao.com/api/cosmos/bank/v1beta1/supply`)
-    let supplyArrayJson = await res.json()
+    const res = await fetch('https://api-rest.qubedao.com/api/cosmos/bank/v1beta1/supply')
+    const supplyArrayJson = await res.json()
     userDexDenomBalances?.map((balance) => {
       const { denom } = balance;
       if (getDexSharePoolID(balance) !== undefined) {
@@ -168,7 +168,7 @@ function useUserPoolTotalShares(): CombinedUseQueries<PoolTotalShares[]> {
     const { data: userDexDenomBalances } = useUserDexDenomBalances();
     useEffect(() => {
       async function main() {
-        let res = await getBalanceByPoolDenom(userDexDenomBalances!)
+        const res = await getBalanceByPoolDenom(userDexDenomBalances!)
         dataSet(res)
       }
       main()
@@ -240,15 +240,15 @@ function useUserDepositsTotalShares(
 }
 
 async function getPoolByParams(userPairDeposits: DepositRecord[]): Promise<DepositRecord[]> {
-  let result: DepositRecord[] = [];
+  const result: DepositRecord[] = [];
   //console.log("QLABS: DEBUG: userPairDeposits: ", userPairDeposits)
   try {
     userPairDeposits?.flatMap(async (deposit) => {
       const { pairID, fee, sharesOwned } = deposit;
         if (Number(sharesOwned) > 0) {
-            let res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
-            console.log("QLABS: ", `https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
-            let poolJson = await res.json()
+            const res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
+            console.log('QLABS: ', `https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
+            const poolJson = await res.json()
             //console.log("QLABS: DEBUG: poolJson: ", poolJson)
             result.push({
               pairID: poolJson.pairID,
@@ -274,7 +274,7 @@ function useUserDepositsTotalReserves(
   const [data, dataSet] = useState<any>(null)
   useEffect(() => {
     async function main() {
-      let res = await getPoolByParams(userPairDeposits!)
+      const res = await getPoolByParams(userPairDeposits!)
       dataSet(res)
     }
     main()
@@ -293,7 +293,7 @@ function useUserIndicativeReserves(
   const userTotalSharesResults = useUserDepositsTotalShares(tokenPair);
   const userTotalReservesResults = useUserDepositsTotalReserves(tokenPair);
 
-  let data = useMemo((): IndicativeUserReserves[] | undefined => {
+  const data = useMemo((): IndicativeUserReserves[] | undefined => {
     return userDepositsResults.data?.flatMap<IndicativeUserReserves>(
       (deposit) => {
         const foundTotalShares = userTotalSharesResults.data?.find((data: any) => 
@@ -494,7 +494,7 @@ function isEqualDeposit(a: DepositRecord, b: DepositRecord) {
   // compare by reference or compare by properties
   try {
     //console.log("QLABS: DEBUG: EQUAL: ", {a, b})
-    let val = a === b ||
+    const val = a === b ||
     (a.sharesOwned === b.sharesOwned &&
       a.pairID.token0 === b.pairID.token0 &&
       a.pairID.token1 === b.pairID.token1 &&

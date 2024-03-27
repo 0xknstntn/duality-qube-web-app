@@ -5,14 +5,14 @@
 */
 
 import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from '@cosmjs/stargate'
-import { Tendermint34Client, HttpEndpoint } from "@cosmjs/tendermint-rpc";
+import { Tendermint34Client, HttpEndpoint } from '@cosmjs/tendermint-rpc';
 
 const _rpcClients: Record<string, ProtobufRpcClient> = {};
 
 export const getRpcEndpointKey = (rpcEndpoint: string | HttpEndpoint) => {
     if (typeof rpcEndpoint === 'string') {
         return rpcEndpoint;
-    } else if (!!rpcEndpoint) {
+    } else if (rpcEndpoint) {
         //@ts-ignore 
         return rpcEndpoint.url;
     }

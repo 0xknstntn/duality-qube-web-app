@@ -1,6 +1,6 @@
-import { PairID } from "./pair_id";
-import { Long, isSet, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { PairID } from './pair_id';
+import { Long, isSet, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export interface PoolMetadata {
   ID: Long;
   tick: Long;
@@ -33,7 +33,7 @@ export const PoolMetadata = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): PoolMetadata {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolMetadata();
     while (reader.pos < end) {
       const tag = reader.uint32();

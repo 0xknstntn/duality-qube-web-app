@@ -1,6 +1,6 @@
-import { PoolReserves } from "./pool_reserves";
-import { Long, isSet, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { PoolReserves } from './pool_reserves';
+import { Long, isSet, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export interface Pool {
   ID: Long;
   lower_tick0: PoolReserves;
@@ -28,7 +28,7 @@ export const Pool = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): Pool {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePool();
     while (reader.pos < end) {
       const tag = reader.uint32();

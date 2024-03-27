@@ -1,6 +1,6 @@
-import { Timestamp } from "../../google/protobuf/timestamp";
-import * as _m0 from "protobufjs/minimal";
-import { isSet, fromJsonTimestamp, bytesFromBase64, DeepPartial } from "../../helpers";
+import { Timestamp } from '../../google/protobuf/timestamp';
+import * as _m0 from 'protobufjs/minimal';
+import { isSet, fromJsonTimestamp, bytesFromBase64, DeepPartial } from '../../helpers';
 export interface LimitOrderExpiration {
   /** see limitOrderTranche.proto for details on goodTilDate */
   expirationTime: Timestamp;
@@ -24,7 +24,7 @@ export const LimitOrderExpiration = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): LimitOrderExpiration {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLimitOrderExpiration();
     while (reader.pos < end) {
       const tag = reader.uint32();

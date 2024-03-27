@@ -1,6 +1,6 @@
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "../../helpers";
+import { Coin } from '../../cosmos/base/v1beta1/coin';
+import * as _m0 from 'protobufjs/minimal';
+import { isSet, DeepPartial } from '../../helpers';
 /** Describes the total distributions to an account over time */
 export interface AccountHistory {
   /** the address of this account */
@@ -10,13 +10,13 @@ export interface AccountHistory {
 }
 function createBaseAccountHistory(): AccountHistory {
   return {
-    account: "",
+    account: '',
     coins: []
   };
 }
 export const AccountHistory = {
   encode(message: AccountHistory, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.account !== "") {
+    if (message.account !== '') {
       writer.uint32(10).string(message.account);
     }
     for (const v of message.coins) {
@@ -26,7 +26,7 @@ export const AccountHistory = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): AccountHistory {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccountHistory();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -46,13 +46,13 @@ export const AccountHistory = {
   },
   fromJSON(object: any): AccountHistory {
     return {
-      account: isSet(object.account) ? String(object.account) : "",
+      account: isSet(object.account) ? String(object.account) : '',
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
   fromPartial(object: DeepPartial<AccountHistory>): AccountHistory {
     const message = createBaseAccountHistory();
-    message.account = object.account ?? "";
+    message.account = object.account ?? '';
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }

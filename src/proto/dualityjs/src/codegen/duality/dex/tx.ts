@@ -1,7 +1,7 @@
-import { Timestamp } from "../../google/protobuf/timestamp";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Long, isSet, DeepPartial, fromJsonTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { Timestamp } from '../../google/protobuf/timestamp';
+import { Coin } from '../../cosmos/base/v1beta1/coin';
+import { Long, isSet, DeepPartial, fromJsonTimestamp } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export enum LimitOrderType {
   GOOD_TIL_CANCELLED = 0,
   FILL_OR_KILL = 1,
@@ -13,22 +13,22 @@ export enum LimitOrderType {
 export function limitOrderTypeFromJSON(object: any): LimitOrderType {
   switch (object) {
     case 0:
-    case "GOOD_TIL_CANCELLED":
+    case 'GOOD_TIL_CANCELLED':
       return LimitOrderType.GOOD_TIL_CANCELLED;
     case 1:
-    case "FILL_OR_KILL":
+    case 'FILL_OR_KILL':
       return LimitOrderType.FILL_OR_KILL;
     case 2:
-    case "IMMEDIATE_OR_CANCEL":
+    case 'IMMEDIATE_OR_CANCEL':
       return LimitOrderType.IMMEDIATE_OR_CANCEL;
     case 3:
-    case "JUST_IN_TIME":
+    case 'JUST_IN_TIME':
       return LimitOrderType.JUST_IN_TIME;
     case 4:
-    case "GOOD_TIL_TIME":
+    case 'GOOD_TIL_TIME':
       return LimitOrderType.GOOD_TIL_TIME;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return LimitOrderType.UNRECOGNIZED;
   }
@@ -36,18 +36,18 @@ export function limitOrderTypeFromJSON(object: any): LimitOrderType {
 export function limitOrderTypeToJSON(object: LimitOrderType): string {
   switch (object) {
     case LimitOrderType.GOOD_TIL_CANCELLED:
-      return "GOOD_TIL_CANCELLED";
+      return 'GOOD_TIL_CANCELLED';
     case LimitOrderType.FILL_OR_KILL:
-      return "FILL_OR_KILL";
+      return 'FILL_OR_KILL';
     case LimitOrderType.IMMEDIATE_OR_CANCEL:
-      return "IMMEDIATE_OR_CANCEL";
+      return 'IMMEDIATE_OR_CANCEL';
     case LimitOrderType.JUST_IN_TIME:
-      return "JUST_IN_TIME";
+      return 'JUST_IN_TIME';
     case LimitOrderType.GOOD_TIL_TIME:
-      return "GOOD_TIL_TIME";
+      return 'GOOD_TIL_TIME';
     case LimitOrderType.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 export interface DepositOptions {
@@ -143,7 +143,7 @@ export const DepositOptions = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): DepositOptions {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDepositOptions();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -171,10 +171,10 @@ export const DepositOptions = {
 };
 function createBaseMsgDexDeposit(): MsgDexDeposit {
   return {
-    creator: "",
-    receiver: "",
-    tokenA: "",
-    tokenB: "",
+    creator: '',
+    receiver: '',
+    tokenA: '',
+    tokenB: '',
     amountsA: [],
     amountsB: [],
     tickIndexesAToB: [],
@@ -184,16 +184,16 @@ function createBaseMsgDexDeposit(): MsgDexDeposit {
 }
 export const MsgDexDeposit = {
   encode(message: MsgDexDeposit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.tokenA !== "") {
+    if (message.tokenA !== '') {
       writer.uint32(26).string(message.tokenA);
     }
-    if (message.tokenB !== "") {
+    if (message.tokenB !== '') {
       writer.uint32(34).string(message.tokenB);
     }
     for (const v of message.amountsA) {
@@ -219,7 +219,7 @@ export const MsgDexDeposit = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgDexDeposit {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDexDeposit();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -274,10 +274,10 @@ export const MsgDexDeposit = {
   },
   fromJSON(object: any): MsgDexDeposit {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
-      tokenA: isSet(object.tokenA) ? String(object.tokenA) : "",
-      tokenB: isSet(object.tokenB) ? String(object.tokenB) : "",
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      receiver: isSet(object.receiver) ? String(object.receiver) : '',
+      tokenA: isSet(object.tokenA) ? String(object.tokenA) : '',
+      tokenB: isSet(object.tokenB) ? String(object.tokenB) : '',
       amountsA: Array.isArray(object?.amountsA) ? object.amountsA.map((e: any) => String(e)) : [],
       amountsB: Array.isArray(object?.amountsB) ? object.amountsB.map((e: any) => String(e)) : [],
       tickIndexesAToB: Array.isArray(object?.tickIndexesAToB) ? object.tickIndexesAToB.map((e: any) => Long.fromValue(e)) : [],
@@ -287,10 +287,10 @@ export const MsgDexDeposit = {
   },
   fromPartial(object: DeepPartial<MsgDexDeposit>): MsgDexDeposit {
     const message = createBaseMsgDexDeposit();
-    message.creator = object.creator ?? "";
-    message.receiver = object.receiver ?? "";
-    message.tokenA = object.tokenA ?? "";
-    message.tokenB = object.tokenB ?? "";
+    message.creator = object.creator ?? '';
+    message.receiver = object.receiver ?? '';
+    message.tokenA = object.tokenA ?? '';
+    message.tokenB = object.tokenB ?? '';
     message.amountsA = object.amountsA?.map(e => e) || [];
     message.amountsB = object.amountsB?.map(e => e) || [];
     message.tickIndexesAToB = object.tickIndexesAToB?.map(e => Long.fromValue(e)) || [];
@@ -317,7 +317,7 @@ export const MsgDexDepositResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgDexDepositResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDexDepositResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -350,10 +350,10 @@ export const MsgDexDepositResponse = {
 };
 function createBaseMsgWithdrawal(): MsgWithdrawal {
   return {
-    creator: "",
-    receiver: "",
-    tokenA: "",
-    tokenB: "",
+    creator: '',
+    receiver: '',
+    tokenA: '',
+    tokenB: '',
     sharesToRemove: [],
     tickIndexesAToB: [],
     fees: []
@@ -361,16 +361,16 @@ function createBaseMsgWithdrawal(): MsgWithdrawal {
 }
 export const MsgWithdrawal = {
   encode(message: MsgWithdrawal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.tokenA !== "") {
+    if (message.tokenA !== '') {
       writer.uint32(26).string(message.tokenA);
     }
-    if (message.tokenB !== "") {
+    if (message.tokenB !== '') {
       writer.uint32(34).string(message.tokenB);
     }
     for (const v of message.sharesToRemove) {
@@ -390,7 +390,7 @@ export const MsgWithdrawal = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawal();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -439,10 +439,10 @@ export const MsgWithdrawal = {
   },
   fromJSON(object: any): MsgWithdrawal {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
-      tokenA: isSet(object.tokenA) ? String(object.tokenA) : "",
-      tokenB: isSet(object.tokenB) ? String(object.tokenB) : "",
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      receiver: isSet(object.receiver) ? String(object.receiver) : '',
+      tokenA: isSet(object.tokenA) ? String(object.tokenA) : '',
+      tokenB: isSet(object.tokenB) ? String(object.tokenB) : '',
       sharesToRemove: Array.isArray(object?.sharesToRemove) ? object.sharesToRemove.map((e: any) => String(e)) : [],
       tickIndexesAToB: Array.isArray(object?.tickIndexesAToB) ? object.tickIndexesAToB.map((e: any) => Long.fromValue(e)) : [],
       fees: Array.isArray(object?.fees) ? object.fees.map((e: any) => Long.fromValue(e)) : []
@@ -450,10 +450,10 @@ export const MsgWithdrawal = {
   },
   fromPartial(object: DeepPartial<MsgWithdrawal>): MsgWithdrawal {
     const message = createBaseMsgWithdrawal();
-    message.creator = object.creator ?? "";
-    message.receiver = object.receiver ?? "";
-    message.tokenA = object.tokenA ?? "";
-    message.tokenB = object.tokenB ?? "";
+    message.creator = object.creator ?? '';
+    message.receiver = object.receiver ?? '';
+    message.tokenA = object.tokenA ?? '';
+    message.tokenB = object.tokenB ?? '';
     message.sharesToRemove = object.sharesToRemove?.map(e => e) || [];
     message.tickIndexesAToB = object.tickIndexesAToB?.map(e => Long.fromValue(e)) || [];
     message.fees = object.fees?.map(e => Long.fromValue(e)) || [];
@@ -469,7 +469,7 @@ export const MsgWithdrawalResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawalResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawalResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -491,12 +491,12 @@ export const MsgWithdrawalResponse = {
 };
 function createBaseMsgPlaceLimitOrder(): MsgPlaceLimitOrder {
   return {
-    creator: "",
-    receiver: "",
-    tokenIn: "",
-    tokenOut: "",
+    creator: '',
+    receiver: '',
+    tokenIn: '',
+    tokenOut: '',
     tickIndexInToOut: Long.ZERO,
-    amountIn: "",
+    amountIn: '',
     orderType: 0,
     expirationTime: undefined,
     maxAmountOut: undefined
@@ -504,22 +504,22 @@ function createBaseMsgPlaceLimitOrder(): MsgPlaceLimitOrder {
 }
 export const MsgPlaceLimitOrder = {
   encode(message: MsgPlaceLimitOrder, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.tokenIn !== "") {
+    if (message.tokenIn !== '') {
       writer.uint32(26).string(message.tokenIn);
     }
-    if (message.tokenOut !== "") {
+    if (message.tokenOut !== '') {
       writer.uint32(34).string(message.tokenOut);
     }
     if (!message.tickIndexInToOut.isZero()) {
       writer.uint32(40).int64(message.tickIndexInToOut);
     }
-    if (message.amountIn !== "") {
+    if (message.amountIn !== '') {
       writer.uint32(58).string(message.amountIn);
     }
     if (message.orderType !== 0) {
@@ -535,7 +535,7 @@ export const MsgPlaceLimitOrder = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgPlaceLimitOrder {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgPlaceLimitOrder();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -576,12 +576,12 @@ export const MsgPlaceLimitOrder = {
   },
   fromJSON(object: any): MsgPlaceLimitOrder {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
-      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
-      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : "",
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      receiver: isSet(object.receiver) ? String(object.receiver) : '',
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : '',
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : '',
       tickIndexInToOut: isSet(object.tickIndexInToOut) ? Long.fromValue(object.tickIndexInToOut) : Long.ZERO,
-      amountIn: isSet(object.amountIn) ? String(object.amountIn) : "",
+      amountIn: isSet(object.amountIn) ? String(object.amountIn) : '',
       orderType: isSet(object.orderType) ? limitOrderTypeFromJSON(object.orderType) : -1,
       expirationTime: isSet(object.expirationTime) ? fromJsonTimestamp(object.expirationTime) : undefined,
       maxAmountOut: isSet(object.maxAmountOut) ? String(object.maxAmountOut) : undefined
@@ -589,12 +589,12 @@ export const MsgPlaceLimitOrder = {
   },
   fromPartial(object: DeepPartial<MsgPlaceLimitOrder>): MsgPlaceLimitOrder {
     const message = createBaseMsgPlaceLimitOrder();
-    message.creator = object.creator ?? "";
-    message.receiver = object.receiver ?? "";
-    message.tokenIn = object.tokenIn ?? "";
-    message.tokenOut = object.tokenOut ?? "";
+    message.creator = object.creator ?? '';
+    message.receiver = object.receiver ?? '';
+    message.tokenIn = object.tokenIn ?? '';
+    message.tokenOut = object.tokenOut ?? '';
     message.tickIndexInToOut = object.tickIndexInToOut !== undefined && object.tickIndexInToOut !== null ? Long.fromValue(object.tickIndexInToOut) : Long.ZERO;
-    message.amountIn = object.amountIn ?? "";
+    message.amountIn = object.amountIn ?? '';
     message.orderType = object.orderType ?? 0;
     message.expirationTime = object.expirationTime !== undefined && object.expirationTime !== null ? Timestamp.fromPartial(object.expirationTime) : undefined;
     message.maxAmountOut = object.maxAmountOut ?? undefined;
@@ -603,14 +603,14 @@ export const MsgPlaceLimitOrder = {
 };
 function createBaseMsgPlaceLimitOrderResponse(): MsgPlaceLimitOrderResponse {
   return {
-    trancheKey: "",
+    trancheKey: '',
     coinIn: Coin.fromPartial({}),
     takerCoinOut: Coin.fromPartial({})
   };
 }
 export const MsgPlaceLimitOrderResponse = {
   encode(message: MsgPlaceLimitOrderResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(10).string(message.trancheKey);
     }
     if (message.coinIn !== undefined) {
@@ -623,7 +623,7 @@ export const MsgPlaceLimitOrderResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgPlaceLimitOrderResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgPlaceLimitOrderResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -646,14 +646,14 @@ export const MsgPlaceLimitOrderResponse = {
   },
   fromJSON(object: any): MsgPlaceLimitOrderResponse {
     return {
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : "",
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : '',
       coinIn: Coin.fromJSON(object.coinIn),
       takerCoinOut:  Coin.fromJSON(object.takerCoinOut),
     };
   },
   fromPartial(object: DeepPartial<MsgPlaceLimitOrderResponse>): MsgPlaceLimitOrderResponse {
     const message = createBaseMsgPlaceLimitOrderResponse();
-    message.trancheKey = object.trancheKey ?? "";
+    message.trancheKey = object.trancheKey ?? '';
     message.coinIn = Coin.fromPartial(object?.coinIn ? object?.coinIn : {denom: undefined, amount: undefined})
     message.takerCoinOut =Coin.fromPartial(object?.coinIn ? object?.coinIn : {denom: undefined, amount: undefined})
     return message;
@@ -661,23 +661,23 @@ export const MsgPlaceLimitOrderResponse = {
 };
 function createBaseMsgWithdrawFilledLimitOrder(): MsgWithdrawFilledLimitOrder {
   return {
-    creator: "",
-    trancheKey: ""
+    creator: '',
+    trancheKey: ''
   };
 }
 export const MsgWithdrawFilledLimitOrder = {
   encode(message: MsgWithdrawFilledLimitOrder, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(18).string(message.trancheKey);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawFilledLimitOrder {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawFilledLimitOrder();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -697,14 +697,14 @@ export const MsgWithdrawFilledLimitOrder = {
   },
   fromJSON(object: any): MsgWithdrawFilledLimitOrder {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ""
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ''
     };
   },
   fromPartial(object: DeepPartial<MsgWithdrawFilledLimitOrder>): MsgWithdrawFilledLimitOrder {
     const message = createBaseMsgWithdrawFilledLimitOrder();
-    message.creator = object.creator ?? "";
-    message.trancheKey = object.trancheKey ?? "";
+    message.creator = object.creator ?? '';
+    message.trancheKey = object.trancheKey ?? '';
     return message;
   }
 };
@@ -717,7 +717,7 @@ export const MsgWithdrawFilledLimitOrderResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawFilledLimitOrderResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawFilledLimitOrderResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -739,23 +739,23 @@ export const MsgWithdrawFilledLimitOrderResponse = {
 };
 function createBaseMsgCancelLimitOrder(): MsgCancelLimitOrder {
   return {
-    creator: "",
-    trancheKey: ""
+    creator: '',
+    trancheKey: ''
   };
 }
 export const MsgCancelLimitOrder = {
   encode(message: MsgCancelLimitOrder, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.trancheKey !== "") {
+    if (message.trancheKey !== '') {
       writer.uint32(18).string(message.trancheKey);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelLimitOrder {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCancelLimitOrder();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -775,14 +775,14 @@ export const MsgCancelLimitOrder = {
   },
   fromJSON(object: any): MsgCancelLimitOrder {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ""
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : ''
     };
   },
   fromPartial(object: DeepPartial<MsgCancelLimitOrder>): MsgCancelLimitOrder {
     const message = createBaseMsgCancelLimitOrder();
-    message.creator = object.creator ?? "";
-    message.trancheKey = object.trancheKey ?? "";
+    message.creator = object.creator ?? '';
+    message.trancheKey = object.trancheKey ?? '';
     return message;
   }
 };
@@ -795,7 +795,7 @@ export const MsgCancelLimitOrderResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelLimitOrderResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCancelLimitOrderResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -829,7 +829,7 @@ export const MultiHopRoute = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MultiHopRoute {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMultiHopRoute();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -857,29 +857,29 @@ export const MultiHopRoute = {
 };
 function createBaseMsgMultiHopSwap(): MsgMultiHopSwap {
   return {
-    creator: "",
-    receiver: "",
+    creator: '',
+    receiver: '',
     routes: [],
-    amountIn: "",
-    exitLimitPrice: "",
+    amountIn: '',
+    exitLimitPrice: '',
     pickBestRoute: false
   };
 }
 export const MsgMultiHopSwap = {
   encode(message: MsgMultiHopSwap, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
     for (const v of message.routes) {
       MultiHopRoute.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-    if (message.amountIn !== "") {
+    if (message.amountIn !== '') {
       writer.uint32(34).string(message.amountIn);
     }
-    if (message.exitLimitPrice !== "") {
+    if (message.exitLimitPrice !== '') {
       writer.uint32(42).string(message.exitLimitPrice);
     }
     if (message.pickBestRoute === true) {
@@ -889,7 +889,7 @@ export const MsgMultiHopSwap = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiHopSwap {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMultiHopSwap();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -921,21 +921,21 @@ export const MsgMultiHopSwap = {
   },
   fromJSON(object: any): MsgMultiHopSwap {
     return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
+      creator: isSet(object.creator) ? String(object.creator) : '',
+      receiver: isSet(object.receiver) ? String(object.receiver) : '',
       routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => MultiHopRoute.fromJSON(e)) : [],
-      amountIn: isSet(object.amountIn) ? String(object.amountIn) : "",
-      exitLimitPrice: isSet(object.exitLimitPrice) ? String(object.exitLimitPrice) : "",
+      amountIn: isSet(object.amountIn) ? String(object.amountIn) : '',
+      exitLimitPrice: isSet(object.exitLimitPrice) ? String(object.exitLimitPrice) : '',
       pickBestRoute: isSet(object.pickBestRoute) ? Boolean(object.pickBestRoute) : false
     };
   },
   fromPartial(object: DeepPartial<MsgMultiHopSwap>): MsgMultiHopSwap {
     const message = createBaseMsgMultiHopSwap();
-    message.creator = object.creator ?? "";
-    message.receiver = object.receiver ?? "";
+    message.creator = object.creator ?? '';
+    message.receiver = object.receiver ?? '';
     message.routes = object.routes?.map(e => MultiHopRoute.fromPartial(e)) || [];
-    message.amountIn = object.amountIn ?? "";
-    message.exitLimitPrice = object.exitLimitPrice ?? "";
+    message.amountIn = object.amountIn ?? '';
+    message.exitLimitPrice = object.exitLimitPrice ?? '';
     message.pickBestRoute = object.pickBestRoute ?? false;
     return message;
   }
@@ -954,7 +954,7 @@ export const MsgMultiHopSwapResponse = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiHopSwapResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMultiHopSwapResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();

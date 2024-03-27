@@ -1,6 +1,6 @@
-import { PairID } from "./pair_id";
-import { Long, isSet, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { PairID } from './pair_id';
+import { Long, isSet, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export interface DepositRecord {
   pairID: PairID;
   sharesOwned: string;
@@ -12,7 +12,7 @@ export interface DepositRecord {
 function createBaseDepositRecord(): DepositRecord {
   return {
     pairID: PairID.fromPartial({}),
-    sharesOwned: "",
+    sharesOwned: '',
     centerTickIndex: Long.ZERO,
     lowerTickIndex: Long.ZERO,
     upperTickIndex: Long.ZERO,
@@ -24,7 +24,7 @@ export const DepositRecord = {
     if (message.pairID !== undefined) {
       PairID.encode(message.pairID, writer.uint32(10).fork()).ldelim();
     }
-    if (message.sharesOwned !== "") {
+    if (message.sharesOwned !== '') {
       writer.uint32(18).string(message.sharesOwned);
     }
     if (!message.centerTickIndex.isZero()) {
@@ -43,7 +43,7 @@ export const DepositRecord = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): DepositRecord {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDepositRecord();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -76,7 +76,7 @@ export const DepositRecord = {
   fromJSON(object: any): DepositRecord {
     return {
       pairID: isSet(object.pairID) ? PairID.fromJSON(object.pairID) : undefined,
-      sharesOwned: isSet(object.sharesOwned) ? String(object.sharesOwned) : "",
+      sharesOwned: isSet(object.sharesOwned) ? String(object.sharesOwned) : '',
       centerTickIndex: isSet(object.centerTickIndex) ? Long.fromValue(object.centerTickIndex) : Long.ZERO,
       lowerTickIndex: isSet(object.lowerTickIndex) ? Long.fromValue(object.lowerTickIndex) : Long.ZERO,
       upperTickIndex: isSet(object.upperTickIndex) ? Long.fromValue(object.upperTickIndex) : Long.ZERO,
@@ -86,7 +86,7 @@ export const DepositRecord = {
   fromPartial(object: DeepPartial<DepositRecord>): DepositRecord {
     const message = createBaseDepositRecord();
     message.pairID = object.pairID !== undefined && object.pairID !== null ? PairID.fromPartial(object.pairID) : undefined;
-    message.sharesOwned = object.sharesOwned ?? "";
+    message.sharesOwned = object.sharesOwned ?? '';
     message.centerTickIndex = object.centerTickIndex !== undefined && object.centerTickIndex !== null ? Long.fromValue(object.centerTickIndex) : Long.ZERO;
     message.lowerTickIndex = object.lowerTickIndex !== undefined && object.lowerTickIndex !== null ? Long.fromValue(object.lowerTickIndex) : Long.ZERO;
     message.upperTickIndex = object.upperTickIndex !== undefined && object.upperTickIndex !== null ? Long.fromValue(object.upperTickIndex) : Long.ZERO;

@@ -1,5 +1,5 @@
-import { LCDClient } from "@cosmology/lcd";
-import { QueryEpochsInfoRequest, QueryEpochsInfoResponse, QueryCurrentEpochRequest, QueryCurrentEpochResponse } from "./query";
+import { LCDClient } from '@cosmology/lcd';
+import { QueryEpochsInfoRequest, QueryEpochsInfoResponse, QueryCurrentEpochRequest, QueryCurrentEpochResponse } from './query';
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -13,7 +13,7 @@ export class LCDQueryClient {
   }
   /* EpochInfos provide running epochInfos */
   async epochInfos(_params: QueryEpochsInfoRequest = {}): Promise<QueryEpochsInfoResponse> {
-    const endpoint = `duality/epochs/epochs`;
+    const endpoint = 'duality/epochs/epochs';
     return QueryEpochsInfoResponse.fromJSON(await this.req.get<QueryEpochsInfoResponse>(endpoint));
   }
   /* CurrentEpoch provide current epoch of specified identifier */
@@ -21,10 +21,10 @@ export class LCDQueryClient {
     const options: any = {
       params: {}
     };
-    if (typeof params?.identifier !== "undefined") {
+    if (typeof params?.identifier !== 'undefined') {
       options.params.identifier = params.identifier;
     }
-    const endpoint = `duality/epochs/current_epoch`;
+    const endpoint = 'duality/epochs/current_epoch';
     return QueryCurrentEpochResponse.fromJSON(await this.req.get<QueryCurrentEpochResponse>(endpoint, options));
   }
 }

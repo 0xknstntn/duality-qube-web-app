@@ -1,6 +1,6 @@
-import { TradePairID } from "./trade_pair_id";
-import { Long, isSet, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { TradePairID } from './trade_pair_id';
+import { Long, isSet, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 export interface PoolReservesKey {
   tradePairID: TradePairID;
   TickIndexTakerToMaker: Long;
@@ -34,7 +34,7 @@ export const PoolReservesKey = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): PoolReservesKey {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolReservesKey();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -73,9 +73,9 @@ export const PoolReservesKey = {
 function createBasePoolReserves(): PoolReserves {
   return {
     key: PoolReservesKey.fromPartial({}),
-    reservesMakerDenom: "",
-    priceTakerToMaker: "",
-    priceOppositeTakerToMaker: ""
+    reservesMakerDenom: '',
+    priceTakerToMaker: '',
+    priceOppositeTakerToMaker: ''
   };
 }
 export const PoolReserves = {
@@ -83,20 +83,20 @@ export const PoolReserves = {
     if (message.key !== undefined) {
       PoolReservesKey.encode(message.key, writer.uint32(10).fork()).ldelim();
     }
-    if (message.reservesMakerDenom !== "") {
+    if (message.reservesMakerDenom !== '') {
       writer.uint32(18).string(message.reservesMakerDenom);
     }
-    if (message.priceTakerToMaker !== "") {
+    if (message.priceTakerToMaker !== '') {
       writer.uint32(26).string(message.priceTakerToMaker);
     }
-    if (message.priceOppositeTakerToMaker !== "") {
+    if (message.priceOppositeTakerToMaker !== '') {
       writer.uint32(34).string(message.priceOppositeTakerToMaker);
     }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): PoolReserves {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolReserves();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -123,17 +123,17 @@ export const PoolReserves = {
   fromJSON(object: any): PoolReserves {
     return {
       key: isSet(object.key) ? PoolReservesKey.fromJSON(object.key) : undefined,
-      reservesMakerDenom: isSet(object.reservesMakerDenom) ? String(object.reservesMakerDenom) : "",
-      priceTakerToMaker: isSet(object.priceTakerToMaker) ? String(object.priceTakerToMaker) : "",
-      priceOppositeTakerToMaker: isSet(object.priceOppositeTakerToMaker) ? String(object.priceOppositeTakerToMaker) : ""
+      reservesMakerDenom: isSet(object.reservesMakerDenom) ? String(object.reservesMakerDenom) : '',
+      priceTakerToMaker: isSet(object.priceTakerToMaker) ? String(object.priceTakerToMaker) : '',
+      priceOppositeTakerToMaker: isSet(object.priceOppositeTakerToMaker) ? String(object.priceOppositeTakerToMaker) : ''
     };
   },
   fromPartial(object: DeepPartial<PoolReserves>): PoolReserves {
     const message = createBasePoolReserves();
     message.key = object.key !== undefined && object.key !== null ? PoolReservesKey.fromPartial(object.key) : undefined;
-    message.reservesMakerDenom = object.reservesMakerDenom ?? "";
-    message.priceTakerToMaker = object.priceTakerToMaker ?? "";
-    message.priceOppositeTakerToMaker = object.priceOppositeTakerToMaker ?? "";
+    message.reservesMakerDenom = object.reservesMakerDenom ?? '';
+    message.priceTakerToMaker = object.priceTakerToMaker ?? '';
+    message.priceOppositeTakerToMaker = object.priceOppositeTakerToMaker ?? '';
     return message;
   }
 };

@@ -1,9 +1,9 @@
 //@ts-nocheck
-import { AminoMsg } from "@cosmjs/amino";
-import { Long } from "../../helpers";
-import { limitOrderTypeFromJSON, MsgDeposit, MsgWithdrawal, MsgPlaceLimitOrder, MsgWithdrawFilledLimitOrder, MsgCancelLimitOrder, MsgMultiHopSwap } from "./tx";
+import { AminoMsg } from '@cosmjs/amino';
+import { Long } from '../../helpers';
+import { limitOrderTypeFromJSON, MsgDeposit, MsgWithdrawal, MsgPlaceLimitOrder, MsgWithdrawFilledLimitOrder, MsgCancelLimitOrder, MsgMultiHopSwap } from './tx';
 export interface MsgDepositAminoType extends AminoMsg {
-  type: "/duality.dex.MsgDeposit";
+  type: '/duality.dex.MsgDeposit';
   value: {
     creator: string;
     receiver: string;
@@ -19,7 +19,7 @@ export interface MsgDepositAminoType extends AminoMsg {
   };
 }
 export interface MsgWithdrawalAminoType extends AminoMsg {
-  type: "/duality.dex.MsgWithdrawal";
+  type: '/duality.dex.MsgWithdrawal';
   value: {
     creator: string;
     receiver: string;
@@ -31,7 +31,7 @@ export interface MsgWithdrawalAminoType extends AminoMsg {
   };
 }
 export interface MsgPlaceLimitOrderAminoType extends AminoMsg {
-  type: "/duality.dex.MsgPlaceLimitOrder";
+  type: '/duality.dex.MsgPlaceLimitOrder';
   value: {
     creator: string;
     receiver: string;
@@ -48,21 +48,21 @@ export interface MsgPlaceLimitOrderAminoType extends AminoMsg {
   };
 }
 export interface MsgWithdrawFilledLimitOrderAminoType extends AminoMsg {
-  type: "/duality.dex.MsgWithdrawFilledLimitOrder";
+  type: '/duality.dex.MsgWithdrawFilledLimitOrder';
   value: {
     creator: string;
     trancheKey: string;
   };
 }
 export interface MsgCancelLimitOrderAminoType extends AminoMsg {
-  type: "/duality.dex.MsgCancelLimitOrder";
+  type: '/duality.dex.MsgCancelLimitOrder';
   value: {
     creator: string;
     trancheKey: string;
   };
 }
 export interface MsgMultiHopSwapAminoType extends AminoMsg {
-  type: "/duality.dex.MsgMultiHopSwap";
+  type: '/duality.dex.MsgMultiHopSwap';
   value: {
     creator: string;
     receiver: string;
@@ -75,8 +75,8 @@ export interface MsgMultiHopSwapAminoType extends AminoMsg {
   };
 }
 export const AminoConverter = {
-  "/duality.dex.MsgDeposit": {
-    aminoType: "/duality.dex.MsgDeposit",
+  '/duality.dex.MsgDeposit': {
+    aminoType: '/duality.dex.MsgDeposit',
     toAmino: ({
       creator,
       receiver,
@@ -87,7 +87,7 @@ export const AminoConverter = {
       tickIndexesAToB,
       fees,
       Options
-    }: MsgDeposit): MsgDepositAminoType["value"] => {
+    }: MsgDeposit): MsgDepositAminoType['value'] => {
       return {
         creator,
         receiver,
@@ -112,7 +112,7 @@ export const AminoConverter = {
       tickIndexesAToB,
       fees,
       Options
-    }: MsgDepositAminoType["value"]): MsgDeposit => {
+    }: MsgDepositAminoType['value']): MsgDeposit => {
       return {
         creator,
         receiver,
@@ -128,8 +128,8 @@ export const AminoConverter = {
       };
     }
   },
-  "/duality.dex.MsgWithdrawal": {
-    aminoType: "/duality.dex.MsgWithdrawal",
+  '/duality.dex.MsgWithdrawal': {
+    aminoType: '/duality.dex.MsgWithdrawal',
     toAmino: ({
       creator,
       receiver,
@@ -138,7 +138,7 @@ export const AminoConverter = {
       sharesToRemove,
       tickIndexesAToB,
       fees
-    }: MsgWithdrawal): MsgWithdrawalAminoType["value"] => {
+    }: MsgWithdrawal): MsgWithdrawalAminoType['value'] => {
       return {
         creator,
         receiver,
@@ -157,7 +157,7 @@ export const AminoConverter = {
       sharesToRemove,
       tickIndexesAToB,
       fees
-    }: MsgWithdrawalAminoType["value"]): MsgWithdrawal => {
+    }: MsgWithdrawalAminoType['value']): MsgWithdrawal => {
       return {
         creator,
         receiver,
@@ -169,8 +169,8 @@ export const AminoConverter = {
       };
     }
   },
-  "/duality.dex.MsgPlaceLimitOrder": {
-    aminoType: "/duality.dex.MsgPlaceLimitOrder",
+  '/duality.dex.MsgPlaceLimitOrder': {
+    aminoType: '/duality.dex.MsgPlaceLimitOrder',
     toAmino: ({
       creator,
       receiver,
@@ -181,7 +181,7 @@ export const AminoConverter = {
       orderType,
       expirationTime,
       maxAmountOut
-    }: MsgPlaceLimitOrder): MsgPlaceLimitOrderAminoType["value"] => {
+    }: MsgPlaceLimitOrder): MsgPlaceLimitOrderAminoType['value'] => {
       return {
         creator,
         receiver,
@@ -204,7 +204,7 @@ export const AminoConverter = {
       orderType,
       expirationTime,
       maxAmountOut
-    }: MsgPlaceLimitOrderAminoType["value"]): MsgPlaceLimitOrder => {
+    }: MsgPlaceLimitOrderAminoType['value']): MsgPlaceLimitOrder => {
       return {
         creator,
         receiver,
@@ -218,12 +218,12 @@ export const AminoConverter = {
       };
     }
   },
-  "/duality.dex.MsgWithdrawFilledLimitOrder": {
-    aminoType: "/duality.dex.MsgWithdrawFilledLimitOrder",
+  '/duality.dex.MsgWithdrawFilledLimitOrder': {
+    aminoType: '/duality.dex.MsgWithdrawFilledLimitOrder',
     toAmino: ({
       creator,
       trancheKey
-    }: MsgWithdrawFilledLimitOrder): MsgWithdrawFilledLimitOrderAminoType["value"] => {
+    }: MsgWithdrawFilledLimitOrder): MsgWithdrawFilledLimitOrderAminoType['value'] => {
       return {
         creator,
         trancheKey
@@ -232,19 +232,19 @@ export const AminoConverter = {
     fromAmino: ({
       creator,
       trancheKey
-    }: MsgWithdrawFilledLimitOrderAminoType["value"]): MsgWithdrawFilledLimitOrder => {
+    }: MsgWithdrawFilledLimitOrderAminoType['value']): MsgWithdrawFilledLimitOrder => {
       return {
         creator,
         trancheKey
       };
     }
   },
-  "/duality.dex.MsgCancelLimitOrder": {
-    aminoType: "/duality.dex.MsgCancelLimitOrder",
+  '/duality.dex.MsgCancelLimitOrder': {
+    aminoType: '/duality.dex.MsgCancelLimitOrder',
     toAmino: ({
       creator,
       trancheKey
-    }: MsgCancelLimitOrder): MsgCancelLimitOrderAminoType["value"] => {
+    }: MsgCancelLimitOrder): MsgCancelLimitOrderAminoType['value'] => {
       return {
         creator,
         trancheKey
@@ -253,15 +253,15 @@ export const AminoConverter = {
     fromAmino: ({
       creator,
       trancheKey
-    }: MsgCancelLimitOrderAminoType["value"]): MsgCancelLimitOrder => {
+    }: MsgCancelLimitOrderAminoType['value']): MsgCancelLimitOrder => {
       return {
         creator,
         trancheKey
       };
     }
   },
-  "/duality.dex.MsgMultiHopSwap": {
-    aminoType: "/duality.dex.MsgMultiHopSwap",
+  '/duality.dex.MsgMultiHopSwap': {
+    aminoType: '/duality.dex.MsgMultiHopSwap',
     toAmino: ({
       creator,
       receiver,
@@ -269,7 +269,7 @@ export const AminoConverter = {
       amountIn,
       exitLimitPrice,
       pickBestRoute
-    }: MsgMultiHopSwap): MsgMultiHopSwapAminoType["value"] => {
+    }: MsgMultiHopSwap): MsgMultiHopSwapAminoType['value'] => {
       return {
         creator,
         receiver,
@@ -288,7 +288,7 @@ export const AminoConverter = {
       amountIn,
       exitLimitPrice,
       pickBestRoute
-    }: MsgMultiHopSwapAminoType["value"]): MsgMultiHopSwap => {
+    }: MsgMultiHopSwapAminoType['value']): MsgMultiHopSwap => {
       return {
         creator,
         receiver,

@@ -2,8 +2,8 @@ import { useState, useCallback } from 'react';
 import { DeliverTxResponse } from '@cosmjs/stargate';
 import BigNumber from 'bignumber.js';
 import Long from 'long';
-import { Registry } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes } from "@cosmjs/stargate";
+import { Registry } from '@cosmjs/proto-signing';
+import { defaultRegistryTypes } from '@cosmjs/stargate';
 import { duality } from '@duality-labs/dualityjs';
 import { useWeb3 } from '../../lib/web3/useWeb3';
 //import rpcClient from '../../lib/web3/rpcMsgClient';
@@ -28,8 +28,8 @@ import { useOrderedTokenPair } from '../../lib/web3/hooks/useTokenPairs';
 import { useTokenPairTickLiquidity } from '../../lib/web3/hooks/useTickLiquidity';
 import { formatAmount } from '../../lib/utils/number';
 
-import { MsgDexDeposit } from "../../proto/dualityjs/src/codegen/duality/dex/tx";
-import { SigningStargateClient } from "@cosmjs/stargate";  
+import { MsgDexDeposit } from '../../proto/dualityjs/src/codegen/duality/dex/tx';
+import { SigningStargateClient } from '@cosmjs/stargate';  
 
 
 interface SendDepositResponse {
@@ -260,11 +260,11 @@ export function useDeposit([tokenA, tokenB]: [
           //console.log("QLABS DEBUG: init client")
           //const client = await rpcClient(web3.wallet);
           const reg = new Registry(defaultRegistryTypes)
-          reg.register("/core.dex.v1beta1.MsgDexDeposit", MsgDexDeposit) 
+          reg.register('/core.dex.v1beta1.MsgDexDeposit', MsgDexDeposit) 
 
 
 
-          let msg_qube_dex_deposit = duality.dex.MessageComposer.withTypeUrl.deposit({
+          const msg_qube_dex_deposit = duality.dex.MessageComposer.withTypeUrl.deposit({
             creator: web3Address,
             tokenA: tokenIdA,
             tokenB: tokenIdB,
@@ -289,7 +289,7 @@ export function useDeposit([tokenA, tokenB]: [
               disable_autoswap: false,
             })),
           });
-          var qube_client = await SigningStargateClient.connectWithSigner(
+          const qube_client = await SigningStargateClient.connectWithSigner(
                   REACT_APP__RPC_API,
                   web3.wallet,
                   {
@@ -297,7 +297,7 @@ export function useDeposit([tokenA, tokenB]: [
                   }
           );
           
-          msg_qube_dex_deposit.typeUrl = "/core.dex.v1beta1.MsgDexDeposit"
+          msg_qube_dex_deposit.typeUrl = '/core.dex.v1beta1.MsgDexDeposit'
           //console.log(msg_qube_dex_deposit)
           const res = await qube_client.signAndBroadcast(
             web3.address,

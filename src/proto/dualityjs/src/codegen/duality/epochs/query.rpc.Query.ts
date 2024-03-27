@@ -1,9 +1,9 @@
-import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
-import { ReactQueryParams } from "../../react-query";
-import { useQuery } from "@tanstack/react-query";
-import { QueryEpochsInfoRequest, QueryEpochsInfoResponse, QueryCurrentEpochRequest, QueryCurrentEpochResponse } from "./query";
+import { Rpc } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from '@cosmjs/stargate';
+import { ReactQueryParams } from '../../react-query';
+import { useQuery } from '@tanstack/react-query';
+import { QueryEpochsInfoRequest, QueryEpochsInfoResponse, QueryCurrentEpochRequest, QueryCurrentEpochResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** EpochInfos provide running epochInfos */
@@ -20,12 +20,12 @@ export class QueryClientImpl implements Query {
   }
   epochInfos(request: QueryEpochsInfoRequest = {}): Promise<QueryEpochsInfoResponse> {
     const data = QueryEpochsInfoRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.epochs.Query", "EpochInfos", data);
+    const promise = this.rpc.request('duality.epochs.Query', 'EpochInfos', data);
     return promise.then(data => QueryEpochsInfoResponse.decode(new _m0.Reader(data)));
   }
   currentEpoch(request: QueryCurrentEpochRequest): Promise<QueryCurrentEpochResponse> {
     const data = QueryCurrentEpochRequest.encode(request).finish();
-    const promise = this.rpc.request("duality.epochs.Query", "CurrentEpoch", data);
+    const promise = this.rpc.request('duality.epochs.Query', 'CurrentEpoch', data);
     return promise.then(data => QueryCurrentEpochResponse.decode(new _m0.Reader(data)));
   }
 }
@@ -63,8 +63,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseEpochInfosQuery<TData>) => {
-    return useQuery<QueryEpochsInfoResponse, Error, TData>(["epochInfosQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryEpochsInfoResponse, Error, TData>(['epochInfosQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.epochInfos(request);
     }, options);
   };
@@ -72,8 +72,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     request,
     options
   }: UseCurrentEpochQuery<TData>) => {
-    return useQuery<QueryCurrentEpochResponse, Error, TData>(["currentEpochQuery", request], () => {
-      if (!queryService) throw new Error("Query Service not initialized");
+    return useQuery<QueryCurrentEpochResponse, Error, TData>(['currentEpochQuery', request], () => {
+      if (!queryService) throw new Error('Query Service not initialized');
       return queryService.currentEpoch(request);
     }, options);
   };

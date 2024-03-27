@@ -1,7 +1,7 @@
-import { Timestamp } from "../../google/protobuf/timestamp";
-import { Duration } from "../../google/protobuf/duration";
-import { Long, isSet, fromJsonTimestamp, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { Timestamp } from '../../google/protobuf/timestamp';
+import { Duration } from '../../google/protobuf/duration';
+import { Long, isSet, fromJsonTimestamp, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 /**
  * EpochInfo is a struct that describes the data going into
  * a timer defined by the x/epochs module.
@@ -66,7 +66,7 @@ export interface GenesisState {
 }
 function createBaseEpochInfo(): EpochInfo {
   return {
-    identifier: "",
+    identifier: '',
     start_time: Timestamp.fromPartial({}),
     duration: Duration.fromPartial({}),
     current_epoch: Long.ZERO,
@@ -77,7 +77,7 @@ function createBaseEpochInfo(): EpochInfo {
 }
 export const EpochInfo = {
   encode(message: EpochInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.identifier !== "") {
+    if (message.identifier !== '') {
       writer.uint32(10).string(message.identifier);
     }
     if (message.start_time !== undefined) {
@@ -102,7 +102,7 @@ export const EpochInfo = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEpochInfo();
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -137,7 +137,7 @@ export const EpochInfo = {
   },
   fromJSON(object: any): EpochInfo {
     return {
-      identifier: isSet(object.identifier) ? String(object.identifier) : "",
+      identifier: isSet(object.identifier) ? String(object.identifier) : '',
       start_time: isSet(object.start_time) ? fromJsonTimestamp(object.start_time) : undefined,
       duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
       current_epoch: isSet(object.current_epoch) ? Long.fromValue(object.current_epoch) : Long.ZERO,
@@ -148,7 +148,7 @@ export const EpochInfo = {
   },
   fromPartial(object: DeepPartial<EpochInfo>): EpochInfo {
     const message = createBaseEpochInfo();
-    message.identifier = object.identifier ?? "";
+    message.identifier = object.identifier ?? '';
     message.start_time = object.start_time !== undefined && object.start_time !== null ? Timestamp.fromPartial(object.start_time) : undefined;
     message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
     message.current_epoch = object.current_epoch !== undefined && object.current_epoch !== null ? Long.fromValue(object.current_epoch) : Long.ZERO;
@@ -172,7 +172,7 @@ export const GenesisState = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
       const tag = reader.uint32();

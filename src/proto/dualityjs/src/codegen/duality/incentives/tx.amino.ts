@@ -1,9 +1,9 @@
 //@ts-nocheck
-import { AminoMsg } from "@cosmjs/amino";
-import { Long } from "../../helpers";
-import { MsgCreateGauge, MsgAddToGauge, MsgStake, MsgUnstake } from "./tx";
+import { AminoMsg } from '@cosmjs/amino';
+import { Long } from '../../helpers';
+import { MsgCreateGauge, MsgAddToGauge, MsgStake, MsgUnstake } from './tx';
 export interface MsgCreateGaugeAminoType extends AminoMsg {
-  type: "/duality.incentives.MsgCreateGauge";
+  type: '/duality.incentives.MsgCreateGauge';
   value: {
     is_perpetual: boolean;
     owner: string;
@@ -28,7 +28,7 @@ export interface MsgCreateGaugeAminoType extends AminoMsg {
   };
 }
 export interface MsgAddToGaugeAminoType extends AminoMsg {
-  type: "/duality.incentives.MsgAddToGauge";
+  type: '/duality.incentives.MsgAddToGauge';
   value: {
     owner: string;
     gauge_id: string;
@@ -39,7 +39,7 @@ export interface MsgAddToGaugeAminoType extends AminoMsg {
   };
 }
 export interface MsgStakeAminoType extends AminoMsg {
-  type: "/duality.incentives.MsgStake";
+  type: '/duality.incentives.MsgStake';
   value: {
     owner: string;
     coins: {
@@ -49,7 +49,7 @@ export interface MsgStakeAminoType extends AminoMsg {
   };
 }
 export interface MsgUnstakeAminoType extends AminoMsg {
-  type: "/duality.incentives.MsgUnstake";
+  type: '/duality.incentives.MsgUnstake';
   value: {
     owner: string;
     unstakes: {
@@ -62,8 +62,8 @@ export interface MsgUnstakeAminoType extends AminoMsg {
   };
 }
 export const AminoConverter = {
-  "/duality.incentives.MsgCreateGauge": {
-    aminoType: "/duality.incentives.MsgCreateGauge",
+  '/duality.incentives.MsgCreateGauge': {
+    aminoType: '/duality.incentives.MsgCreateGauge',
     toAmino: ({
       is_perpetual,
       owner,
@@ -72,7 +72,7 @@ export const AminoConverter = {
       start_time,
       num_epochs_paid_over,
       pricing_tick
-    }: MsgCreateGauge): MsgCreateGaugeAminoType["value"] => {
+    }: MsgCreateGauge): MsgCreateGaugeAminoType['value'] => {
       return {
         is_perpetual,
         owner,
@@ -101,7 +101,7 @@ export const AminoConverter = {
       start_time,
       num_epochs_paid_over,
       pricing_tick
-    }: MsgCreateGaugeAminoType["value"]): MsgCreateGauge => {
+    }: MsgCreateGaugeAminoType['value']): MsgCreateGauge => {
       return {
         is_perpetual,
         owner,
@@ -123,13 +123,13 @@ export const AminoConverter = {
       };
     }
   },
-  "/duality.incentives.MsgAddToGauge": {
-    aminoType: "/duality.incentives.MsgAddToGauge",
+  '/duality.incentives.MsgAddToGauge': {
+    aminoType: '/duality.incentives.MsgAddToGauge',
     toAmino: ({
       owner,
       gauge_id,
       rewards
-    }: MsgAddToGauge): MsgAddToGaugeAminoType["value"] => {
+    }: MsgAddToGauge): MsgAddToGaugeAminoType['value'] => {
       return {
         owner,
         gauge_id: gauge_id.toString(),
@@ -143,7 +143,7 @@ export const AminoConverter = {
       owner,
       gauge_id,
       rewards
-    }: MsgAddToGaugeAminoType["value"]): MsgAddToGauge => {
+    }: MsgAddToGaugeAminoType['value']): MsgAddToGauge => {
       return {
         owner,
         gauge_id: Long.fromString(gauge_id),
@@ -154,12 +154,12 @@ export const AminoConverter = {
       };
     }
   },
-  "/duality.incentives.MsgStake": {
-    aminoType: "/duality.incentives.MsgStake",
+  '/duality.incentives.MsgStake': {
+    aminoType: '/duality.incentives.MsgStake',
     toAmino: ({
       owner,
       coins
-    }: MsgStake): MsgStakeAminoType["value"] => {
+    }: MsgStake): MsgStakeAminoType['value'] => {
       return {
         owner,
         coins: coins.map(el0 => ({
@@ -171,7 +171,7 @@ export const AminoConverter = {
     fromAmino: ({
       owner,
       coins
-    }: MsgStakeAminoType["value"]): MsgStake => {
+    }: MsgStakeAminoType['value']): MsgStake => {
       return {
         owner,
         coins: coins.map(el0 => ({
@@ -181,12 +181,12 @@ export const AminoConverter = {
       };
     }
   },
-  "/duality.incentives.MsgUnstake": {
-    aminoType: "/duality.incentives.MsgUnstake",
+  '/duality.incentives.MsgUnstake': {
+    aminoType: '/duality.incentives.MsgUnstake',
     toAmino: ({
       owner,
       unstakes
-    }: MsgUnstake): MsgUnstakeAminoType["value"] => {
+    }: MsgUnstake): MsgUnstakeAminoType['value'] => {
       return {
         owner,
         unstakes: unstakes.map(el0 => ({
@@ -201,7 +201,7 @@ export const AminoConverter = {
     fromAmino: ({
       owner,
       unstakes
-    }: MsgUnstakeAminoType["value"]): MsgUnstake => {
+    }: MsgUnstakeAminoType['value']): MsgUnstake => {
       return {
         owner,
         unstakes: unstakes.map(el0 => ({

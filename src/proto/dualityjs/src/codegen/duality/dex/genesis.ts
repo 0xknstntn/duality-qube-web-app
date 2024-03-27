@@ -1,10 +1,10 @@
-import { Params } from "./params";
-import { TickLiquidity } from "./tick_liquidity";
-import { LimitOrderTranche } from "./limit_order_tranche";
-import { LimitOrderTrancheUser } from "./limit_order_tranche_user";
-import { PoolMetadata } from "./pool_metadata";
-import { Long, isSet, DeepPartial } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { Params } from './params';
+import { TickLiquidity } from './tick_liquidity';
+import { LimitOrderTranche } from './limit_order_tranche';
+import { LimitOrderTrancheUser } from './limit_order_tranche_user';
+import { PoolMetadata } from './pool_metadata';
+import { Long, isSet, DeepPartial } from '../../helpers';
+import * as _m0 from 'protobufjs/minimal';
 /** GenesisState defines the dex module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -48,7 +48,7 @@ export const GenesisState = {
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
       const tag = reader.uint32();
