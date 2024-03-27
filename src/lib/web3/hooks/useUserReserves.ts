@@ -2,8 +2,8 @@ import BigNumber from 'bignumber.js';
 import { useMemo, useRef, useEffect, useState } from 'react';
 import { UseQueryResult, useQueries } from '@tanstack/react-query';
 import { Coin } from '@cosmjs/proto-signing';
-import { PoolMetadata } from '../../proto/dualityjs//types/codegen/duality/dex/pool_metadata';
-import { DepositRecord } from '../../proto/dualityjs//types/codegen/duality/dex/deposit_record';
+import { PoolMetadata } from '@duality-labs/dualityjs/types/codegen/duality/dex/pool_metadata';
+import { DepositRecord } from '@duality-labs/dualityjs/types/codegen/duality/dex/deposit_record';
 
 import { useDeepCompareMemoize } from 'use-deep-compare-effect';
 
@@ -25,7 +25,7 @@ import { useTokenPairMapLiquidity } from '../../web3/hooks/useTickLiquidity';
 import { useOrderedTokenPair } from './useTokenPairs';
 import { useUserDexDenomBalances } from './useUserBankBalances';
 import { getDexSharePoolID } from '../utils/shares';
-import { PairID } from '../../proto/dualityjs//types/codegen/duality/dex/pair_id';
+import { PairID } from '@duality-labs/dualityjs/types/codegen/duality/dex/pair_id';
 
 interface PairReserves {
   reserves0: string;

@@ -647,15 +647,15 @@ export const MsgPlaceLimitOrderResponse = {
   fromJSON(object: any): MsgPlaceLimitOrderResponse {
     return {
       trancheKey: isSet(object.trancheKey) ? String(object.trancheKey) : "",
-      coinIn: isSet(object.coinIn) ? Coin.fromJSON(object.coinIn) : undefined,
-      takerCoinOut: isSet(object.takerCoinOut) ? Coin.fromJSON(object.takerCoinOut) : undefined
+      coinIn: Coin.fromJSON(object.coinIn),
+      takerCoinOut:  Coin.fromJSON(object.takerCoinOut),
     };
   },
   fromPartial(object: DeepPartial<MsgPlaceLimitOrderResponse>): MsgPlaceLimitOrderResponse {
     const message = createBaseMsgPlaceLimitOrderResponse();
     message.trancheKey = object.trancheKey ?? "";
-    message.coinIn = object.coinIn !== undefined && object.coinIn !== null ? Coin.fromPartial(object.coinIn) : undefined;
-    message.takerCoinOut = object.takerCoinOut !== undefined && object.takerCoinOut !== null ? Coin.fromPartial(object.takerCoinOut) : undefined;
+    message.coinIn = Coin.fromPartial(object?.coinIn ? object?.coinIn : {denom: undefined, amount: undefined})
+    message.takerCoinOut =Coin.fromPartial(object?.coinIn ? object?.coinIn : {denom: undefined, amount: undefined})
     return message;
   }
 };
@@ -971,12 +971,12 @@ export const MsgMultiHopSwapResponse = {
   },
   fromJSON(object: any): MsgMultiHopSwapResponse {
     return {
-      coinOut: isSet(object.coinOut) ? Coin.fromJSON(object.coinOut) : undefined
+      coinOut: Coin.fromJSON(object?.coinOut ? object?.coinOut : {denom: undefined, amount: undefined})
     };
   },
   fromPartial(object: DeepPartial<MsgMultiHopSwapResponse>): MsgMultiHopSwapResponse {
     const message = createBaseMsgMultiHopSwapResponse();
-    message.coinOut = object.coinOut !== undefined && object.coinOut !== null ? Coin.fromPartial(object.coinOut) : undefined;
+    message.coinOut = Coin.fromPartial(object?.coinOut ? object?.coinOut : {denom: undefined, amount: undefined})
     return message;
   }
 };

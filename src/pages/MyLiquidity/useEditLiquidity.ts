@@ -14,7 +14,7 @@ import { Token, getBaseDenomAmount } from '../../lib/web3/utils/tokens';
 
 import { UserReserves } from '../../lib/web3/hooks/useUserReserves';
 import rpcClient from '../../lib/web3/rpcMsgClient';
-import { duality } from '../../proto/dualityjs/';
+import { duality } from '@duality-labs/dualityjs';
 
 export interface EditedPosition extends UserReserves {
   token0: Token;

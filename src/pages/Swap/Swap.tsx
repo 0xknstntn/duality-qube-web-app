@@ -10,7 +10,7 @@ import {
   faSliders,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import { LimitOrderType } from '../../proto/dualityjs//types/codegen/duality/dex/tx';
+import { LimitOrderType } from '@duality-labs/dualityjs/types/codegen/duality/dex/tx';
 
 import TokenInputGroup from '../../components/TokenInputGroup';
 import {

@@ -1,4 +1,4 @@
-import { Coin } from '../../proto/dualityjs//types/codegen/cosmos/base/v1beta1/coin';
+import { Coin } from '@duality-labs/dualityjs/types/codegen/cosmos/base/v1beta1/coin';
 
 const DexShareRegex = /^duality\/pool\/(\d+)$/;
 

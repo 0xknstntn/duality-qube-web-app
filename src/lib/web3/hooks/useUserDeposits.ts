@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { UseQueryResult } from '@tanstack/react-query';
-import { DepositRecord } from '../../proto/dualityjs//types/codegen/duality/dex/deposit_record';
+import { DepositRecord } from '@duality-labs/dualityjs/types/codegen/duality/dex/deposit_record';
 import { useDeepCompareMemoize } from 'use-deep-compare-effect';
 import { useWeb3 } from '../useWeb3';
 import { TokenIdPair, TokenPair, resolveTokenIdPair } from '../utils/tokens';

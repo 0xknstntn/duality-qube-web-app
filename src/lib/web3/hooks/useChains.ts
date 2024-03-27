@@ -1,14 +1,14 @@
 import { Chain } from '@chain-registry/types';
 import { useMemo, useState } from 'react';
-import { ibc, router } from '../../../proto/dualityjs/';
-import { QueryParamsResponse as QueryRouterParams } from '../../../proto/dualityjs//types/codegen/router/v1/query';
-import { QueryClientStatesResponse } from '../../../proto/dualityjs//types/codegen/ibc/core/client/v1/query';
-import { Params as QueryConnectionParams } from '../../../proto/dualityjs//types/codegen/ibc/core/connection/v1/connection';
-import { QueryConnectionsResponse } from '../../../proto/dualityjs//types/codegen/ibc/core/connection/v1/query';
-import { QueryChannelsResponse } from '../../../proto/dualityjs//types/codegen/ibc/core/channel/v1/query';
-import { QueryBalanceResponse } from '../../../proto/dualityjs//types/codegen/cosmos/bank/v1beta1/query';
-import { State as ChannelState } from '../../../proto/dualityjs//types/codegen/ibc/core/channel/v1/channel';
-import { State as ConnectionState } from '../../../proto/dualityjs//types/codegen/ibc/core/connection/v1/connection';
+import { ibc, router } from '@duality-labs/dualityjs';
+import { QueryParamsResponse as QueryRouterParams } from '@duality-labs/dualityjs/types/codegen/router/v1/query';
+import { QueryClientStatesResponse } from '@duality-labs/dualityjs/types/codegen/ibc/core/client/v1/query';
+import { Params as QueryConnectionParams } from '@duality-labs/dualityjs/types/codegen/ibc/core/connection/v1/connection';
+import { QueryConnectionsResponse } from '@duality-labs/dualityjs/types/codegen/ibc/core/connection/v1/query';
+import { QueryChannelsResponse } from '@duality-labs/dualityjs/types/codegen/ibc/core/channel/v1/query';
+import { QueryBalanceResponse } from '@duality-labs/dualityjs/types/codegen/cosmos/bank/v1beta1/query';
+import { State as ChannelState } from '@duality-labs/dualityjs/types/codegen/ibc/core/channel/v1/channel';
+import { State as ConnectionState } from '@duality-labs/dualityjs/types/codegen/ibc/core/connection/v1/connection';
 import { useQuery } from '@tanstack/react-query';
 import { useDeepCompareMemoize } from 'use-deep-compare-effect';
 
