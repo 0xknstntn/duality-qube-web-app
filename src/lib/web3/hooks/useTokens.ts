@@ -25,6 +25,11 @@ import {
 import tknLogo from '../../../assets/logo/QubeLogo.svg';
 import stkLogo from '../../../assets/tokens/USQLogo.svg';
 import atomLogo from '../../../assets/tokens/atom.svg';
+import wethLogo from '../../../assets/tokens/WETHLogo.webp';
+import btcLogo from '../../../assets/tokens/WBTCLogo.webp';
+import solLogo from '../../../assets/tokens/SOL Logo.webp';
+import usdtLogo from '../../../assets/tokens/USDT Logo.webp';
+import usdcLogo from '../../../assets/tokens/USDC Logo.webp';
 
 const {
   REACT_APP__IS_MAINNET = 'mainnet',
@@ -111,12 +116,137 @@ export const ibcAtomMainToken: Token = {
   },
 };
 
+export const btcToken: Token = {
+  chain: devChain,
+  description: 'Wrapped Bitcoin',
+  denom_units: [
+    {
+      denom: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/wbtc',
+      exponent: 0,
+      aliases: [],
+    },
+    {
+      denom: 'wbtc',
+      exponent: 6,
+      aliases: ['wbtc'],
+    },
+  ],
+  base: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/wbtc',
+  name: 'Bitcoin',
+  display: 'BTC',
+  symbol: 'BTC',
+  logo_URIs: {
+    svg: btcLogo,
+  },
+}
+export const solToken: Token = {
+  chain: devChain,
+  description: 'Solana',
+  denom_units: [
+    {
+      denom: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uusol',
+      exponent: 0,
+      aliases: [],
+    },
+    {
+      denom: 'sol',
+      exponent: 6,
+      aliases: ['sol'],
+    },
+  ],
+  base: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uusol',
+  name: 'Solana',
+  display: 'SOL',
+  symbol: 'SOL',
+  logo_URIs: {
+    svg: solLogo,
+  },
+}
+export const usdtToken: Token = {
+  chain: devChain,
+  description: 'Tether USD',
+  denom_units: [
+    {
+      denom: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uusdt',
+      exponent: 0,
+      aliases: [],
+    },
+    {
+      denom: 'usdt',
+      exponent: 6,
+      aliases: ['usdt'],
+    },
+  ],
+  base: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uusdt',
+  name: 'Tether USD',
+  display: 'USDT',
+  symbol: 'USDT',
+  logo_URIs: {
+    svg: usdtLogo,
+  },
+}
+export const usdsToken: Token = {
+  chain: devChain,
+  description: 'Circle USD',
+  denom_units: [
+    {
+      denom: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uusdc',
+      exponent: 0,
+      aliases: [],
+    },
+    {
+      denom: 'usdc',
+      exponent: 6,
+      aliases: ['usdc'],
+    },
+  ],
+  base: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uusdc',
+  name: 'Circle USD',
+  display: 'USDC',
+  symbol: 'USDC',
+  logo_URIs: {
+    svg: usdcLogo,
+  },
+}
+export const ethToken: Token = {
+  chain: devChain,
+  description: 'Wrapped Ethereum',
+  denom_units: [
+    {
+      denom: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uweth',
+      exponent: 0,
+      aliases: [],
+    },
+    {
+      denom: 'usdc',
+      exponent: 6,
+      aliases: ['usdc'],
+    },
+  ],
+  base: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uweth',
+  name: 'Wrapped Ethereum',
+  display: 'wETH',
+  symbol: 'wETH',
+  logo_URIs: {
+    svg: wethLogo,
+  },
+}
+
 export const dualityAssets: AssetList | undefined = REACT_APP__CHAIN_ASSETS
   ? (JSON.parse(REACT_APP__CHAIN_ASSETS) as AssetList)
   : isTestnet
   ? {
       chain_name: devChain.chain_name,
-      assets: [dualityMainToken, uusdMainToken, ibcAtomMainToken],
+      assets: [
+        dualityMainToken, 
+        uusdMainToken, 
+        ibcAtomMainToken, 
+        btcToken,
+        ethToken,
+        solToken,
+        usdsToken,
+        usdtToken,
+      ],
     }
   : undefined;
 
