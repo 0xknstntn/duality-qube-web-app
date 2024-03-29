@@ -102,7 +102,7 @@ export const ibcAtomMainToken: Token = {
       aliases: [],
     },
     {
-      denom: 'atom',
+      denom: 'ATOM',
       exponent: 6,
       aliases: ['atom'],
     },
@@ -114,6 +114,7 @@ export const ibcAtomMainToken: Token = {
   logo_URIs: {
     svg: atomLogo,
   },
+  coingecko_id: "cosmos"
 };
 
 export const btcToken: Token = {
@@ -126,7 +127,7 @@ export const btcToken: Token = {
       aliases: [],
     },
     {
-      denom: 'wbtc',
+      denom: 'BTC',
       exponent: 6,
       aliases: ['wbtc'],
     },
@@ -138,6 +139,7 @@ export const btcToken: Token = {
   logo_URIs: {
     svg: btcLogo,
   },
+  coingecko_id: "bitcoin"
 }
 export const solToken: Token = {
   chain: devChain,
@@ -149,7 +151,7 @@ export const solToken: Token = {
       aliases: [],
     },
     {
-      denom: 'sol',
+      denom: 'SOL',
       exponent: 6,
       aliases: ['sol'],
     },
@@ -161,6 +163,7 @@ export const solToken: Token = {
   logo_URIs: {
     svg: solLogo,
   },
+  coingecko_id: "solana"
 }
 export const usdtToken: Token = {
   chain: devChain,
@@ -172,7 +175,7 @@ export const usdtToken: Token = {
       aliases: [],
     },
     {
-      denom: 'usdt',
+      denom: 'USDT',
       exponent: 6,
       aliases: ['usdt'],
     },
@@ -195,7 +198,7 @@ export const usdsToken: Token = {
       aliases: [],
     },
     {
-      denom: 'usdc',
+      denom: 'USDC',
       exponent: 6,
       aliases: ['usdc'],
     },
@@ -218,9 +221,9 @@ export const ethToken: Token = {
       aliases: [],
     },
     {
-      denom: 'usdc',
+      denom: 'wETH',
       exponent: 6,
-      aliases: ['usdc'],
+      aliases: ['weth'],
     },
   ],
   base: 'factory/qube1t2ydw7r4asmk74ymuvykjshdzun8dxye0az5wz/uweth',
@@ -230,6 +233,7 @@ export const ethToken: Token = {
   logo_URIs: {
     svg: wethLogo,
   },
+  coingecko_id: "ethereum"
 }
 
 export const dualityAssets: AssetList | undefined = REACT_APP__CHAIN_ASSETS

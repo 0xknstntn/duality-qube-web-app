@@ -64,16 +64,16 @@ function HeroCard() {
             <td>
               {wallet
                 ? `$${allUserBankValue.toNumber().toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 5,
+                    maximumFractionDigits: 5,
                   })}`
                 : '-'}
             </td>
             <td>
               {wallet
                 ? `$${allUserSharesValue.toNumber().toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 5,
+                    maximumFractionDigits: 5,
                   })}`
                 : '-'}
             </td>

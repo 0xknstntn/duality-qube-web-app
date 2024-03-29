@@ -17,7 +17,6 @@ export function useUserBankValues(): TokenCoinWithValue[] {
   const selectedTokens = useMemo<Token[]>(() => {
     return (balances || []).map<Token>((balance) => balance.token);
   }, [balances]);
-
   const { data: selectedTokensPrices } = useSimplePrice(selectedTokens);
 
   return useMemo<TokenCoinWithValue[]>(() => {

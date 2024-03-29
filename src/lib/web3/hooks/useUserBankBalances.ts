@@ -1,118 +1,53 @@
-import { useEffect, useMemo } from 'react';
-import { useDeepCompareMemoize } from 'use-deep-compare-effect';
-import { UseQueryResult, useInfiniteQuery } from '@tanstack/react-query';
-import { PageRequest } from '@duality-labs/dualityjs/types/codegen/cosmos/base/query/v1beta1/pagination';
-import { QueryAllBalancesResponse } from '@duality-labs/dualityjs/types/codegen/cosmos/bank/v1beta1/query';
+import { useEffect, useMemo, useState } from 'react';
+import { UseQueryResult } from '@tanstack/react-query';
 import { Coin } from '@cosmjs/proto-signing';
 
-import subscriber from '../subscriptionManager';
 import { Token, getDenomAmount } from '../utils/tokens';
 import useTokens, {
   matchTokenByDenom,
   matchTokens,
   useTokensWithIbcInfo,
 } from './useTokens';
-import { useLcdClientPromise } from '../lcdClient';
 import { useWeb3 } from '../useWeb3';
 import { isDexShare } from '../utils/shares';
-import { MessageActionEvent, TendermintTxData } from '../events';
-import { CoinTransferEvent, mapEventAttributes } from '../utils/events';
+
+async function getUserBalance(address?: string): Promise<Coin[]> {
+  const result: Coin[] = [];
+  try {
+    if (address) {
+      const res = await fetch(`https://api-rest.qubedao.com/api/cosmos/bank/v1beta1/balances/${address}?pagination.limit=1000`)
+      let balanceJson = await res.json()
+      let balanceArray = balanceJson.balances;
+      balanceArray.map((token: any) => {
+        result.push(<Coin>{
+          amount: token.amount,
+          denom: token.denom,
+        })
+      })
+    }
+  } catch (e) {
+    console.error(e)
+  }
+  //console.log("QLABS: DEBUG: result: result: ", result)
+  return result
+}
 
 // fetch all the user's bank balance
 function useAllUserBankBalances(): UseQueryResult<Coin[]> {
-  const lcdClientPromise = useLcdClientPromise();
   const { address } = useWeb3();
-
-  const result = useInfiniteQuery({
-    queryKey: ['cosmos.bank.v1beta1.allBalances', address],
-    enabled: !!address,
-    queryFn: async ({
-      pageParam: pageKey,
-    }: {
-      pageParam: Uint8Array | undefined;
-    }): Promise<QueryAllBalancesResponse> => {
-      const client = await lcdClientPromise;
-      return client.cosmos.bank.v1beta1.allBalances({
-        address: address || '',
-        pagination: {
-          key: pageKey || [],
-        } as PageRequest,
-      });
-    },
-    defaultPageParam: undefined as Uint8Array | undefined,
-    getNextPageParam: (lastPage): Uint8Array | undefined => {
-      // don't pass an empty array as that will trigger another page to download
-      return lastPage?.pagination?.next_key?.length
-        ? lastPage?.pagination?.next_key ?? undefined
-        : undefined;
-    },
-  });
-
-  const { refetch } = result;
-  // subscribe to updates to the user's bank balance
+  const [data, dataSet] = useState<any>(null)
   useEffect(() => {
-    if (address) {
-      const onTxBalanceUpdate = (
-        _event: MessageActionEvent,
-        tx: TendermintTxData
-      ) => {
-        const events = tx.value.TxResult.result.events.map(mapEventAttributes);
-        const transferBalanceEvents = events
-          .filter(
-            (event): event is CoinTransferEvent => event.type === 'transfer'
-          )
-          .filter(
-            (event) =>
-              event.attributes.recipient === address ||
-              event.attributes.sender === address
-          );
-
-        // todo: use partial updates to avoid querying all of user's balances
-        //       on any balance update, but decide first whether to requests
-        //       an update to all the user's balances, or just partial updates
-        if (transferBalanceEvents.length >= 3) {
-          // update all known users balances
-          refetch({ cancelRefetch: false });
-        } else {
-          // todo: add partial update logic here
-          refetch({ cancelRefetch: false });
-        }
-      };
-      // subscribe to changes in the user's bank balance
-      subscriber.subscribeMessage(onTxBalanceUpdate, {
-        transfer: { recipient: address },
-      });
-      subscriber.subscribeMessage(onTxBalanceUpdate, {
-        transfer: { sender: address },
-      });
-      return () => {
-        subscriber.unsubscribeMessage(onTxBalanceUpdate);
-      };
+    async function main() {
+      const res = await getUserBalance(address!)
+      dataSet(res)
     }
-  }, [refetch, address]);
-
-  const { fetchNextPage, data, hasNextPage } = result;
-  // fetch more data if data has changed but there are still more pages to get
-  useEffect(() => {
-    if (fetchNextPage && hasNextPage) {
-      fetchNextPage();
-    }
-  }, [fetchNextPage, data, hasNextPage]);
-
-  // combine all non-zero balances
-  const pages = result.data?.pages;
-  const allNonZeroBalances = useMemo(() => {
-    const combinedBalances = pages?.flatMap((page) => page.balances);
-    const nonZeroBalances = combinedBalances?.filter(
-      (balance) => !!Number(balance.amount)
-    );
-    return nonZeroBalances;
-  }, [pages]);
-
-  return {
-    ...result,
-    data: useDeepCompareMemoize(allNonZeroBalances),
-  } as UseQueryResult<Coin[]>;
+    main()
+  }, [address])
+  //console.log(data)
+  return <UseQueryResult<Coin[]>>{
+    data,
+    error: null
+  }
 }
 
 export function useUserDexDenomBalances(): UseQueryResult<Coin[]> {

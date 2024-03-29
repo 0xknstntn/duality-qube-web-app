@@ -143,7 +143,7 @@ export function useSimplePrices(
       const tokenID = `${token?.base}:${token?.chain.chain_name}`;
       if (!warned.has(tokenID) && !isDevToken(token)) {
         // eslint-disable-next-line no-console
-        console.warn(
+        console.log(
           `Token ${token.name} (${token.symbol}) has no CoinGecko ID`
         );
         warned.add(tokenID);

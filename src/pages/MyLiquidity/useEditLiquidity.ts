@@ -67,11 +67,11 @@ export function useEditLiquidity(): [
           ([depositCount, withdrawCount], shareDiff) => {
             return [
               depositCount +
-                (shareDiff.tickDiff0.isGreaterThan(0) ? 1 : 0) +
-                (shareDiff.tickDiff1.isGreaterThan(0) ? 1 : 0),
+              (shareDiff.tickDiff0.isGreaterThan(0) ? 1 : 0) +
+              (shareDiff.tickDiff1.isGreaterThan(0) ? 1 : 0),
               withdrawCount +
-                (shareDiff.tickDiff0.isLessThan(0) ? 1 : 0) +
-                (shareDiff.tickDiff1.isLessThan(0) ? 1 : 0),
+              (shareDiff.tickDiff0.isLessThan(0) ? 1 : 0) +
+              (shareDiff.tickDiff1.isLessThan(0) ? 1 : 0),
             ];
           },
           [0, 0]
@@ -111,122 +111,122 @@ export function useEditLiquidity(): [
                   token1 &&
                   userTotalReserves.isGreaterThan(0)
                   ? // for situations where withdrawing both side of liquidity
-                    // then add both together
-                    // todo: this should be reworked, this is a major difference between deposit and
-                    // withdrawal, deposit is per reserve, withdrawal is per share.
-                    // I'm not certain that non-100% withdrawals work in all cases.
-                    tickDiff0.isLessThan(0) && tickDiff1.isLessThan(0)
+                  // then add both together
+                  // todo: this should be reworked, this is a major difference between deposit and
+                  // withdrawal, deposit is per reserve, withdrawal is per share.
+                  // I'm not certain that non-100% withdrawals work in all cases.
+                  tickDiff0.isLessThan(0) && tickDiff1.isLessThan(0)
                     ? [
-                        duality.dex.MessageComposer.withTypeUrl.withdrawal({
-                          creator: web3Address,
-                          tokenA: token0Address,
-                          tokenB: token1Address,
-                          receiver: web3Address,
-                          tickIndexesAToB: [centerTickIndex],
-                          fees: [fee],
-                          // approximate removal using percentages
-                          // todo: this probably has a bug when withdrawing from a tick
-                          // that has both token0 and token1 as this only takes into account one side
-                          sharesToRemove: [
-                            tickDiff0
-                              .plus(tickDiff1)
-                              .negated()
-                              .dividedBy(userTotalReserves)
-                              .multipliedBy(userShares)
-                              .toFixed(0),
-                          ],
-                        }),
-                      ]
+                      duality.dex.MessageComposer.withTypeUrl.withdrawal({
+                        creator: web3Address,
+                        tokenA: token0Address,
+                        tokenB: token1Address,
+                        receiver: web3Address,
+                        tickIndexesAToB: [centerTickIndex],
+                        fees: [fee],
+                        // approximate removal using percentages
+                        // todo: this probably has a bug when withdrawing from a tick
+                        // that has both token0 and token1 as this only takes into account one side
+                        sharesToRemove: [
+                          tickDiff0
+                            .plus(tickDiff1)
+                            .negated()
+                            .dividedBy(userTotalReserves)
+                            .multipliedBy(userShares)
+                            .toFixed(0),
+                        ],
+                      }),
+                    ]
                     : [
-                        ...(!tickDiff0.isZero()
-                          ? [
-                              tickDiff0.isGreaterThan(0)
-                                ? duality.dex.MessageComposer.withTypeUrl.deposit(
-                                    {
-                                      creator: web3Address,
-                                      tokenA: token0Address,
-                                      tokenB: token1Address,
-                                      receiver: web3Address,
-                                      tickIndexesAToB: [centerTickIndex],
-                                      fees: [fee],
-                                      amountsA: [
-                                        getBaseDenomAmount(token0, tickDiff0) ||
-                                          '0',
-                                      ],
-                                      amountsB: ['0'],
-                                      // todo: allow user to specify autoswap behavior
-                                      Options: [{ disable_autoswap: false }],
-                                    }
-                                  )
-                                : duality.dex.MessageComposer.withTypeUrl.withdrawal(
-                                    {
-                                      creator: web3Address,
-                                      tokenA: token0Address,
-                                      tokenB: token1Address,
-                                      receiver: web3Address,
-                                      tickIndexesAToB: [centerTickIndex],
-                                      fees: [fee],
-                                      // approximate removal using percentages
-                                      // todo: this probably has a bug when withdrawing from a tick
-                                      // that has both token0 and token1 as this only takes into account one side
-                                      sharesToRemove: reserves0
-                                        ? [
-                                            tickDiff0
-                                              .negated()
-                                              .dividedBy(reserves0)
-                                              .multipliedBy(userShares)
-                                              .toFixed(0),
-                                          ]
-                                        : ['0'],
-                                    }
-                                  ),
-                            ]
-                          : []),
-                        ...(!tickDiff1.isZero()
-                          ? [
-                              tickDiff1.isGreaterThan(0)
-                                ? duality.dex.MessageComposer.withTypeUrl.deposit(
-                                    {
-                                      creator: web3Address,
-                                      tokenA: token0Address,
-                                      tokenB: token1Address,
-                                      receiver: web3Address,
-                                      tickIndexesAToB: [centerTickIndex],
-                                      fees: [fee],
-                                      amountsA: ['0'],
-                                      amountsB: [
-                                        getBaseDenomAmount(token1, tickDiff1) ||
-                                          '0',
-                                      ],
-                                      // todo: allow user to specify autoswap behavior
-                                      Options: [{ disable_autoswap: false }],
-                                    }
-                                  )
-                                : duality.dex.MessageComposer.withTypeUrl.withdrawal(
-                                    {
-                                      creator: web3Address,
-                                      tokenA: token0Address,
-                                      tokenB: token1Address,
-                                      receiver: web3Address,
-                                      tickIndexesAToB: [centerTickIndex],
-                                      fees: [fee],
-                                      // approximate removal using percentages
-                                      // todo: this probably has a bug when withdrawing from a tick
-                                      // that has both token0 and token1 as this only takes into account one side
-                                      sharesToRemove: reserves1
-                                        ? [
-                                            tickDiff1
-                                              .negated()
-                                              .dividedBy(reserves1)
-                                              .multipliedBy(userShares)
-                                              .toFixed(0),
-                                          ]
-                                        : ['0'],
-                                    }
-                                  ),
-                            ]
-                          : []),
-                      ]
+                      ...(!tickDiff0.isZero()
+                        ? [
+                          tickDiff0.isGreaterThan(0)
+                            ? duality.dex.MessageComposer.withTypeUrl.deposit(
+                              {
+                                creator: web3Address,
+                                tokenA: token0Address,
+                                tokenB: token1Address,
+                                receiver: web3Address,
+                                tickIndexesAToB: [centerTickIndex],
+                                fees: [fee],
+                                amountsA: [
+                                  getBaseDenomAmount(token0, tickDiff0) ||
+                                  '0',
+                                ],
+                                amountsB: ['0'],
+                                // todo: allow user to specify autoswap behavior
+                                Options: [{ disable_autoswap: false }],
+                              }
+                            )
+                            : duality.dex.MessageComposer.withTypeUrl.withdrawal(
+                              {
+                                creator: web3Address,
+                                tokenA: token0Address,
+                                tokenB: token1Address,
+                                receiver: web3Address,
+                                tickIndexesAToB: [centerTickIndex],
+                                fees: [fee],
+                                // approximate removal using percentages
+                                // todo: this probably has a bug when withdrawing from a tick
+                                // that has both token0 and token1 as this only takes into account one side
+                                sharesToRemove: reserves0
+                                  ? [
+                                    tickDiff0
+                                      .negated()
+                                      .dividedBy(reserves0)
+                                      .multipliedBy(userShares)
+                                      .toFixed(0),
+                                  ]
+                                  : ['0'],
+                              }
+                            ),
+                        ]
+                        : []),
+                      ...(!tickDiff1.isZero()
+                        ? [
+                          tickDiff1.isGreaterThan(0)
+                            ? duality.dex.MessageComposer.withTypeUrl.deposit(
+                              {
+                                creator: web3Address,
+                                tokenA: token0Address,
+                                tokenB: token1Address,
+                                receiver: web3Address,
+                                tickIndexesAToB: [centerTickIndex],
+                                fees: [fee],
+                                amountsA: ['0'],
+                                amountsB: [
+                                  getBaseDenomAmount(token1, tickDiff1) ||
+                                  '0',
+                                ],
+                                // todo: allow user to specify autoswap behavior
+                                Options: [{ disable_autoswap: false }],
+                              }
+                            )
+                            : duality.dex.MessageComposer.withTypeUrl.withdrawal(
+                              {
+                                creator: web3Address,
+                                tokenA: token0Address,
+                                tokenB: token1Address,
+                                receiver: web3Address,
+                                tickIndexesAToB: [centerTickIndex],
+                                fees: [fee],
+                                // approximate removal using percentages
+                                // todo: this probably has a bug when withdrawing from a tick
+                                // that has both token0 and token1 as this only takes into account one side
+                                sharesToRemove: reserves1
+                                  ? [
+                                    tickDiff1
+                                      .negated()
+                                      .dividedBy(reserves1)
+                                      .multipliedBy(userShares)
+                                      .toFixed(0),
+                                  ]
+                                  : ['0'],
+                              }
+                            ),
+                        ]
+                        : []),
+                    ]
                   : [];
               }
             ),

@@ -247,7 +247,7 @@ async function getPoolByParams(userPairDeposits: DepositRecord[]): Promise<Depos
       const { pairID, fee, sharesOwned } = deposit;
         if (Number(sharesOwned) > 0) {
             const res = await fetch(`https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
-            console.log('QLABS: ', `https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
+           // console.log('QLABS: ', `https://api-rest.qubedao.com/api/core/dex/v1beta1/pool/${getPairID(pairID.token0, pairID.token1)}/${deposit.centerTickIndex}/${fee}`)
             const poolJson = await res.json()
             //console.log("QLABS: DEBUG: poolJson: ", poolJson)
             result.push({

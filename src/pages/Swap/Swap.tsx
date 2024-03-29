@@ -214,7 +214,7 @@ function Swap() {
           ]).size - ticksUsed;
         const gasEstimate = ticksUsed
           ? // 120000 base
-            120000 +
+            2000000 +
             // add 80000 if multiple ticks need to be traversed
             (ticksUsed > 1 ? 80000 : 0) +
             // add 1000000 for each tick that we need to remove liquidity from
